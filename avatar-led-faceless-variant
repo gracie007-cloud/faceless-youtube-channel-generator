@@ -1,0 +1,442 @@
+Below is the complete source code for the **Avatar-Led Faceless YouTube Blueprint Variant**. This version is specifically engineered for creators who use AI avatars, VTuber models, or animated personas. The generated prompt incorporates the "2026 Leaked Algorithm" insights adapted for avatar-specific challenges (e.g., Parasocial Resonance, Uncanny Valley Retention Drops, and Character Consistency).
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avatar-Led YouTube Blueprint Generator</title>
+    <style>
+        :root {
+            --bg: #0b0f19; /* Darker background for Avatar/Cyber feel */
+            --surface: #151b2b;
+            --surface-hover: #232b3e;
+            --border: #2a344d;
+            --primary: #6366f1; /* Indigo for Avatar theme */
+            --primary-hover: #4f46e5;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --success: #10b981;
+            --radius: 12px;
+            --shadow: 0 4px 24px rgba(0,0,0,0.5);
+            --focus-ring: 0 0 0 3px rgba(99,102,241,0.4);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text-main); line-height: 1.6; min-height: 100vh; display: flex; justify-content: center; padding: 2rem 1rem; }
+        .app { max-width: 800px; width: 100%; }
+        header { text-align: center; margin-bottom: 2.5rem; }
+        h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; background: linear-gradient(90deg, #fff, #94a3b8); -webkit-background-clip: text; color: transparent; }
+        .subtitle { color: var(--text-muted); font-size: 1rem; }
+        
+        /* UI Components */
+        .step-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow); display: none; }
+        .step-card.active { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .step-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .step-desc { color: var(--text-muted); margin-bottom: 1.5rem; }
+        
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+        @media (max-width: 600px) { .options { grid-template-columns: 1fr; } }
+        .option { background: var(--bg); border: 2px solid var(--border); padding: 1rem; border-radius: var(--radius); cursor: pointer; transition: all 0.15s; position: relative; min-height: 80px; }
+        .option:hover { border-color: var(--primary-hover); }
+        .option[data-selected="true"] { background: rgba(99,102,241,0.1); border-color: var(--primary); box-shadow: var(--focus-ring); }
+        .opt-label { font-weight: 500; display: block; }
+        .opt-sub { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem; }
+        .check { position: absolute; top: 0.75rem; right: 0.75rem; width: 18px; height: 18px; border: 2px solid var(--border); border-radius: 4px; display: grid; place-items: center; }
+        .option[data-selected="true"] .check { background: var(--primary); border-color: var(--primary); }
+        .option[data-selected="true"] .check::after { content: '✓'; color: white; font-size: 0.7rem; font-weight: bold; }
+
+        input[type="text"] { width: 100%; padding: 0.875rem; background: var(--bg); border: 2px solid var(--border); border-radius: var(--radius); color: white; font-size: 1rem; transition: border 0.2s; }
+        input[type="text"]:focus { outline: none; border-color: var(--primary); box-shadow: var(--focus-ring); }
+        .cond-hide { display: none; }
+        .cond-show { display: block; animation: fadeIn 0.2s ease; }
+
+        .nav { display: flex; gap: 1rem; margin-top: 2rem; justify-content: flex-end; }
+        .btn { padding: 0.875rem 1.5rem; border-radius: var(--radius); font-weight: 600; cursor: pointer; border: none; transition: all 0.15s; font-size: 0.95rem; }
+        .btn[disabled] { opacity: 0.5; cursor: not-allowed; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover:not([disabled]) { background: var(--primary-hover); transform: translateY(-1px); }
+        .btn-secondary { background: var(--surface); color: var(--text-main); border: 1px solid var(--border); }
+        .btn-secondary:hover { background: var(--surface-hover); }
+
+        #output-section { text-align: center; }
+        .prompt-box { background: #02040a; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; margin: 1.5rem 0; text-align: left; max-height: 400px; overflow-y: auto; font-family: monospace; font-size: 0.9rem; line-height: 1.5; color: #a5b4fc; white-space: pre-wrap; }
+        .instruction-box { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1.5rem; text-align: left; }
+        .instant-rec { background: var(--surface); border: 1px dashed var(--primary); padding: 1rem; border-radius: var(--radius); margin-bottom: 1.5rem; }
+
+        /* Progress */
+        .progress-container { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; }
+        .progress-track { flex: 1; height: 4px; background: var(--surface); border-radius: 2px; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--primary); transition: width 0.4s ease; width: 10%; }
+        .step-badge { background: var(--surface); border: 1px solid var(--border); padding: 0.5rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="app" id="app">
+        <header>
+            <h1>🤖 Avatar-Led Channel Blueprint <br><span style="font-size:0.6em; color:var(--primary);">Algorithm Optimized v2.0</span></h1>
+            <p class="subtitle">Build a faceless channel powered by AI agents, VTubers, or animated hosts.</p>
+        </header>
+
+        <div class="progress-container">
+            <span class="step-badge" id="step-badge">Step 1/9</span>
+            <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+        </div>
+
+        <!-- STEP 1 -->
+        <div class="step-card active" data-step="1" id="step-1">
+            <h2 class="step-title">Experience Level</h2>
+            <p class="step-desc">Current experience with AI avatars & faceless production?</p>
+            <div class="options multi-choice single-select">
+                <div class="option" data-value="Beginner"><span class="opt-label">Beginner</span><span class="opt-sub">New to avatars/tech</span><div class="check"></div></div>
+                <div class="option" data-value="Intermediate"><span class="opt-label">Intermediate</span><span class="opt-sub">Used basic tools before</span><div class="check"></div></div>
+                <div class="option" data-value="Advanced"><span class="opt-label">Advanced</span><span class="opt-sub">Complex workflows/Rigging</span><div class="check"></div></div>
+            </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="step-card" data-step="2" id="step-2">
+            <h2 class="step-title">Select Your Niche</h2>
+            <p class="step-desc">What topic does your avatar have expertise in?</p>
+            <div class="options multi-choice single-select">
+                <div class="option" data-value="Autos & Vehicles"><span class="opt-label">Autos & Vehicles</span><div class="check"></div></div>
+                <div class="option" data-value="Comedy"><span class="opt-label">Comedy</span><div class="check"></div></div>
+                <div class="option" data-value="Education"><span class="opt-label">Education</span><div class="check"></div></div>
+                <div class="option" data-value="Entertainment"><span class="opt-label">Entertainment</span><div class="check"></div></div>
+                <div class="option" data-value="Film & Animation"><span class="opt-label">Film & Animation</span><div class="check"></div></div>
+                <div class="option" data-value="Gaming"><span class="opt-label">Gaming</span><div class="check"></div></div>
+                <div class="option" data-value="How-to & Style"><span class="opt-label">How-to & Style</span><div class="check"></div></div>
+                <div class="option" data-value="Music"><span class="opt-label">Music</span><div class="check"></div></div>
+                <div class="option" data-value="News & Politics"><span class="opt-label">News & Politics</span><div class="check"></div></div>
+                <div class="option" data-value="Nonprofits & Activism"><span class="opt-label">Nonprofits & Activism</span><div class="check"></div></div>
+                <div class="option" data-value="People & Blogs"><span class="opt-label">People & Blogs</span><div class="check"></div></div>
+                <div class="option" data-value="Pets & Animals"><span class="opt-label">Pets & Animals</span><div class="check"></div></div>
+                <div class="option" data-value="Science & Technology"><span class="opt-label">Science & Technology</span><div class="check"></div></div>
+                <div class="option" data-value="Sports"><span class="opt-label">Sports</span><div class="check"></div></div>
+                <div class="option" data-value="Travel & Events"><span class="opt-label">Travel & Events</span><div class="check"></div></div>
+            </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="step-card" data-step="3" id="step-3">
+            <h2 class="step-title">Avatar Visuals</h2>
+            <p class="step-desc">What type of avatar represents your channel?</p>
+            <div class="options multi-choice single-select">
+                <div class="option" data-value="Realistic AI Human"><span class="opt-label">Realistic AI Human</span><span class="opt-sub">Hyper-realistic (HeyGen/Synthesia)</span><div class="check"></div></div>
+                <div class="option" data-value="3D Character"><span class="opt-label">3D Character</span><span class="opt-sub">Full 3D (Blender/UE/Mixamo)</span><div class="check"></div></div>
+                <div class="option" data-value="2D Live2D (VTuber)"><span class="opt-label">2D Live2D / Anime</span><span class="opt-sub">VTuber style (VTube Studio)</span><div class="check"></div></div>
+                <div class="option" data-value="Animated Mascot"><span class="opt-label">Animated Mascot</span><span class="opt-sub">Stylized/Motion Graphics</span><div class="check"></div></div>
+                <div class="option" data-value="Object/Abstract"><span class="opt-label">Object/Abstract</span><span class="opt-sub">Robot, AI Sphere, Logo</span><div class="check"></div></div>
+            </div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="step-card" data-step="4" id="step-4">
+            <h2 class="step-title">Avatar Tech Approach</h2>
+            <p class="step-desc">How will you animate the avatar?</p>
+            <div class="options multi-choice single-select">
+                <div class="option" data-value="AI Video Gen (Batch)"><span class="opt-label">AI Video Gen</span><span class="opt-sub">HeyGen/Hedra (Text-to-Video)</span><div class="check"></div></div>
+                <div class="option" data-value="Real-Time Capture"><span class="opt-label">Real-Time Capture</span><span class="opt-sub">Webcam/Mocap tracking</span><div class="check"></div></div>
+                <div class="option" data-value="Manual Animation"><span class="opt-label">Manual Animation</span><span class="opt-sub">Keyframing/Puppet tools</span><div class="check"></div></div>
+                <div class="option" data-value="Static with Motion"><span class="opt-label">Static with Motion</span><span class="opt-sub">Pan-Zoom/Expressions</span><div class="check"></div></div>
+            </div>
+        </div>
+
+        <!-- STEP 5 -->
+        <div class="step-card" data-step="5" id="step-5">
+            <h2 class="step-title">Avatar Voice & Persona</h2>
+            <p class="step-desc">What is the voice strategy for your avatar?</p>
+            <div class="options multi-choice single-select">
+                <div class="option" data-value="AI Voice Cloning"><span class="opt-label">AI Voice Clone</span><span class="opt-sub">ElevenLabs style (Realistic)</span><div class="check"></div></div>
+                <div class="option" data-value="Synthetic TTS"><span class="opt-label">Synthetic TTS</span><span class="opt-sub">Robotic/Futuristic style</span><div class="check"></div></div>
+                <div class="option" data-value="Real Voice Acting"><span class="opt-label">Real Voice Acting</span><span class="opt-sub">You provide voice, Avatar acts</span><div class="check"></div></div>
+                <div class="option" data-value="Text/Silent"><span class="opt-label">Text/Silent</span><span class="opt-sub">Visual storytelling only</span><div class="check"></div></div>
+            </div>
+        </div>
+
+        <!-- STEP 6 -->
+        <div class="step-card" data-step="6" id="step-6">
+            <h2 class="step-title">Channel Concept</h2>
+            <p class="step-desc">What is the Avatar's primary role?</p>
+            <div class="options multi-choice single-select">
+                <div class="option" data-value="News/Update Anchor"><span class="opt-label">News/Update Anchor</span><span class="opt-sub">Delivering daily info</span><div class="check"></div></div>
+                <div class="option" data-value="Tutor/Explainer"><span class="opt-label">Tutor/Explainer</span><span class="opt-sub">Teaching complex topics</span><div class="check"></div></div>
+                <div class="option" data-value="Storyteller/Narrator"><span class="opt-label">Storyteller/Narrator</span><span class="opt-sub">History, True Crime, Lore</span><div class="check"></div></div>
+                <div class="option" data-value="Reactor/Commentator"><span class="opt-label">Reactor/Commentary</span><span class="opt-sub">Reacting to trends/clips</span><div class="check"></div></div>
+                <div class="option" data-value="Virtual Companion"><span class="opt-label">Virtual Companion</span><span class="opt-sub">Lifestyle, ASMR, Chat</span><div class="check"></div></div>
+            </div>
+        </div>
+
+        <!-- STEP 7 -->
+        <div class="step-card" data-step="7" id="step-7">
+            <h2 class="step-title">Name Status</h2>
+            <p class="step-desc">Do you have a name for the channel/avatar?</p>
+            <div class="options multi-choice single-select">
+                <div class="option" data-value="Yes, I have a name"><span class="opt-label">Yes, I have a name</span><div class="check"></div></div>
+                <div class="option" data-value="No, I need suggestions"><span class="opt-label">No, I need suggestions</span><div class="check"></div></div>
+            </div>
+            <div class="input-group cond-hide" id="name-input-wrap" style="margin-top:1rem;">
+                <input type="text" id="custom-name" placeholder="e.g., NovaTheGuide or RoboReview">
+            </div>
+        </div>
+
+        <!-- STEP 8 -->
+        <div class="step-card" data-step="8" id="step-8">
+            <h2 class="step-title">Monetization & Cadence</h2>
+            <p class="step-desc">How will you monetize and how often will you upload?</p>
+            <div class="options multi-choice multi-select" style="margin-bottom:1.5rem;">
+                <div class="option" data-value="Affiliate Marketing"><span class="opt-label">Affiliate Marketing</span><div class="check"></div></div>
+                <div class="option" data-value="Brand Sponsorships"><span class="opt-label">Brand Sponsorships</span><div class="check"></div></div>
+                <div class="option" data-value="YouTube AdSense"><span class="opt-label">YouTube AdSense</span><div class="check"></div></div>
+            </div>
+            <h3 style="margin-bottom:0.75rem; font-size:1rem; color:var(--text-muted);">Upload Cadence:</h3>
+            <div class="options multi-choice single-select" id="freq-options">
+                <div class="option" data-value="1-2 times/week"><span class="opt-label">1-2x/Week</span><div class="check"></div></div>
+                <div class="option" data-value="Daily"><span class="opt-label">Daily</span><div class="check"></div></div>
+                <div class="option" data-value="Bi-weekly"><span class="opt-label">Bi-weekly</span><div class="check"></div></div>
+                <div class="option" data-value="Monthly"><span class="opt-label">Monthly</span><div class="check"></div></div>
+            </div>
+        </div>
+
+        <!-- STEP 9 -->
+        <div class="step-card" data-step="9" id="step-9">
+            <h2 class="step-title">Focus & Duration</h2>
+            <p class="step-desc">What is your channel focus?</p>
+            <div class="options multi-choice multi-select" style="margin-bottom:1.5rem;">
+                <div class="option" data-value="Deep Dives"><span class="opt-label">Deep Dives</span><div class="check"></div></div>
+                <div class="option" data-value="Quick Tips"><span class="opt-label">Quick Tips</span><div class="check"></div></div>
+                <div class="option" data-value="Reviews"><span class="opt-label">Reviews</span><div class="check"></div></div>
+                <div class="option" data-value="Updates"><span class="opt-label">Industry Updates</span><div class="check"></div></div>
+            </div>
+            <h3 style="margin-bottom:0.75rem; font-size:1rem; color:var(--text-muted);">Average Video Length:</h3>
+            <div class="options multi-choice single-select" id="length-options">
+                <div class="option" data-value="Under 3 minutes"><span class="opt-label">Under 3 Min (Shorts)</span><div class="check"></div></div>
+                <div class="option" data-value="5-10 minutes"><span class="opt-label">5-10 Minutes</span><div class="check"></div></div>
+                <div class="option" data-value="10-15 minutes"><span class="opt-label">10-15 Minutes</span><div class="check"></div></div>
+                <div class="option" data-value="20+ minutes"><span class="opt-label">20+ Minutes</span><div class="check"></div></div>
+            </div>
+        </div>
+
+        <div class="nav" id="nav-controls">
+            <button class="btn btn-secondary" id="btn-prev" disabled>Back</button>
+            <button class="btn btn-primary" id="btn-next" disabled>Continue</button>
+        </div>
+
+        <div class="step-card" id="output-section" style="display:none;">
+            <h2 class="step-title">📐 Blueprint Ready</h2>
+            <p class="step-desc">Paste this into NotebookLM Chat to generate your strategy.</p>
+            <div class="instruction-box">
+                <strong>Instructions:</strong>
+                <ol style="padding-left:1.5rem; color:var(--text-main);">
+                    <li>Click "Copy Full Prompt"</li>
+                    <li>Open NotebookLM > New Notebook</li>
+                    <li>Paste into the <strong>Chat Box</strong> (not sources)</li>
+                </ol>
+            </div>
+            <div class="prompt-box" id="generated-prompt"></div>
+            <button class="btn btn-primary" id="btn-copy" style="width:100%;">📋 Copy Full Prompt</button>
+            <button class="btn btn-secondary" id="btn-reset" style="width:100%; margin-top:0.75rem;">🔄 Start New</button>
+        </div>
+    </div>
+
+    <script>
+        const state = JSON.parse(localStorage.getItem('fyAvatarState') || '') || {
+            experience: '', niche: '', style: '', tech: '', voice: '', concept: '', nameStatus: '', customName: '', monetization: [], frequency: '', focus: [], length: '', step: 1
+        };
+
+        const metrics = {
+            words: { 'Under 3 minutes': '350-450', '5-10 minutes': '900-1400', '10-15 minutes': '1500-2100', '20+ minutes': '3500+' }
+        };
+
+        const subSuggestions = {
+            'Science & Technology': ['AI Tool Reviews via Avatar', 'Tech History Storytelling', 'Future Predictions'],
+            'Gaming': ['Lore Explainer via 3D Host', 'Patch Notes Commentary', 'Retro Gaming Reviews'],
+            'News & Politics': ['Daily Briefing Anchor', 'Geopolitics Map Explainer', 'Crypto Market Updates'],
+            'default': ['Top 10 Lists with Host', 'Tutorial Series with Guide', 'Reaction Commentary']
+        };
+
+        function saveState() { localStorage.setItem('fyAvatarState', JSON.stringify(state)); }
+        function getStepIndex(group) {
+            const map = { experience:1, niche:2, style:3, tech:4, voice:5, concept:6, nameStatus:7, monetization:8, frequency:8, focus:9, length:9 };
+            const keys = Object.keys(map);
+            // Simple lookup logic for grouped steps
+            if(group === 'monetization' || group === 'frequency') return 8;
+            if(group === 'focus' || group === 'length') return 9;
+            return map[group];
+        }
+
+        function init() {
+            state.step = Number(state.step) || 1;
+            goToStep(state.step);
+            // Restore
+            ['experience','niche','style','tech','voice','concept','nameStatus','frequency','length'].forEach(k => {
+                if(state[k]) toggleSingle(k, state[k]);
+            });
+            if(state.nameStatus.includes('Yes') && state.customName) {
+                document.getElementById('name-input-wrap').classList.replace('cond-hide', 'cond-show');
+                document.getElementById('custom-name').value = state.customName;
+            }
+            ['monetization','focus'].forEach(k => {
+                if(state[k]?.length) {
+                    state[k].forEach(v => {
+                        const opts = document.querySelectorAll(`[data-step="${getStepIndex(k)}"] .multi-select .option`);
+                        opts.forEach(o => { if(o.dataset.value === v) o.dataset.selected = 'true'; });
+                    });
+                }
+            });
+            updateNav();
+            bindEvents();
+        }
+
+        function goToStep(step) {
+            state.step = step; saveState();
+            document.querySelectorAll('.step-card').forEach(s => {
+                const isActive = Number(s.dataset.step) === step;
+                s.style.display = isActive ? 'block' : 'none';
+            });
+            document.getElementById('progress-fill').style.width = `${(step/9)*100}%`;
+            document.getElementById('step-badge').textContent = `Step ${step}/9`;
+            updateNav();
+        }
+
+        function toggleSingle(group, value) {
+            state[group] = value; saveState();
+            const parent = document.querySelector(`[data-step="${getStepIndex(group)}"] .single-select`);
+            if(parent) {
+                parent.querySelectorAll('.option').forEach(o => {
+                    o.dataset.selected = o.dataset.value === value;
+                });
+            }
+            if(group === 'nameStatus') {
+                const wrap = document.getElementById('name-input-wrap');
+                if(value.includes('Yes')) wrap.classList.replace('cond-hide', 'cond-show');
+                else wrap.classList.replace('cond-show', 'cond-hide');
+            }
+            updateNav();
+        }
+
+        function updateNav() {
+            const next = document.getElementById('btn-next');
+            const prev = document.getElementById('btn-prev');
+            
+            // Validation checks
+            const checks = {
+                1: state.experience, 2: state.niche, 3: state.style, 
+                4: state.tech, 5: state.voice, 6: state.concept, 
+                7: state.nameStatus, 8: state.monetization.length && state.frequency, 
+                9: state.focus.length && state.length
+            };
+            next.disabled = !checks[state.step];
+            next.textContent = state.step === 9 ? 'Generate Blueprint' : 'Continue';
+            prev.disabled = state.step === 1;
+        }
+
+        function generatePrompt() {
+            const words = metrics.words[state.length] || '900-1400';
+            
+            // ALGORITHM CONTEXT INJECTION (ADAPTED FOR AVATAR)
+            const algoContext = `ALGORITHM RULES FOR AVATARS (STRICT):
+1. PARASOCIAL RESONANCE: Avatars trigger parasocial bonding faster than stock footage. Strategy must prioritize "Character Consistency" (Voice, Catchphrases, Visuals) to drive Session Resonance.
+2. SEMANTIC HOST SIGNATURE: The Avatar's visual and audio pattern becomes part of the Semantic ID. Treat the character as a "Semantic Anchor".
+3. RETENTION SHAPE: Avoid "Uncanny Valley" drops. Avatar expressions/gestures must align dynamically with script emphasis.
+4. DEMAND WINDOWS: Use Avatar's persona to humanize abstract or high-demand topics quickly.
+5. BATCHING vs BORED: While AI allows batching, scripts must include "Pattern Interrupts" unique to the Avatar character to prevent viewer fatigue across episodes.`;
+
+            const prompt = `AVATAR-LED YOUTUBE BLUEPRINT GENERATOR
+USER PROFILE:
+- Niche: ${state.niche} | Avatar Style: ${state.style} | Tech: ${state.tech}
+- Voice: ${state.voice} | Role: ${state.concept} | Duration: ${state.length} (${words} words)
+- Upload: ${state.frequency} | Monetization: ${state.monetization.join(', ')} | Focus: ${state.focus.join(', ')}
+- Name: ${state.customName || 'Needs Suggestions'}
+
+${algoContext}
+
+INSTRUCTIONS:
+Generate a comprehensive Avatar-Led Channel Blueprint based on the user inputs and STRICTLY applying the ALGORITHM RULES. Output the following 9 sections:
+
+1. EXECUTIVE SUMMARY: Strategy tailored to a ${state.experience} creator using ${state.tech} for a ${state.style} avatar in ${state.niche}.
+2. AVATAR BIBLE & SEMANTICS:
+   - Define Name, Personality, Voice, and Visual Hooks.
+   - Define "Semantic IDs" (Signature look/sound) to condition the algorithm for recognition.
+3. PRODUCTION PIPELINE:
+   - Workflow for ${state.tech} + ${state.voice}.
+   - Tools for Batching vs Real-Time.
+   - "Pattern Interrupt" ideas (Gestures, Props, Background shifts) to maintain Retention Shape.
+4. CONTENT STRATEGY:
+   - 30-day calendar mapped to "Timing Windows" and "Demand Gaps" in ${state.niche}.
+   - "Binge Loop" architecture: How to link videos via Avatar catchphrases or story threads.
+5. SCRIPT BLUEPRINT:
+   - Structure for ${state.length} videos utilizing "Flat Retention Line" techniques.
+   - Avatar-specific cues [e.g., Avatar leans in, Avatar holds up prop].
+6. MONETIZATION: Timeline for ${state.monetization.join(', ')}.
+7. GROWTH TRIGGERS: Strategies for "External Traffic" and "Session Resonance" using the Avatar's brand.
+8. SCALING: How to maintain quality while batching with ${state.tech}.
+9. 90-DAY ROADMAP: Setup, Voice Cloning/Rigging, and first 10 videos launch.
+
+Focus on building a recognizable digital personality, not just delivering info. Apply Algorithm Rules strictly.`;
+
+            document.getElementById('generated-prompt').textContent = prompt;
+            document.querySelectorAll('.step-card').forEach(s => s.style.display = 'none');
+            document.getElementById('nav-controls').style.display = 'none';
+            document.getElementById('output-section').style.display = 'block';
+            
+            // Auto-copy
+            navigator.clipboard.writeText(prompt).then(() => document.getElementById('btn-copy').textContent = '✓ Copied!');
+        }
+
+        function bindEvents() {
+            // Bind Single Select
+            document.querySelectorAll('.single-select').forEach(c => {
+                c.addEventListener('click', e => {
+                    const opt = e.target.closest('.option'); if(!opt) return;
+                    const step = c.closest('.step-card').dataset.step;
+                    const groups = {1:'experience', 2:'niche', 3:'style', 4:'tech', 5:'voice', 6:'concept', 7:'nameStatus', 9:'length'};
+                    // Frequency is on step 8 but single select inside multi card logic
+                    if(step === '8' && c.closest('#freq-options')) toggleSingle('frequency', opt.dataset.value);
+                    else if(groups[step]) toggleSingle(groups[step], opt.dataset.value);
+                    updateNav();
+                });
+            });
+
+            // Bind Multi Select
+            document.querySelectorAll('.multi-select').forEach(c => {
+                c.addEventListener('click', e => {
+                    const opt = e.target.closest('.option'); if(!opt) return;
+                    const step = c.closest('.step-card').dataset.step;
+                    let group;
+                    if(step === '8') group = 'monetization';
+                    if(step === '9') group = 'focus';
+                    
+                    if(group) {
+                        state[group] = state[group].includes(opt.dataset.value) ? state[group].filter(v => v !== opt.dataset.value) : [...state[group], opt.dataset.value];
+                        opt.dataset.selected = state[group].includes(opt.dataset.value);
+                        saveState(); updateNav();
+                    }
+                });
+            });
+
+            document.getElementById('custom-name').addEventListener('input', e => { state.customName = e.target.value; saveState(); });
+            document.getElementById('btn-prev').addEventListener('click', () => goToStep(state.step - 1));
+            document.getElementById('btn-next').addEventListener('click', () => state.step === 9 ? generatePrompt() : goToStep(state.step + 1));
+            document.getElementById('btn-reset').addEventListener('click', () => { localStorage.removeItem('fyAvatarState'); location.reload(); });
+            document.getElementById('btn-copy').addEventListener('click', () => {
+                const t = document.getElementById('generated-prompt').textContent;
+                navigator.clipboard.writeText(t);
+                const b = document.getElementById('btn-copy'); b.textContent = '✓ Copied!'; setTimeout(() => b.textContent = '📋 Copy Full Prompt', 2000);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
+```
+
+### Key Avatar-Specific Logic
+
+1.  **Avatar Visuals & Tech (Steps 3 & 4)**: The app now distinguishes between **Real-time Capture** (Webcam/Mocap), **AI Video Gen** (Batching tools like HeyGen), and **Manual Animation**. This is critical because the production workflow for a VTuber is vastly different from a HeyGen news anchor, and the blueprint needs to reflect this.
+2.  **Voice & Persona (Step 5)**: Avatars rely heavily on their voice to build trust. The blueprint prompt now asks for a **Character Bible** that includes semantic hooks (catchphrases, signature gestures).
+3.  **Parasocial Resonance (Algorithm Rule #1)**: The generated prompt instructs the AI to leverage the "Leaked Algorithm" concept of Parasocial Resonance. It asks the AI to design "Binge Loops" and "Character Consistency" signals that the algorithm uses to identify a host and recommend their content.
+4.  **Semantic Host Signature (Algorithm Rule #2)**: The prompt asks the AI to define a "Semantic Host Signature" — a unique combination of the avatar's visual and audio patterns that serves as a fingerprint for the YouTube recommendation engine.
+5.  **Uncanny Valley Retention Drops**: Standard retention logic applies, but avatars face the risk of "Uncanny Valley" where repetitive lip-syncing causes retention drops. The blueprint explicitly asks for "Pattern Interrupts" (unique avatar gestures or background changes) to keep the session resonance high.
