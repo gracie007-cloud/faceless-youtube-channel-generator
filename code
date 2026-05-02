@@ -1,0 +1,3270 @@
+
+  fetch("https://openrouter.ai/api/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Authorization": "Bearer <OPENROUTER_API_KEY>",
+      "HTTP-Referer": "<YOUR_SITE_URL>", // Optional. Site URL for rankings on openrouter.ai.
+      "X-OpenRouter-Title": "<YOUR_SITE_NAME>", // Optional. Site title for rankings on openrouter.ai.
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      "model": "<MODEL_ID>", // Required. ex: "openai/gpt-4o",
+      "messages": [
+        {"role": "user", "content": "## Model Responses
+
+### Hy3 preview (free)
+# Faceless YouTube Blueprint Generator App
+A complete, no-code web app that generates custom launch roadmaps for faceless YouTube channels, optimized for NotebookLM integration. This app exactly matches all your specified features, inputs, and workflow requirements.
+
+---
+
+## 📱 App Core Specifications
+| Detail | Description |
+|--------|-------------|
+| Name | Faceless YouTube Blueprint Generator |
+| Platform | Responsive web app (mobile/desktop, no login required) |
+| Core Purpose | Collect user inputs → generate a custom NotebookLM prompt → output a full, actionable faceless YouTube launch blueprint |
+| Key Workflow | Follows your exact instructions: Copy prompt → Paste into NotebookLM → AI generates blueprint |
+
+---
+
+## 🧭 User Onboarding Flow (Exact Inputs As Specified)
+The app guides users through 9 required steps, with zero extra questions, using only your provided options:
+
+### Step 1: Experience Level
+**Question:** What is your current experience with starting a faceless YouTube channel?
+- Beginner
+- Intermediate
+- Advanced
+
+### Step 2: Niche Selection
+**Question:** What niche do you have knowledge in?
+- Autos & Vehicles
+- Comedy
+- Education
+- Entertainment
+- Film & Animation
+- Gaming
+- How-to & Style
+- Music
+- News & Politics
+- Nonprofits & Activism
+- People & Blogs
+- Pets & Animals
+- Science & Technology
+- Sports
+- Travel & Events
+
+### Step 3: Channel Concept
+**Question:** Do you have an idea of what your channel will be about? (e.g., Explaining complex AI tools in simple terms for beginners...)
+- Activity
+- Concept overview
+- How-to
+- Lecture
+- Problem walkthrough
+- Real life application
+- Science experiment
+- Tips
+- Other
+- Not sure (let the AI decide)
+
+### Step 4: Channel Name Status
+**Question:** Do you already have a name for your channel?
+- Yes, I already have a name
+- No, I need name suggestions
+
+### Step 5: Monetization (Multi-Select)
+**Question:** How do you plan to monetize your channel?
+- Affiliate Marketing
+- Brand Sponsorships
+- Channel Memberships
+- Merchandise
+- Online Courses
+- Selling Digital Products
+- YouTube AdSense
+
+### Step 6: Upload Frequency
+**Question:** How often do you plan to upload videos?
+- 1-2 times per week
+- 3-5 times per week
+- Bi-weekly
+- Daily
+- Monthly
+
+### Step 7: Channel Focus (Multi-Select)
+**Question:** YouTube Channel Focus:
+- Analysis
+- Beginner-Friendly
+- Deep Dives
+- Psychology and Sentiments
+- Recap & Quick Briefs
+- Report Summaries
+- Sector/Industry Updates
+- Spotlights
+- Strategies
+- Trends
+
+### Step 8: Video Style (Multi-Select)
+**Question:** Video Style (tone and format content)
+1. Data & Analysis: Research-driven, deep dives, comparisons
+2. Documentary Style: Long-form, narrative-driven, investigative
+3. Educational: Teaching, explaining, how-to-guides
+4. Entertaining: Fun, engaging, storytelling
+5. Motivational: Inspiring mindset, success stories
+6. News & Commentary: Reacting to trends, breaking down current events
+7. Quick-Tips & Hacks: Short, punchy, actionable advice
+8. Reviews & Recommendations: Product reviews, tool breakdowns, top 10 lists
+
+### Step 9: Average Video Length
+**Question:** How long do you want your videos to be on average? (This will help plan your scripts and content structure)
+1. 3-5 minutes (short and punchy)
+2. 5-10 minutes (sweet spot for most niches)
+3. 10-15 minutes (in-depth but digestible)
+4. 15-20 minutes (deep dives and tutorials)
+5. 20+ minutes (long-form documentary or masterclass style)
+6. Under 3 minutes (YouTube Shorts/Ultra-short)
+
+---
+
+## 🤖 Dynamic NotebookLM Prompt Generator
+After collecting inputs, the app auto-generates a custom prompt that embeds:
+- All user selections
+- Your specified instructional framework for the AI coach
+- Requirements to plan content around niche, sub-niche, target audience, and video style
+- Structured output guidelines for the final blueprint
+
+### Prompt Template (Auto-Filled With User Inputs)
+```text
+You are an expert faceless YouTube channel strategist and launch coach with 10+ years of experience helping creators build profitable anonymous channels. Use the user inputs and instructional framework below to generate a complete, step-by-step Faceless YouTube Channel Blueprint. Follow all instructions exactly.
+
+---
+SECTION 1: USER INPUTS
+1. Experience Level: [INSERT USER SELECTION]
+2. Niche: [INSERT USER SELECTION]
+3. Channel Concept Type: [INSERT USER SELECTION]
+4. Channel Name Status: [INSERT USER SELECTION]
+5. Monetization Methods: [INSERT ALL SELECTED OPTIONS]
+6. Upload Frequency: [INSERT USER SELECTION]
+7. Channel Focus: [INSERT ALL SELECTED OPTIONS]
+8. Video Style: [INSERT ALL SELECTED OPTIONS]
+9. Average Video Length: [INSERT USER SELECTION]
+---
+
+SECTION 2: INSTRUCTIONAL FRAMEWORK
+Here's an outline of a comprehensive instructional framework for an interactive AI coach designed to help users launch a faceless YouTube channel. The guide focuses on providing a step-by-step strategy session that covers everything from branding and niche selection to visual identity and content length. It includes detailed monetization strategies and a technical walkthrough for producing videos using third-party and audio tools. Users are guided through the creation of their first video script and thumbnail generation, ensuring they have a complete blueprint for their digital project. The material ultimately serves as a step-by-step roadmap for transforming a channel concept into a fully operational and profitable online presence.
+
+---
+SECTION 3: BLUEPRINT REQUIREMENTS
+Plan all content based on the following:
+- Niche: [INSERT USER SELECTION]
+- Sub-niche: (If user selected "Not sure (let the AI decide)" for channel concept, suggest 3 validated sub-niches; otherwise confirm sub-niche aligns with user inputs)
+- Target audience: (Define demographics, pain points, and goals based on niche and channel focus)
+- Video-style: [INSERT ALL SELECTED OPTIONS]
+
+---
+SECTION 4: OUTPUT STRUCTURE
+Output the full blueprint in these exact numbered sections with actionable bullet points:
+1. Executive Summary (Tailored to user experience level: beginners get jargon-free explanations, advanced users get scaling tips)
+2. Niche & Sub-Niche Validation (Include target audience profile, competition analysis, and 3 channel concept options if user selected "Not sure")
+3. Channel Branding & Name (If user needs name suggestions: provide 10 unique, niche-relevant, brandable names. If user has a name: audit it for SEO and brandability)
+4. Content Strategy (30-day content calendar with 12 video ideas tailored to upload frequency, video style, and length. Include script structure guidelines for selected video length)
+5. Faceless Production Technical Walkthrough (Tool recommendations for: scripting, AI voiceover, B-roll sourcing, video editing, thumbnail creation. No on-camera tools required)
+6. Monetization Roadmap (Timeline for launching each selected monetization method, niche-specific affiliate program recommendations, AdSense eligibility tips)
+7. First Video Blueprint (Full hook-to-CTA script outline, SEO title/description/tags, thumbnail concept, upload checklist)
+8. Growth & Optimization Tips (Tailored to niche, upload frequency, and experience level)
+9. 90-Day Launch Roadmap (Week-by-week action items from channel setup to publishing first 10 videos)
+
+---
+FINAL INSTRUCTION
+Do not include extra commentary outside the blueprint structure. Output the full blueprint now.
+```
+
+---
+
+## 📋 NotebookLM Workflow (Exact Instructions As Specified)
+The app displays these steps to the user after generating the prompt:
+1. Click the **Copy Full Prompt** button below
+2. Open a new Notebook in [NotebookLM](https://notebooklm.google.com/)
+3. Paste the copied prompt into the *Source* box
+4. Type this into the NotebookLM chat box: *"Generate my full Faceless YouTube Channel Blueprint using the source material provided"*
+5. NotebookLM will output your custom launch blueprint
+
+---
+
+## 🧪 Sample Use Case
+### Sample User Inputs:
+- Experience: Beginner
+- Niche: Science & Technology
+- Channel Concept: Not sure (let the AI decide)
+- Name: No, I need name suggestions
+- Monetization: YouTube AdSense, Affiliate Marketing
+- Upload Frequency: 1-2 times per week
+- Channel Focus: Beginner-Friendly, How-to, Deep Dives
+- Video Style: Educational, Quick-Tips & Hacks
+- Video Length: 5-10 minutes
+
+### Sample NotebookLM Output Excerpt:
+```
+1. Executive Summary
+   - You are a beginner launching a faceless tech education channel, targeting non-technical users who want to learn tools quickly.
+   - Your 5-10 minute educational/quick-tip videos will upload 1-2x weekly, monetized via AdSense and tech affiliate programs.
+   - 90-day goal: 1,000 subscribers, 4,000 watch hours to qualify for AdSense.
+
+2. Niche & Sub-Niche Validation
+   Target Audience: Adults 25-45 with no tech background, want to learn productivity tools, AI, and basic tech skills.
+   Suggested Sub-Niches:
+   a. "AI Tools for Non-Techies" (Explain ChatGPT, Canva AI, etc. in simple terms)
+   b. "Tech Quick Fixes" (Solve common phone/laptop/software issues in 5 minutes)
+   c. "Productivity Tech Hacks" (Tools to automate daily tasks)
+   ...
+```
+
+---
+
+## 💻 Prototype Build Code (Static Web App)
+This is a fully functional HTML/CSS/JS prototype of the app, ready to run locally or host for free:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faceless YouTube Blueprint Generator</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #f8fafc;
+            --text: #1e293b;
+            --border: #e2e8f0;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        body { background: var(--secondary); color: var(--text); line-height: 1.6; }
+        .container { max-width: 800px; margin: 0 auto; padding: 2rem; }
+        h1 { color: var(--primary); margin-bottom: 1rem; }
+        .step { background: white; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        h2 { font-size: 1.2rem; margin-bottom: 1rem; }
+        .options { display: grid; gap: 0.75rem; }
+        .option { padding: 0.75rem; border: 1px solid var(--border); border-radius: 6px; cursor: pointer; transition: all 0.2s; }
+        .option:hover { border-color: var(--primary); }
+        .option.selected { background: #dbeafe; border-color: var(--primary); }
+        .multi-select .option { display: flex; align-items: center; gap: 0.5rem; }
+        .multi-select .option input { margin: 0; }
+        button { background: var(--primary); color: white; border: none; padding: 1rem 2rem; border-radius: 6px; font-size: 1rem; cursor: pointer; margin-top: 1rem; transition: opacity 0.2s; }
+        button:hover { opacity: 0.9; }
+        button:disabled { background: #94a3b8; cursor: not-allowed; }
+        #prompt-output { background: #1e293b; color: #f8fafc; padding: 1.5rem; border-radius: 8px; margin-top: 2rem; white-space: pre-wrap; font-family: monospace; max-height: 500px; overflow-y: auto; }
+        .copy-btn { background: #10b981; margin-left: 1rem; }
+        .instructions { background: #fef3c7; padding: 1.5rem; border-radius: 8px; margin-top: 2rem; }
+        .instructions ol { margin-left: 1.5rem; margin-top: 1rem; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Faceless YouTube Blueprint Generator</h1>
+        <p>Complete the 9-step quiz to generate your custom NotebookLM prompt.</p>
+
+        <!-- Step 1: Experience -->
+        <div class="step" id="step1">
+            <h2>1. What is your current experience with starting a faceless YouTube channel?</h2>
+            <div class="options" data-input="experience">
+                <div class="option" data-value="Beginner">Beginner</div>
+                <div class="option" data-value="Intermediate">Intermediate</div>
+                <div class="option" data-value="Advanced">Advanced</div>
+            </div>
+        </div>
+
+        <!-- Step 2: Niche -->
+        <div class="step hidden" id="step2">
+            <h2>2. What niche do you have knowledge in?</h2>
+            <div class="options" data-input="niche">
+                <div class="option" data-value="Autos & Vehicles">Autos & Vehicles</div>
+                <div class="option" data-value="Comedy">Comedy</div>
+                <div class="option" data-value="Education">Education</div>
+                <div class="option" data-value="Entertainment">Entertainment</div>
+                <div class="option" data-value="Film & Animation">Film & Animation</div>
+                <div class="option" data-value="Gaming">Gaming</div>
+                <div class="option" data-value="How-to & Style">How-to & Style</div>
+                <div class="option" data-value="Music">Music</div>
+                <div class="option" data-value="News & Politics">News & Politics</div>
+                <div class="option" data-value="Nonprofits & Activism">Nonprofits & Activism</div>
+                <div class="option" data-value="People & Blogs">People & Blogs</div>
+                <div class="option" data-value="Pets & Animals">Pets & Animals</div>
+                <div class="option" data-value="Science & Technology">Science & Technology</div>
+                <div class="option" data-value="Sports">Sports</div>
+                <div class="option" data-value="Travel & Events">Travel & Events</div>
+            </div>
+        </div>
+
+        <!-- Step 3: Channel Concept -->
+        <div class="step hidden" id="step3">
+            <h2>3. Do you have an idea of what your channel will be about?</h2>
+            <div class="options" data-input="concept">
+                <div class="option" data-value="Activity">Activity</div>
+                <div class="option" data-value="Concept overview">Concept overview</div>
+                <div class="option" data-value="How-to">How-to</div>
+                <div class="option" data-value="Lecture">Lecture</div>
+                <div class="option" data-value="Problem walkthrough">Problem walkthrough</div>
+                <div class="option" data-value="Real life application">Real life application</div>
+                <div class="option" data-value="Science experiment">Science experiment</div>
+                <div class="option" data-value="Tips">Tips</div>
+                <div class="option" data-value="Other">Other</div>
+                <div class="option" data-value="Not sure (let the AI decide)">Not sure (let the AI decide)</div>
+            </div>
+        </div>
+
+        <!-- Step 4: Name Status -->
+        <div class="step hidden" id="step4">
+            <h2>4. Do you already have a name for your channel?</h2>
+            <div class="options" data-input="nameStatus">
+                <div class="option" data-value="Yes, I already have a name">Yes, I already have a name</div>
+                <div class="option" data-value="No, I need name suggestions">No, I need name suggestions</div>
+            </div>
+        </div>
+
+        <!-- Step 5: Monetization (Multi-Select) -->
+        <div class="step hidden" id="step5">
+            <h2>5. How do you plan to monetize your channel? (Select all that apply)</h2>
+            <div class="options multi-select" data-input="monetization">
+                <div class="option"><input type="checkbox" value="Affiliate Marketing"> Affiliate Marketing</div>
+                <div class="option"><input type="checkbox" value="Brand Sponsorships"> Brand Sponsorships</div>
+                <div class="option"><input type="checkbox" value="Channel Memberships"> Channel Memberships</div>
+                <div class="option"><input type="checkbox" value="Merchandise"> Merchandise</div>
+                <div class="option"><input type="checkbox" value="Online Courses"> Online Courses</div>
+                <div class="option"><input type="checkbox" value="Selling Digital Products"> Selling Digital Products</div>
+                <div class="option"><input type="checkbox" value="YouTube AdSense"> YouTube AdSense</div>
+            </div>
+        </div>
+
+        <!-- Step 6: Upload Frequency -->
+        <div class="step hidden" id="step6">
+            <h2>6. How often do you plan to upload videos?</h2>
+            <div class="options" data-input="frequency">
+                <div class="option" data-value="1-2 times per week">1-2 times per week</div>
+                <div class="option" data-value="3-5 times per week">3-5 times per week</div>
+                <div class="option" data-value="Bi-weekly">Bi-weekly</div>
+                <div class="option" data-value="Daily">Daily</div>
+                <div class="option" data-value="Monthly">Monthly</div>
+            </div>
+        </div>
+
+        <!-- Step 7: Channel Focus (Multi-Select) -->
+        <div class="step hidden" id="step7">
+            <h2>7. YouTube Channel Focus (Select all that apply)</h2>
+            <div class="options multi-select" data-input="focus">
+                <div class="option"><input type="checkbox" value="Analysis"> Analysis</div>
+                <div class="option"><input type="checkbox" value="Beginner-Friendly"> Beginner-Friendly</div>
+                <div class="option"><input type="checkbox" value="Deep Dives"> Deep Dives</div>
+                <div class="option"><input type="checkbox" value="Psychology and Sentiments"> Psychology and Sentiments</div>
+                <div class="option"><input type="checkbox" value="Recap & Quick Briefs"> Recap & Quick Briefs</div>
+                <div class="option"><input type="checkbox" value="Report Summaries"> Report Summaries</div>
+                <div class="option"><input type="checkbox" value="Sector/Industry Updates"> Sector/Industry Updates</div>
+                <div class="option"><input type="checkbox" value="Spotlights"> Spotlights</div>
+                <div class="option"><input type="checkbox" value="Strategies"> Strategies</div>
+                <div class="option"><input type="checkbox" value="Trends"> Trends</div>
+            </div>
+        </div>
+
+        <!-- Step 8: Video Style (Multi-Select) -->
+        <div class="step hidden" id="step8">
+            <h2>8. Video Style (tone and format content) (Select all that apply)</h2>
+            <div class="options multi-select" data-input="style">
+                <div class="option"><input type="checkbox" value="Data & Analysis: Research-driven, deep dives, comparisons"> Data & Analysis</div>
+                <div class="option"><input type="checkbox" value="Documentary Style: Long-form, narrative-driven, investigative"> Documentary Style</div>
+                <div class="option"><input type="checkbox" value="Educational: Teaching, explaining, how-to-guides"> Educational</div>
+                <div class="option"><input type="checkbox" value="Entertaining: Fun, engaging, storytelling"> Entertaining</div>
+                <div class="option"><input type="checkbox" value="Motivational: Inspiring mindset, success stories"> Motivational</div>
+                <div class="option"><input type="checkbox" value="News & Commentary: Reacting to trends, breaking down current events"> News & Commentary</div>
+                <div class="option"><input type="checkbox" value="Quick-Tips & Hacks: Short, punchy, actionable advice"> Quick-Tips & Hacks</div>
+                <div class="option"><input type="checkbox" value="Reviews & Recommendations: Product reviews, tool breakdowns, top 10 lists"> Reviews & Recommendations</div>
+            </div>
+        </div>
+
+        <!-- Step 9: Video Length -->
+        <div class="step hidden" id="step9">
+            <h2>9. How long do you want your videos to be on average?</h2>
+            <div class="options" data-input="length">
+                <div class="option" data-value="3-5 minutes (short and punchy)">3-5 minutes (short and punchy)</div>
+                <div class="option" data-value="5-10 minutes (sweet spot for most niches)">5-10 minutes (sweet spot for most niches)</div>
+                <div class="option" data-value="10-15 minutes (in-depth but digestible)">10-15 minutes (in-depth but digestible)</div>
+                <div class="option" data-value="15-20 minutes (deep dives and tutorials)">15-20 minutes (deep dives and tutorials)</div>
+                <div class="option" data-value="20+ minutes (long-form documentary or masterclass style)">20+ minutes (long-form documentary or masterclass style)</div>
+                <div class="option" data-value="Under 3 minutes (YouTube Shorts/Ultra-short)">Under 3 minutes (YouTube Shorts/Ultra-short)</div>
+            </div>
+        </div>
+
+        <button id="generate-btn" class="hidden">Generate NotebookLM Prompt</button>
+
+        <div id="output-section" class="hidden">
+            <h2>Your Custom NotebookLM Prompt</h2>
+            <div id="prompt-output"></div>
+            <button id="copy-btn">Copy Full Prompt</button>
+            <div class="instructions">
+                <h3>Next Steps:</h3>
+                <ol>
+                    <li>Click "Copy Full Prompt" above</li>
+                    <li>Open a new Notebook in <a href="https://notebooklm.google.com/" target="_blank">NotebookLM</a></li>
+                    <li>Paste the prompt into the <em>Source</em> box</li>
+                    <li>Type this into the NotebookLM chat: <em>"Generate my full Faceless YouTube Channel Blueprint using the source material provided"</em></li>
+                    <li>NotebookLM will output your custom launch blueprint</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Store user inputs
+        const userInputs = {};
+        let currentStep = 1;
+
+        // Handle single-select options
+        document.querySelectorAll('.options:not(.multi-select) .option').forEach(option => {
+            option.addEventListener('click', function() {
+                const parent = this.closest('.options');
+                const inputKey = parent.dataset.input;
+                // Deselect siblings
+                parent.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+                // Select current
+                this.classList.add('selected');
+                userInputs[inputKey] = this.dataset.value;
+                // Move to next step
+                nextStep();
+            });
+        });
+
+        // Handle multi-select options
+        document.querySelectorAll('.multi-select .option input').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const parent = this.closest('.options');
+                const inputKey = parent.dataset.input;
+                // Get all checked values
+                const checked = Array.from(parent.querySelectorAll('input:checked')).map(cb => cb.value);
+                userInputs[inputKey] = checked;
+            });
+        });
+
+        // Move to next step
+        function nextStep() {
+            document.getElementById(`step${currentStep}`).classList.add('hidden');
+            currentStep++;
+            if (currentStep <= 9) {
+                document.getElementById(`step${currentStep}`).classList.remove('hidden');
+            } else {
+                // Show generate button
+                document.getElementById('generate-btn').classList.remove('hidden');
+            }
+        }
+
+        // Generate prompt
+        document.getElementById('generate-btn').addEventListener('click', function() {
+            // Validate multi-select inputs
+            if (!userInputs.monetization) userInputs.monetization = [];
+            if (!userInputs.focus) userInputs.focus = [];
+            if (!userInputs.style) userInputs.style = [];
+
+            const prompt = `You are an expert faceless YouTube channel strategist and launch coach with 10+ years of experience helping creators build profitable anonymous channels. Use the user inputs and instructional framework below to generate a complete, step-by-step Faceless YouTube Channel Blueprint. Follow all instructions exactly.
+
+---
+SECTION 1: USER INPUTS
+1. Experience Level: ${userInputs.experience}
+2. Niche: ${userInputs.niche}
+3. Channel Concept Type: ${userInputs.concept}
+4. Channel Name Status: ${userInputs.nameStatus}
+5. Monetization Methods: ${userInputs.monetization.join(', ')}
+6. Upload Frequency: ${userInputs.frequency}
+7. Channel Focus: ${userInputs.focus.join(', ')}
+8. Video Style: ${userInputs.style.join(', ')}
+9. Average Video Length: ${userInputs.length}
+---
+
+SECTION 2: INSTRUCTIONAL FRAMEWORK
+Here's an outline of a comprehensive instructional framework for an interactive AI coach designed to help users launch a faceless YouTube channel. The guide focuses on providing a step-by-step strategy session that covers everything from branding and niche selection to visual identity and content length. It includes detailed monetization strategies and a technical walkthrough for producing videos using third-party and audio tools. Users are guided through the creation of their first video script and thumbnail generation, ensuring they have a complete blueprint for their digital project. The material ultimately serves as a step-by-step roadmap for transforming a channel concept into a fully operational and profitable online presence.
+
+---
+SECTION 3: BLUEPRINT REQUIREMENTS
+Plan all content based on the following:
+- Niche: ${userInputs.niche}
+- Sub-niche: (If user selected "Not sure (let the AI decide)" for channel concept, suggest 3 validated sub-niches; otherwise confirm sub-niche aligns with user inputs)
+- Target audience: (Define demographics, pain points, and goals based on niche and channel focus)
+- Video-style: ${userInputs.style.join(', ')}
+
+---
+SECTION 4: OUTPUT STRUCTURE
+Output the full blueprint in these exact numbered sections with actionable bullet points:
+1. Executive Summary (Tailored to user experience level: beginners get jargon-free explanations, advanced users get scaling tips)
+2. Niche & Sub-Niche Validation (Include target audience profile, competition analysis, and 3 channel concept options if user selected "Not sure")
+3. Channel Branding & Name (If user needs name suggestions: provide 10 unique, niche-relevant, brandable names. If user has a name: audit it for SEO and brandability)
+4. Content Strategy (30-day content calendar with 12 video ideas tailored to upload frequency, video style, and length. Include script structure guidelines for selected video length)
+5. Faceless Production Technical Walkthrough (Tool recommendations for: scripting, AI voiceover, B-roll sourcing, video editing, thumbnail creation. No on-camera tools required)
+6. Monetization Roadmap (Timeline for launching each selected monetization method, niche-specific affiliate program recommendations, AdSense eligibility tips)
+7. First Video Blueprint (Full hook-to-CTA script outline, SEO title/description/tags, thumbnail concept, upload checklist)
+8. Growth & Optimization Tips (Tailored to niche, upload frequency, and experience level)
+9. 90-Day Launch Roadmap (Week-by-week action items from channel setup to publishing first 10 videos)
+
+---
+FINAL INSTRUCTION
+Do not include extra commentary outside the blueprint structure. Output the full blueprint now.`;
+
+            document.getElementById('prompt-output').textContent = prompt;
+            document.getElementById('output-section').classList.remove('hidden');
+            this.classList.add('hidden');
+        });
+
+        // Copy prompt to clipboard
+        document.getElementById('copy-btn').addEventListener('click', function() {
+            const promptText = document.getElementById('prompt-output').textContent;
+            navigator.clipboard.writeText(promptText).then(() => {
+                alert('Prompt copied to clipboard!');
+            });
+        });
+    </script>
+</body>
+</html>
+```
+
+---
+
+## 🚀 How to Launch the App
+1. Save the code above as `index.html`
+2. Open the file in any web browser (no server required)
+3. Share the file or host it for free on GitHub Pages, Netlify, or Vercel to make it publicly accessible.
+
+This app exactly matches all your specified requirements, generates the custom NotebookLM prompt, and produces a full faceless YouTube launch blueprint when used with NotebookLM.
+
+### Kimi K2.6
+ ```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faceless YouTube Blueprint Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0b1120;
+            --bg-secondary: #151e32;
+            --bg-card: #1e293b;
+            --border: #334155;
+            --border-accent: #3b82f6;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-blue: #3b82f6;
+            --accent-cyan: #06b6d4;
+            --accent-indigo: #6366f1;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Blueprint Grid Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .app-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-top: 1rem;
+        }
+
+        .logo-mark {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-indigo));
+            border-radius: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+            font-size: 28px;
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.025em;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            position: relative;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .progress-line {
+            position: absolute;
+            top: 14px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--border);
+            z-index: 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+            transition: width 0.4s ease;
+            width: 0%;
+        }
+
+        .step-indicator {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .step-dot {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+
+        .step-indicator.active .step-dot {
+            border-color: var(--accent-blue);
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--accent-blue);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .step-indicator.completed .step-dot {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+            color: white;
+        }
+
+        .step-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .step-indicator.active .step-label {
+            color: var(--text-primary);
+        }
+
+        /* Form Cards */
+        .step-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .step-card.active::before {
+            opacity: 1;
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .step-description {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 1.75rem;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+
+        .form-sublabel {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            margin-top: -0.5rem;
+            font-style: italic;
+        }
+
+        /* Option Grids */
+        .option-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .option-card {
+            position: relative;
+            background: var(--bg-secondary);
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .option-card:hover {
+            border-color: var(--border-accent);
+            background: rgba(59, 130, 246, 0.08);
+            transform: translateY(-1px);
+        }
+
+        .option-card.selected {
+            border-color: var(--accent-blue);
+            background: rgba(59, 130, 246, 0.12);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .option-card input[type="radio"],
+        .option-card input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .check-circle {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+
+        .option-card.selected .check-circle {
+            border-color: var(--accent-blue);
+            background: var(--accent-blue);
+        }
+
+        .check-circle::after {
+            content: '✓';
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: none;
+        }
+
+        .option-card.selected .check-circle::after {
+            display: block;
+        }
+
+        .check-square {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+
+        .option-card.selected .check-square {
+            border-color: var(--accent-blue);
+            background: var(--accent-blue);
+        }
+
+        .check-square::after {
+            content: '✓';
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: none;
+        }
+
+        .option-card.selected .check-square::after {
+            display: block;
+        }
+
+        .option-text {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Text Input */
+        .text-input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            background: var(--bg-secondary);
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .text-input:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+
+        textarea.text-input {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* Special Layouts */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .conditional-field {
+            margin-top: 1rem;
+            padding: 1.25rem;
+            background: rgba(59, 130, 246, 0.05);
+            border-radius: 8px;
+            border: 1px dashed var(--border-accent);
+            display: none;
+        }
+
+        .conditional-field.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .btn {
+            padding: 0.875rem 1.75rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-indigo));
+            color: white;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1.5px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border);
+        }
+
+        .btn-full {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* Results Page */
+        .result-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .blueprint-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .blueprint-header {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            padding: 1.5rem 2rem;
+            border-bottom: 2px solid var(--accent-blue);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .blueprint-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blueprint-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+        }
+
+        .blueprint-body {
+            padding: 2rem;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .blueprint-body h2 {
+            font-size: 1.25rem;
+            color: var(--accent-cyan);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blueprint-body h2:first-child {
+            margin-top: 0;
+        }
+
+        .blueprint-body h3 {
+            font-size: 1.05rem;
+            color: var(--text-primary);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .blueprint-body ul, .blueprint-body ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .blueprint-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        .blueprint-body strong {
+            color: var(--text-primary);
+        }
+
+        .highlight-box {
+            background: rgba(59, 130, 246, 0.08);
+            border-left: 3px solid var(--accent-blue);
+            padding: 1.25rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.25rem 0;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--accent-blue);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .metric-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        /* Prompt Export Section */
+        .prompt-export {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .prompt-header {
+            background: #0f172a;
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .prompt-label {
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .prompt-body {
+            padding: 1.5rem;
+        }
+
+        .prompt-textarea {
+            width: 100%;
+            min-height: 300px;
+            background: #0f172a;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            color: #a5b4fc;
+            font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            resize: vertical;
+        }
+
+        .instructions-box {
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .instructions-box ol {
+            margin-left: 1.25rem;
+            color: var(--text-secondary);
+        }
+
+        .instructions-box li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* Utility */
+        .hidden {
+            display: none !important;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: opacity 0.3s;
+        }
+
+        .loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--border);
+            border-top-color: var(--accent-blue);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 1.5rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .loading-text::after {
+            content: '';
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+
+        @keyframes dots {
+            0% { content: ''; }
+            33% { content: '.'; }
+            66% { content: '..'; }
+            100% { content: '...'; }
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            h1 { font-size: 1.75rem; }
+            .step-card { padding: 1.5rem; }
+            .two-col { grid-template-columns: 1fr; }
+            .option-grid { grid-template-columns: 1fr; }
+            .blueprint-actions { width: 100%; }
+            .btn-group { flex-direction: column-reverse; }
+            .btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <div class="loading-text">Building your blueprint</div>
+    </div>
+
+    <div class="app-container">
+        <header>
+            <div class="logo-mark">📋</div>
+            <h1>Faceless YouTube Blueprint</h1>
+            <p class="subtitle">Generate your complete channel strategy, production roadmap, and launch plan.</p>
+        </header>
+
+        <div class="progress-container" id="progressBar">
+            <div class="progress-line">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="step-indicator active" data-step="1">
+                <div class="step-dot">1</div>
+                <div class="step-label">Foundation</div>
+            </div>
+            <div class="step-indicator" data-step="2">
+                <div class="step-dot">2</div>
+                <div class="step-label">Content</div>
+            </div>
+            <div class="step-indicator" data-step="3">
+                <div class="step-dot">3</div>
+                <div class="step-label">Strategy</div>
+            </div>
+        </div>
+
+        <!-- STEP 1: FOUNDATION -->
+        <div class="step-card active fade-in" id="step-1">
+            <div class="step-title">
+                <span>🚀</span>
+                <span>Channel Foundation</span>
+            </div>
+            <p class="step-description">Define your background and the core topic for your faceless channel.</p>
+
+            <div class="form-group">
+                <label class="form-label">What is your current experience level?</label>
+                <div class="option-grid" id="experienceOptions">
+                    <div class="option-card" onclick="selectRadio('experience', 'Beginner')">
+                        <input type="radio" name="experience" value="Beginner">
+                        <div class="check-circle"></div>
+                        <span class="option-text">Beginner</span>
+                    </div>
+                    <div class="option-card" onclick="selectRadio('experience', 'Intermediate')">
+                        <input type="radio" name="experience" value="Intermediate">
+                        <div class="check-circle"></div>
+                        <span class="option-text">Intermediate</span>
+                    </div>
+                    <div class="option-card" onclick="selectRadio('experience', 'Advanced')">
+                        <input type="radio" name="experience" value="Advanced">
+                        <div class="check-circle"></div>
+                        <span class="option-text">Advanced</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">What niche do you have knowledge in?</label>
+                <select class="text-input" id="nicheSelect" onchange="updateState('niche', this.value)">
+                    <option value="" disabled selected>Select your niche...</option>
+                    <option value="Autos & Vehicles">Autos & Vehicles</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Education">Education</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Film & Animation">Film & Animation</option>
+                    <option value="Gaming">Gaming</option>
+                    <option value="How-to & Style">How-to & Style</option>
+                    <option value="Music">Music</option>
+                    <option value="News & Politics">News & Politics</option>
+                    <option value="Nonprofits & Activism">Nonprofits & Activism</option>
+                    <option value="People & Blogs">People & Blogs</option>
+                    <option value="Pets & Animals">Pets & Animals</option>
+                    <option value="Science & Technology">Science & Technology</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Travel & Events">Travel & Events</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">What type of content will your channel focus on?</label>
+                <label class="form-sublabel">e.g., Explaining complex AI tools in simple terms for beginners...</label>
+                <div class="option-grid" id="conceptOptions">
+                    <div class="option-card" onclick="selectRadio('conceptType', 'Activity')">
+                        <input type="radio" name="conceptType" value="Activity">
+                        <div class="check-circle"></div>
+                        <span class="option-text">Activity</span>
+                    </div>
+                    <div class="option-card" onclick="selectRadio('conceptType', 'Concept overview')">
+                        <input type="radio" name="conceptType" value="Concept overview">
+                        <div class="check-circle"></div>
+                        <span class="option-text">Concept Overview</span>
+                    </div>
+                    <div class="option-card" onclick="selectRadio('conceptType', 'How-to')">
+                        <input type="radio" name="conceptType" value="How-to">
+                        <div class="check-circle"></div>
+                        <span class="option-text">How-to</span>
+                    </div>
+                    <div class="option-card" onclick="selectRadio('conceptType', 'Lecture')">
+                        <input type="radio" name="conceptType" value="Lecture">
+                        <div class="check-circle"></div>
+                        <span class="option-text">Lecture</span>
+                    </div>
+                    <div class="option-card" onclick="selectRadio('conceptType', 'Problem walkthrough')">
+                        <input type="radio" name="conceptType" value="Problem walkthrough">
+                        <div class="check-circle"></div>
+                        <span class="option-text">Problem Walkthrough</span>
+                    </div>
+                    <div class="option-card" onclick="selectRadio('conceptType', 'Real life application')">
+                        <input type="radio" name="conceptType" value="Real life application">
+                        <div class="check-circle"></div>
+                        <span class="option-text">Real Life Application</span>
+                    </div>
+                    <div class="option-card" onclick="selectRadio('conceptType', 'Science experiment')">
+                        <input type="radio" name="conceptType" value="Science experiment">
+                        <div class="check-circle"></div>
+                        <span class="option-text">Science Experiment</span>
+                    </div>
+                    <div class="option-card" onclick="selectRadio('conceptType', 'Tips')">
+                        <input type="radio" name="conceptType" value="Tips">
+                        <div class="check-circle"></div>
+                        <span class="option-text">Tips</span>
+                    </div>
+                    <div class="option-card" onclick="selectRadio('conceptType', 'Other')">
+                        <input type="radio" name="conceptType" value="Other">
+                        <div class="check-circle"></div>
+                        <span class="option-text">Other</span>
+                    </div>
+                    <div class="option-card" onclick="selectRadio('conceptType', 'Not sure')">
+                        <input type="radio" name="conceptType" value="Not sure">
+                        <div class="check-circle"></div>
+                        <span class="option-text">Not sure (AI decides)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Do you already have a channel name?</label>
+                <div class="option-grid">
+                    <div class="option-card" onclick="selectRadio('hasName', 'yes')">
+                        <input type="radio" name="hasName" value="yes">
+                        <div class="check-circle"></div>
+                        <span class="option-text">Yes, I have a name</span>
+                    </div>
+                    <div class="option-card" onclick="selectRadio('hasName', 'no')">
+                        <input type="radio" name="hasName" value="no">
+                        <div class="check-circle"></div>
+                        <span class="option-text">No, I need suggestions</span>
+                    </div>
+                </div>
+                <div class="conditional-field" id="nameInputField">
+                    <label class="form-label" style="margin-bottom: 0.5rem; font-size: 0.9rem;">Your Channel Name</label>
+                    <input type="text" class="text-input" id="channelNameInput" placeholder="e.g., ByteShift Media" oninput="updateState('channelName', this.value)">
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <div></div> <!-- Spacer -->
+                <button class="btn btn-primary" onclick="nextStep()">
+                    Next Step <span>→</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- STEP 2: CONTENT STRATEGY -->
+        <div class="step-card hidden" id="step-2">
+            <div class="step-title">
+                <span>🎬</span>
+                <span>Content Architecture</span>
+            </div>
+            <p class="step-description">Define your video style, channel focus, and optimal runtime.</p>
+
+            <div class="form-group">
+                <label class="form-label">Select your channel's primary focus areas (choose up to 3)</label>
+                <div class="option-grid" id="focusOptions">
+                    <div class="option-card" onclick="toggleCheckbox(this, 'channelFocus', 'Analysis')">
+                        <input type="checkbox" value="Analysis">
+                        <div class="check-square"></div>
+                        <span class="option-text">Analysis</span>
+                    </div>
+                    <div class="option-card" onclick="toggleCheckbox(this, 'channelFocus', 'Beginner-Friendly')">
+                        <input type="checkbox" value="Beginner-Friendly">
+                        <div class="check-square"></div>
+                        <span class="option-text">Beginner-Friendly</span>
+                    </div>
+                    <div class="option-card" onclick="toggleCheckbox(this, 'channelFocus', 'Deep Dives')">
+                        <input type="checkbox" value="Deep Dives">
+                        <div class="check-square"></div>
+                        <span class="option-text">Deep Dives</span>
+                    </div>
+                    <div class="option-card" onclick="toggleCheckbox(this, 'channelFocus', 'Psychology and Sentiments')">
+                        <input type="checkbox" value="Psychology and Sentiments">
+                        <div class="check-square"></div>
+                        <span class="option-text">Psychology & Sentiments</span>
+                    </div>
+                    <div class="option-card" onclick="toggleCheckbox(this, 'channelFocus', 'Recap & Quick Briefs')">
+                        <input type="checkbox" value="Recap & Quick Briefs">
+                        <div class="check-square"></div>
+                        <span class="option-text">Recap & Quick Briefs</span>
+                    </div>
+                    <div class="option-card" onclick="toggleCheckbox(this, 'channelFocus', 'Report Summaries')">
+                        <input type="checkbox" value="Report Summaries">
+                        <div class="check-square"></div>
+                        <span class="option-text">Report Summaries</span>
+                    </div>
+                    <div class="option-card" onclick="toggleCheckbox(this, 'channelFocus', 'Sector/Industry Updates')">
+                        <input type="checkbox" value="Sector/Industry Updates">
+                        <div class="check-square"></div>
+                        <span class="option-text">Sector/Industry Updates</span>
+                    </div>
+                    <div class="option-card" onclick="toggleCheckbox(this, 'channelFocus', 'Spotlights')">
+                        <input type="checkbox" value="Spotlights">
+                        <div class="check-square"></div>
+                        <span class="option-text">Spotlights</span>
+                    </div>
+                    <div class="option-card" onclick="toggleCheckbox(this, 'channelFocus', 'Strategies')">
+                        <input type="checkbox" value="Strategies">
+                        <div class="check-square"></div>
+                        <span class="option-text">Strategies</span>
+                    </div>
+                    <div class="option-card" onclick="toggleCheckbox(this, 'channelFocus', 'Trends')">
+                        <input type="checkbox" value="Trends">
+                        <div class="check-square"></div>
+                        <span class="option-text">Trends</span>
+                    </div>
+                </div>
+                <div id="focusError" style="color: var(--warning); font-size: 0.85rem; margin-top: 0.5rem; display: none;">Please select at least 1 focus area.</div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">What video style matches your vision?</label>
+                <div class="option-grid" id="styleOptions">
+                    <div class="option-card" onclick="selectRadio('videoStyle', 'Data & Analysis')">
+                        <input type="radio" name="videoStyle" value="Data & Analysis">
+                        <div class="check-circle"></div>
+                        <span class="option-text">Data & Analysis</span>
+                    </div>
+                    <div class="option-card" onclick="selectRadio('videoStyle', 'Documentary Style')">
+                        <input type="radio" name="videoStyle" value="Documentary Style">
+                        <div class="check-circle"></div>
+                        <span class="option-text">Documentary Style</span>
+                    </div>
+                    <div class="option-card" onclick="selectRadio('videoStyle', 'Educational')">
+                        <input type="radio" name="videoStyle" value="Educational">
+                        <div class="check-circle"></div>
+                        <span class="option-text">Educational</span>
+                    </div>
+                    <div class="option-card" onclick="selectRadio('videoStyle', 'Entertaining')">
+                        <input type="radio" name="videoStyle" value="Entertaining">
+                        <div class="check-circle"></div>
+                        <span class="option-text">Entertaining</span>
+                    </div>
+                    <div class="option-card" onclick="selectRadio('videoStyle', 'Motivational')">
+                        <input type="radio" name="videoStyle" value="Motivational">
+                        <div class="check-circle"></div>
+                        <span class="option-text">Motivational</span>
+                    </div>
+                    <div class="option-card" onclick="selectRadio('videoStyle', 'News & Commentary')">
+                        <input type="radio" name="videoStyle" value="News & Commentary">
+                        <div class="check-circle"></div>
+                        <span class="option-text">News & Commentary</span>
+                    </div>
+                    <div class="option-card" onclick="selectRadio('videoStyle', 'Quick-Tips & Hacks')">
+                        <input type="radio" name="videoStyle" value="Quick-Tips & Hacks">
+                        <div class="check-circle"></div>
+                        <span class="option-text">Quick-Tips & Hacks</span>
+                    </div>
+                    <div class="option-card" onclick="selectRadio('videoStyle', 'Reviews & Recommendations')">
+                        <input type="radio" name="videoStyle" value="Reviews & Recommendations">
+                        <div class="check-circle"></div>
+                        <span class="option-text">Reviews & Recommendations</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">How long do you want your videos to be on average?</label>
+                <label class="form-sublabel">This will help plan your scripts and content structure</label>
+                <div class="option-grid" id="lengthOptions">
+                    <div class="option-card" onclick="selectRadio('videoLength', 'Under 3 minutes')">
+                        <input type="radio" name="videoLength" value="Under 3 minutes">
+                        <div class="check-circle"></div>
+                        <span class="option-text">Under 3 min (Shorts/Ultra-short)</span>
+                    </div>
+                    <div class="option-card" onclick="selectRadio('videoLength', '3-5 minutes')">
+                        <input type="radio" name="videoLength" value="3-5 minutes">
+                        <div class="check-circle"></div>
+                        <span class="option-text">3-5 min (Short & punchy)</span>
+                    </div>
+                    <div class="option-card" onclick="selectRadio('videoLength', '5-10 minutes')">
+                        <input type="radio" name="videoLength" value="5-10 minutes">
+                        <div class="check-circle"></div>
+                        <span class="option-text">5-10 min (Sweet spot)</span>
+                    </div>
+                    <div class="option-card" onclick="selectRadio('videoLength', '10-15 minutes')">
+                        <input type="radio" name="videoLength" value="10-15 minutes">
+                        <div class="check-circle"></div>
+                        <span class="option-text">10-15 min (In-depth)</span>
+                    </div>
+                    <div class="option-card" onclick="selectRadio('videoLength', '15-20 minutes')">
+                        <input type="radio" name="videoLength" value="15-20 minutes">
+                        <div class="check-circle"></div>
+                        <span class="option-text">15-20 min (Deep dives)</span>
+                    </div>
+                    <div class="option-card" onclick="selectRadio('videoLength', '20+ minutes')">
+                        <input type="radio" name="videoLength" value="20+ minutes">
+                        <div class="check-circle"></div>
+                        <span class="option-text">20+ min (Long-form/Masterclass)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-secondary" onclick="prevStep()">← Back</button>
+                <button class="btn btn-primary" onclick="nextStep()">Next Step <span>→</span></button>
+            </div>
+        </div>
+
+        <!-- STEP 3: BUSINESS & MONETIZATION -->
+        <div class="step-card hidden" id="step-3">
+            <div class="step-title">
+                <span>💼</span>
+                <span>Business & Production Strategy</span>
+            </div>
+            <p class="step-description">Set your monetization goals and publishing cadence.</p>
+
+            <div class="form-group">
+                <label class="form-label">How do you plan to monetize your channel? (Select all that apply)</label>
+                <div class="option-grid" id="monetizationOptions">
+                    <div class="option-card" onclick="toggleCheckbox(this, 'monetization', 'Affiliate Marketing')">
+                        <input type="checkbox" value="Affiliate Marketing">
+                        <div class="check-square"></div>
+                        <span class="option-text">Affiliate Marketing</span>
+                    </div>
+                    <div class="option-card" onclick="toggleCheckbox(this, 'monetization', 'Brand Sponsorships')">
+                        <input type="checkbox" value="Brand Sponsorships">
+                        <div class="check-square"></div>
+                        <span class="option-text">Brand Sponsorships</span>
+                    </div>
+                    <div class="option-card" onclick="toggleCheckbox(this, 'monetization', 'Channel Memberships')">
+                        <input type="checkbox" value="Channel Memberships">
+                        <div class="check-square"></div>
+                        <span class="option-text">Channel Memberships</span>
+                    </div>
+                    <div class="option-card" onclick="toggleCheckbox(this, 'monetization', 'Merchandise')">
+                        <input type="checkbox" value="Merchandise">
+                        <div class="check-square"></div>
+                        <span class="option-text">Merchandise</span>
+                    </div>
+                    <div class="option-card" onclick="toggleCheckbox(this, 'monetization', 'Online Courses')">
+                        <input type="checkbox" value="Online Courses">
+                        <div class="check-square"></div>
+                        <span class="option-text">Online Courses</span>
+                    </div>
+                    <div class="option-card" onclick="toggleCheckbox(this, 'monetization', 'Selling Digital Products')">
+                        <input type="checkbox" value="Selling Digital Products">
+                        <div class="check-square"></div>
+                        <span class="option-text">Selling Digital Products</span>
+                    </div>
+                    <div class="option-card" onclick="toggleCheckbox(this, 'monetization', 'YouTube AdSense')">
+                        <input type="checkbox" value="YouTube AdSense">
+                        <div class="check-square"></div>
+                        <span class="option-text">YouTube AdSense</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">How often do you plan to upload videos?</label>
+                <div class="option-grid" id="frequencyOptions">
+                    <div class="option-card" onclick="selectRadio('uploadFrequency', 'Daily')">
+                        <input type="radio" name="uploadFrequency" value="Daily">
+                        <div class="check-circle"></div>
+                        <span class="option-text">Daily</span>
+                    </div>
+                    <div class="option-card" onclick="selectRadio('uploadFrequency', '3-5 times per week')">
+                        <input type="radio" name="uploadFrequency" value="3-5 times per week">
+                        <div class="check-circle"></div>
+                        <span class="option-text">3-5 times per week</span>
+                    </div>
+                    <div class="option-card" onclick="selectRadio('uploadFrequency', '1-2 times per week')">
+                        <input type="radio" name="uploadFrequency" value="1-2 times per week">
+                        <div class="check-circle"></div>
+                        <span class="option-text">1-2 times per week</span>
+                    </div>
+                    <div class="option-card" onclick="selectRadio('uploadFrequency', 'Bi-weekly')">
+                        <input type="radio" name="uploadFrequency" value="Bi-weekly">
+                        <div class="check-circle"></div>
+                        <span class="option-text">Bi-weekly</span>
+                    </div>
+                    <div class="option-card" onclick="selectRadio('uploadFrequency', 'Monthly')">
+                        <input type="radio" name="uploadFrequency" value="Monthly">
+                        <div class="check-circle"></div>
+                        <span class="option-text">Monthly</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-secondary" onclick="prevStep()">← Back</button>
+                <button class="btn btn-primary" onclick="generateBlueprint()">🎯 Generate Blueprint</button>
+            </div>
+        </div>
+
+        <!-- RESULTS -->
+        <div id="resultView" class="hidden">
+            <div class="result-header">
+                <h1 style="font-size: 1.875rem; margin-bottom: 0.5rem;">Your Blueprint is Ready</h1>
+                <p class="subtitle">Follow your custom roadmap below, or export the full prompt to NotebookLM.</p>
+            </div>
+
+            <div class="blueprint-container">
+                <div class="blueprint-header">
+                    <div class="blueprint-title">
+                        <span>📐</span>
+                        <span id="resultChannelName">Channel Blueprint</span>
+                    </div>
+                    <div class="blueprint-actions">
+                        <button class="btn btn-secondary btn-small" onclick="copyBlueprint()">📋 Copy Blueprint</button>
+                        <button class="btn btn-primary btn-small" onclick="document.getElementById('promptExport').scrollIntoView({behavior: 'smooth'})">⚡ Export Prompt</button>
+                    </div>
+                </div>
+                <div class="blueprint-body" id="blueprintBody">
+                    <!-- Generated content goes here -->
+                </div>
+            </div>
+
+            <div class="prompt-export" id="promptExport">
+                <div class="prompt-header">
+                    <div class="prompt-label">
+                        <span>⚡</span>
+                        <span>NotebookLM Export</span>
+                    </div>
+                    <button class="btn btn-primary btn-small" onclick="copyPrompt()">Copy Full Prompt</button>
+                </div>
+                <div class="prompt-body">
+                    <div class="instructions-box">
+                        <strong style="color: var(--success);">Instructions:</strong>
+                        <ol style="margin-top: 0.5rem;">
+                            <li>Click <strong>"Copy Full Prompt"</strong> below</li>
+                            <li>Open a new <strong>Notebook</strong> in <a href="https://notebooklm.google.com" target="_blank" style="color: var(--accent-cyan);">NotebookLM</a></li>
+                            <li>Paste the generated prompt into the source box</li>
+                            <li>Let the AI expand your blueprint into a full strategy document</li>
+                        </ol>
+                    </div>
+                    <textarea class="prompt-textarea" id="promptTextarea" readonly></textarea>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <button class="btn btn-secondary" onclick="location.reload()">🔄 Start Over</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // State management
+        const state = {
+            experience: '',
+            niche: '',
+            conceptType: '',
+            hasName: false,
+            channelName: '',
+            channelFocus: [],
+            videoStyle: '',
+            videoLength: '',
+            monetization: [],
+            uploadFrequency: ''
+        };
+
+        let currentStep = 1;
+
+        // Data mappings
+        const nicheData = {
+            'Autos & Vehicles': { subs: ['EV Tech & Reviews', 'Classic Restoration', 'Automotive Engineering', 'Budget Mods', 'Industry News'], audience: 'Car enthusiasts, prospective buyers, DIY mechanics', cpm: '$4-8' },
+            'Comedy': { subs: ['Animated Satire', 'Commentary Roasts', 'Absurdist Explainers', 'Comedy News', 'Parody Content'], audience: 'Young adults, meme culture participants, entertainment seekers', cpm: '$2-5' },
+            'Education': { subs: ['Speed Learning', 'Academic Simplification', 'Study Systems', 'Skill Acquisition', 'Concept Explainers'], audience: 'Students, self-learners, career switchers', cpm: '$5-12' },
+            'Entertainment': { subs: ['Movie Breakdowns', 'True Crime', 'Pop Culture Analysis', 'Conspiracy Deep Dives', 'Celebrity Examinations'], audience: 'Binge watchers, pop culture fans, story lovers', cpm: '$3-6' },
+            'Film & Animation': { subs: ['VFX Breakdowns', 'Animation Tutorials', 'Film Theory', 'Indie Guides', 'Cinematography Tips'], audience: 'Aspiring filmmakers, animators, cinema buffs', cpm: '$3-7' },
+            'Gaming': { subs: ['Lore Explainers', 'Strategy Guides', 'Game Design Analysis', 'Indie Spotlights', 'Patch Reviews'], audience: 'Casual to hardcore gamers, game developers', cpm: '$3-8' },
+            'How-to & Style': { subs: ['Life Hacks', 'Productivity Systems', 'DIY Builds', 'Software Mastery', 'Minimalism Guides'], audience: 'General audience seeking self-improvement and practical skills', cpm: '$4-9' },
+            'Music': { subs: ['Genre Evolution', 'Artist Deep Dives', 'Music Theory', 'Industry Analysis', 'Ambient Studies'], audience: 'Music students, audiophiles, casual listeners', cpm: '$2-6' },
+            'News & Politics': { subs: ['Market Updates', 'Tech News Analysis', 'Political Explainers', 'Global Events', 'Policy Breakdowns'], audience: 'Informed citizens, professionals in related fields', cpm: '$6-15' },
+            'Nonprofits & Activism': { subs: ['Social Issue Explainers', 'Environmental Science', 'Grassroots Guides', 'Philanthropy Reviews'], audience: 'Activists, donors, socially-conscious viewers', cpm: '$3-7' },
+            'People & Blogs': { subs: ['Self-Improvement', 'Philosophical Commentary', 'Social Experiments', 'Minimalism Journeys', 'Day-in-Life Animated'], audience: 'Personal growth enthusiasts, young professionals', cpm: '$3-6' },
+            'Pets & Animals': { subs: ['Animal Facts & Biology', 'Pet Care Science', 'Wildlife Documentaries', 'Training Psychology', 'Breed Spotlights'], audience: 'Pet owners, animal lovers, nature enthusiasts', cpm: '$3-6' },
+            'Science & Technology': { subs: ['AI Tool Explainers', 'Space Updates', 'Gadget Reviews', 'Programming Tutorials', 'Biotech News'], audience: 'Tech professionals, curious learners, hobbyists', cpm: '$7-18' },
+            'Sports': { subs: ['Game Strategy', 'Athlete Profiles', 'Sports Science', 'Historical Breakdowns', 'Fantasy Analysis'], audience: 'Sports fans, athletes, fantasy players', cpm: '$3-7' },
+            'Travel & Events': { subs: ['Virtual City Tours', 'Budget Travel Systems', 'Cultural Explainers', 'Event Planning', 'Hidden Gems'], audience: 'Travelers, digital nomads, culture enthusiasts', cpm: '$4-10' }
+        };
+
+        const styleData = {
+            'Data & Analysis': { tone: 'Clinical, authoritative, evidence-driven', visual: 'Charts, infographics, data visualizations, stock footage with analytical overlays, minimal text-on-screen' },
+            'Documentary Style': { tone: 'Narrative, immersive, investigative', visual: 'Archival footage, cinematic B-roll, chapter markers, color graded sequences, slow pans' },
+            'Educational': { tone: 'Patient, instructive, encouraging', visual: 'Screen recordings, whiteboard animations, step-by-step callouts, bullet summaries' },
+            'Entertaining': { tone: 'Witty, fast-paced, pop-culture fluent', visual: 'Meme inserts, rapid cuts, dynamic text, emoji reactions, zoom effects' },
+            'Motivational': { tone: 'Uplifting, challenging, personal', visual: 'Cinematic B-roll (nature/urban), text quotes, emotional music beds, sunrise/sunset motifs' },
+            'News & Commentary': { tone: 'Timely, opinionated, sharp', visual: 'News clips, headline graphics, lower thirds, reaction footage, ticker overlays' },
+            'Quick-Tips & Hacks': { tone: 'Direct, punchy, zero fluff', visual: 'POV footage, fast motion, split screens, before/after reveals, bold red arrows/circles' },
+            'Reviews & Recommendations': { tone: 'Honest, comparative, expert', visual: 'Product B-roll, feature callout graphics, pros/cons tables, rating overlays' }
+        };
+
+        const lengthData = {
+            'Under 3 minutes': { structure: '0:00 Hook (3s) → 0:05 Core Point (1.5min) → 2:50 CTA', words: '400-500', type: 'YouTube Shorts / Ultra-short', retention: '90%+ AVD crucial' },
+            '3-5 minutes': { structure: 'Hook → Problem → 3 Core Points → CTA', words: '600-900', type: 'Short-form explainers', retention: '65-80% AVD' },
+            '5-10 minutes': { structure: 'Hook → Context → Deep Dive → Practical Application → CTA', words: '1,000-1,600', type: 'Standard monetizable content', retention: '50-65% AVD' },
+            '10-15 minutes': { structure: 'Hook → Background → Core Analysis → Case Study → Summary → CTA', words: '1,800-2,400', type: 'Deep explainers / storytelling', retention: '40-55% AVD' },
+            '15-20 minutes': { structure: 'Intro → Section 1 → Section 2 → Section 3 → Recap → Outro', words: '2,600-3,400', type: 'Documentary shorts', retention: '35-50% AVD' },
+            '20+ minutes': { structure: 'Act I (Setup) → Act II (Investigation) → Act III (Resolution)', words: '4,000+', type: 'Documentaries / Masterclasses', retention: '30-45% AVD' }
+        };
+
+        const uploadData = {
+            'Daily': { weekly: 7, model: 'Aggressive growth; requires template workflows and batching', risk: 'Burnout risk high for solo creators' },
+            '3-5 times per week': { weekly: 4, model: 'High velocity; strong algorithmic signal', risk: 'Requires content pipeline and possible VA help' },
+            '1-2 times per week': { weekly: 1.5, model: 'Sustainable sweet spot; favors quality over quantity', risk: 'Slow initial traction' },
+            'Bi-weekly': { weekly: 0.5, model: 'Premium per-video production; evergreen focus', risk: 'Harder to build habit with audience' },
+            'Monthly': { weekly: 0.25, model: 'Long-form documentary or highly researched pieces', risk: 'Requires massive per-video value' }
+        };
+
+        // UI Functions
+        function selectRadio(group, value) {
+            state[group] = value;
+            
+            // Update UI
+            const container = document.getElementById(group + 'Options') || document.querySelector(`input[name="${group}"]`).closest('.option-grid');
+            if (!container && group === 'experience') {
+                document.querySelectorAll('#experienceOptions .option-card').forEach(c => c.classList.remove('selected'));
+                event.currentTarget.classList.add('selected');
+            } else if (container) {
+                container.querySelectorAll('.option-card').forEach(card => {
+                    card.classList.remove('selected');
+                    if (card.querySelector('input').value === value) card.classList.add('selected');
+                });
+            }
+
+            // Handle conditional name field
+            if (group === 'hasName') {
+                const field = document.getElementById('nameInputField');
+                if (value === 'yes') {
+                    field.classList.add('active');
+                    state.hasName = true;
+                } else {
+                    field.classList.remove('active');
+                    state.hasName = false;
+                    state.channelName = '';
+                    document.getElementById('channelNameInput').value = '';
+                }
+            }
+        }
+
+        function toggleCheckbox(card, group, value) {
+            const idx = state[group].indexOf(value);
+            const input = card.querySelector('input');
+            
+            if (idx > -1) {
+                state[group].splice(idx, 1);
+                card.classList.remove('selected');
+                input.checked = false;
+            } else {
+                if (group === 'channelFocus' && state[group].length >= 3) {
+                    return; // Limit to 3
+                }
+                state[group].push(value);
+                card.classList.add('selected');
+                input.checked = true;
+            }
+        }
+
+        function updateState(key, value) {
+            state[key] = value;
+        }
+
+        function validateStep(step) {
+            if (step === 1) {
+                if (!state.experience) { alert('Please select your experience level'); return false; }
+                if (!state.niche) { alert('Please select a niche'); return false; }
+                if (!state.conceptType) { alert('Please select a content type'); return false; }
+                if (state.hasName && !state.channelName.trim()) { alert('Please enter your channel name'); return false; }
+                return true;
+            }
+            if (step === 2) {
+                if (state.channelFocus.length === 0) {
+                    document.getElementById('focusError').style.display = 'block';
+                    return false;
+                }
+                if (!state.videoStyle) { alert('Please select a video style'); return false; }
+                if (!state.videoLength) { alert('Please select a video length'); return false; }
+                return true;
+            }
+            if (step === 3) {
+                if (state.monetization.length === 0) { alert('Select at least one monetization method'); return false; }
+                if (!state.uploadFrequency) { alert('Please select an upload frequency'); return false; }
+                return true;
+            }
+            return true;
+        }
+
+        function nextStep() {
+            if (!validateStep(currentStep)) return;
+            
+            document.getElementById(`step-${currentStep}`).classList.add('hidden');
+            currentStep++;
+            document.getElementById(`step-${currentStep}`).classList.remove('hidden');
+            document.getElementById(`step-${currentStep}`).classList.add('fade-in');
+            updateProgress();
+        }
+
+        function prevStep() {
+            document.getElementById(`step-${currentStep}`).classList.add('hidden');
+            currentStep--;
+            document.getElementById(`step-${currentStep}`).classList.remove('hidden');
+            document.getElementById(`step-${currentStep}`).classList.add('fade-in');
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const fill = document.getElementById('progressFill');
+            const percent = ((currentStep - 1) / 2) * 100;
+            fill.style.width = percent + '%';
+            
+            document.querySelectorAll('.step-indicator').forEach((el, idx) => {
+                el.classList.remove('active', 'completed');
+                if (idx + 1 < currentStep) el.classList.add('completed');
+                if (idx + 1 === currentStep) el.classList.add('active');
+            });
+        }
+
+        // Generator Functions
+        function getSubNiche() {
+            if (!state.niche || !nicheData[state.niche]) return 'General Explainer';
+            const subs = nicheData[state.niche].subs;
+            // Pick based on concept
+            const conceptMap = {
+                'How-to': 0, 'Tips': 1, 'Activity': 2, 'Science experiment': 3,
+                'Concept overview': 1, 'Problem walkthrough': 0, 'Real life application': 2,
+                'Lecture': 3, 'Other': 1, 'Not sure': 1
+            };
+            const idx = conceptMap[state.conceptType] || 1;
+            return subs[idx % subs.length];
+        }
+
+        function generateNameIdeas() {
+            const prefixes = ['Silent', 'Hidden', 'Voiceless', 'Anon', 'Ghost', 'Faceless', 'Cipher', 'Echo', 'Blank', 'Void', 'Phantom', 'Static'];
+            const roots = {
+                'Autos & Vehicles': ['Shift', 'Torque', 'Drift', 'Motor', 'Gear'],
+                'Comedy': ['Jester', 'Bit', 'Satire', 'Punch', 'Gag'],
+                'Education': ['Academy', 'Labs', 'Desk', 'Study', 'Mind'],
+                'Gaming': ['GG', 'Respawn', 'Arcade', 'Loot', 'GG'],
+                'Science & Technology': ['Wire', 'Circuit', 'Node', 'Stack', 'Byte'],
+                'Music': ['Tone', 'Wave', 'Beat', 'Note', 'Freq'],
+                'default': ['Vault', 'Hub', 'Scope', 'Lens', 'Frame']
+            };
+            const suffixes = ['Media', 'Channel', 'Studios', 'HQ', 'Network', '', 'Collective'];
+            const rootList = roots[state.niche] || roots.default;
+            
+            let ideas = [];
+            for (let i = 0; i < 5; i++) {
+                const pre = prefixes[Math.floor(Math.random() * prefixes.length)];
+                const root = rootList[Math.floor(Math.random() * rootList.length)];
+                const suf = suffixes[Math.floor(Math.random() * suffixes.length)];
+                ideas.push(pre + root + (suf ? ' ' + suf : ''));
+            }
+            return [...new Set(ideas)]; // unique
+        }
+
+        function getAudience() {
+            if (!state.niche) return 'General interest viewers';
+            return nicheData[state.niche].audience;
+        }
+
+        function getScriptOutline() {
+            const l = lengthData[state.videoLength] || lengthData['5-10 minutes'];
+            return l.structure;
+        }
+
+        function getProductionStack() {
+            const exp = state.experience;
+            const isShort = state.videoLength === 'Under 3 minutes';
+            
+            let voice = 'ElevenLabs (Josh/Adam/Bella) or Play.ht for ultra-realistic narration';
+            if (exp === 'Beginner') voice = 'ElevenLabs (free tier) or CapCut text-to-speech for zero budget';
+            
+            let visuals = 'Midjourney + Runway Gen-2 for bespoke B-roll; supplement with Artgrid/Storyblocks';
+            if (exp === 'Beginner') visuals = 'Free stock from Pexels/Pixabay + Canva animations + AI images from Leonardo.ai';
+            if (isShort) visuals += ' + CapCut templates for rapid vertical editing';
+            
+            let editing = 'DaVinci Resolve (free & professional) or Adobe Premiere Pro';
+            if (exp === 'Beginner') editing = 'CapCut Desktop (free, fast, faceless-friendly templates)';
+            
+            let script = 'ChatGPT/Claude for scripts; NotebookLM for research synthesis';
+            
+            let thumb = 'Canva Pro (YouTube thumbnail templates) + Midjourney for background characters/scenes';
+            
+            return { voice, visuals, editing, script, thumb };
+        }
+
+        function getMonetizationTimeline() {
+            const methods = state.monetization;
+            let timeline = [];
+            
+            if (methods.includes('Affiliate Marketing')) {
+                timeline.push('<strong>Day 1 (0 subs):</strong> Sign up for Amazon Associates + niche-specific programs (e.g., TradeStation for Finance, TubeBuddy for YouTube, Envato for design). Embed links in description templates.');
+            }
+            if (methods.includes('YouTube AdSense')) {
+                timeline.push('<strong>Phase 2 (1K subs / 4K hrs):</strong> Enable monetization. Optimize for CPM by targeting English-speaking audiences and higher-paying niches.');
+            }
+            if (methods.includes('Brand Sponsorships')) {
+                timeline.push('<strong>Phase 3 (5K-10K subs):</strong> Build a media kit. Pitch via email. Start with micro-sponsorships ($200-500/video).');
+            }
+            if (methods.includes('Selling Digital Products') || methods.includes('Online Courses')) {
+                timeline.push('<strong>Phase 2-3 (2K+ subs):</strong> Launch a lead magnet (free guide/playlist) to build email list. Follow up with a Notion template, eBook, or mini-course via Gumroad/Teachable.');
+            }
+            if (methods.includes('Merchandise')) {
+                timeline.push('<strong>Phase 3 (10K+ subs):</strong> Use Spring/Printful for print-on-demand. Lead with inside jokes or channel motifs from your comment section.');
+            }
+            if (methods.includes('Channel Memberships')) {
+                timeline.push('<strong>Phase 2+:</strong> Offer badges, exclusive behind-the-script content, or early access. Best for Educational and How-to niches.');
+            }
+            if (timeline.length === 0) timeline.push('Focus on audience building first. Monetization follows attention.');
+            return timeline;
+        }
+
+        function generateFirstVideo() {
+            const sub = getSubNiche();
+            const focuses = state.channelFocus.slice(0, 2).join(' + ');
+            const style = state.videoStyle;
+            
+            const titles = [
+                `The Truth About ${sub} (What No One Tells You)`,
+                `${sub}: A ${style} Breakdown for Beginners`,
+                `I Researched ${sub} for 100 Hours—Here Are 5 Patterns`,
+                `Why ${sub} Is Changing (And How to Adapt)`,
+                `The Ultimate ${sub} Guide (${state.videoLength.replace(/ minutes?/,'')} min)`
+            ];
+            
+            const selectedTitle = titles[Math.floor(Math.random() * titles.length)];
+            
+            const thumbConcepts = [
+                'Split face: Before/After or Old vs New with shocked emoji overlay',
+                'Single object from niche with red arrow pointing to "secret" detail',
+                'Text-heavy thumbnail: "5 MYTHS" with crossed-out words',
+                'Character in silhouette looking at glowing screen/data visualization',
+                'High-contrast color background (yellow/blue) with bold black text'
+            ];
+            
+            return { title: selectedTitle, titles, thumb: thumbConcepts[Math.floor(Math.random() * thumbConcepts.length)] };
+        }
+
+        function generateActionPlan() {
+            const freq = uploadData[state.uploadFrequency];
+            const isAggressive = state.uploadFrequency === 'Daily' || state.uploadFrequency === '3-5 times per week';
+            
+            return [
+                `<strong>Week 1: Foundation</strong><br>Set up channel page, banner, and description SEO. Create 3 video scripts. Set up voiceover tools (${getProductionStack().voice.split('or')[0].trim()}).`,
+                `<strong>Week 2: Production Pipeline</strong><br>Record and edit your first 2 videos. Design 5 thumbnail templates in Canva. Finalize intro/outro music and motion graphics.`,
+                `<strong>Week 3: Launch & Systems</strong><br>Upload Channel Trailer. Publish Video 1 and 2 with 48-hour gap. Set up analytics dashboard. Create content calendar for Month 2.`,
+                `<strong>Week 4: Optimize & Iterate</strong><br>Analyze CTR and AVD for first videos. Adjust thumbnail style based on winner. Batch-record next 4 videos. ${isAggressive ? 'Schedule daily uploads for Month 2.' : 'Refine workflow for ' + state.uploadFrequency + ' cadence.'}`
+            ];
+        }
+
+        function buildBlueprintHTML() {
+            const sub = getSubNiche();
+            const audience = getAudience();
+            const stack = getProductionStack();
+            const video = generateFirstVideo();
+            const nicheInfo = nicheData[state.niche] || { cpm: '$3-8' };
+            const len = lengthData[state.videoLength];
+            
+            let nameDisplay = state.channelName || 'Your Faceless Channel';
+            if (!state.hasName) {
+                const ideas = generateNameIdeas();
+                nameDisplay = ideas[0];
+                state.suggestedNames = ideas;
+            }
+            
+            document.getElementById('resultChannelName').innerText = nameDisplay + ' Blueprint';
+            
+            let html = `
+                <div class="metric-row">
+                    <div class="metric-card">
+                        <div class="metric-value">${state.niche}</div>
+                        <div class="metric-label">Primary Niche</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">${sub}</div>
+                        <div class="metric-label">Sub-Niche</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">${state.videoLength}</div>
+                        <div class="metric-label">Avg. Runtime</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">${state.uploadFrequency}</div>
+                        <div class="metric-label">Cadence</div>
+                    </div>
+                </div>
+
+                <h2>🎯 Channel Identity & Positioning</h2>
+                <p><strong>Channel Name:</strong> ${nameDisplay} ${!state.hasName ? '<br><span style="color:var(--text-muted); font-size:0.9rem;">(Suggested alternatives: ' + state.suggestedNames.slice(1).join(', ') + ')</span>' : ''}</p>
+                <p><strong>Experience Level Strategy:</strong> ${state.experience} approach — ${state.experience === 'Beginner' ? 'Prioritize simple templates, free tools, and consistency over perfection.' : state.experience === 'Intermediate' ? 'Focus on workflow optimization, slight differentiation, and monetization prep.' : 'Aggressive scaling, team delegation, and multi-channel brand building.'}</p>
+                <p style="margin-top:0.75rem;">
+                    <span class="tag">${state.conceptType}</span>
+                    <span class="tag">${state.videoStyle}</span>
+                    ${state.channelFocus.map(f => `<span class="tag">${f}</span>`).join('')}
+                </p>
+
+                <h2>🎬 Video Planning Framework</h2>
+                <div class="highlight-box">
+                    <strong>Content Architecture based on:</strong>
+                    <ul style="margin-top:0.5rem; margin-bottom:0;">
+                        <li><strong>Niche:</strong> ${state.niche}</li>
+                        <li><strong>Sub-niche:</strong> ${sub}</li>
+                        <li><strong>Target Audience:</strong> ${audience}</li>
+                        <li><strong>Video Style:</strong> ${state.videoStyle} — ${styleData[state.videoStyle].tone}</li>
+                    </ul>
+                </div>
+                
+                <h3>Recommended Structure (${state.videoLength})</h3>
+                <p>${len.structure}</p>
+                <p><strong>Word Count Target:</strong> ~${len.words} words | <strong>Retention Goal:</strong> ${len.retention}</p>
+                <p><strong>Visual Direction:</strong> ${styleData[state.videoStyle].visual}</p>
+
+                <h2>💰 Monetization Roadmap</h2>
+                <p><strong>Estimated CPM Range:</strong> ${nicheInfo.cpm}</p>
+                <ol>
+                    ${getMonetizationTimeline().map(item => `<li>${item}</li>`).join('')}
+                </ol>
+
+                <h2>🛠️ Faceless Production Stack</h2>
+                <ul>
+                    <li><strong>Scripting:</strong> ${stack.script}</li>
+                    <li><strong>Voiceover:</strong> ${stack.voice}</li>
+                    <li><strong>
+
+### DeepSeek V3.2
+I'll build a comprehensive app that generates faceless YouTube channel blueprints. Here's a complete implementation:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faceless YouTube Blueprint Generator</title>
+    <style>
+        * {
+            margin: (params for style)
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎭 Faceless YouTube Blueprint Generator</h1>
+            <p class="subtitle">Generate complete strategies and roadmaps for launching your anonymous YouTube channel</p>
+        </header>
+
+        <main>
+            <section class="form-section">
+                <div class="progress-bar">
+                    <div class="progress" id="progress"></div>
+                </div>
+                
+                <form id="blueprintForm">
+                    <!-- Step 1: Experience -->
+                    <div class="form-step active" data-step="1">
+                        <h2>📊 Your Experience Level</h2>
+                        <p>What is your current experience with starting a faceless YouTube channel?</p>
+                        <div class="options-grid">
+                            <label class="option-card">
+                                <input type="radio" name="experience" value="beginner" required>
+                                <div class="card-content">
+                                    <h3>Beginner</h3>
+                                    <p>Just starting out, need step-by-step guidance</p>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="experience" value="intermediate">
+                                <div class="card-content">
+                                    <h3>Intermediate</h3>
+                                    <p>Some knowledge, looking to refine strategy</p>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="experience" value="advanced">
+                                <div class="card-content">
+                                    <h3>Advanced</h3>
+                                    <p>Experienced, want advanced optimization</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Niche -->
+                    <div class="form-step" data-step="2">
+                        <h2>🎯 Choose Your Niche</h2>
+                        <p>What niche do you have knowledge in?</p>
+                        <div class="options-grid">
+                            <!-- 15 niche options -->
+                            <label class="option-card">
+                                <input type="radio" name="niche" value="autos">
+                                <div class="card-content">
+                                    <h3>🚗 Autos & Vehicles</h3>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="niche" value="comedy">
+                                <div class="card-content">
+                                    <h3>😂 Comedy</h3>
+                                </div>
+                            </label>
+                            <!-- Add all 15 niches similarly -->
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Channel Idea -->
+                    <div class="form-step" data-step="3">
+                        <h2>💡 Channel Concept</h2>
+                        <p>Do you have an idea of what your channel will be about?</p>
+                        <input type="text" name="channelIdea" placeholder="e.g., Explaining complex AI tools in simple terms for beginners..." class="text-input">
+                        
+                        <h3>Content Type</h3>
+                        <div class="options-grid">
+                            <!-- Content type options -->
+                            <label class="option-card">
+                                <input type="radio" name="contentType" value="activity">
+                                <div class="card-content">
+                                    <h3>Activity</h3>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="contentType" value="how-to">
+                                <div class="card-content">
+                                    <h3>How-to</h3>
+                                </div>
+                            </label>
+                            <!-- Add all options including "Not sure" -->
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Channel Name -->
+                    <div class="form-step" data-step="4">
+                        <h2>🏷️ Channel Name</h2>
+                        <p>Do you already have a name for your channel?</p>
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" name="hasName" value="yes" onchange="toggleNameField()">
+                                Yes, I already have a name
+                            </label>
+                            <label>
+                                <input type="radio" name="hasName" value="no" onchange="toggleNameField()">
+                                No, I need name suggestions
+                            </label>
+                        </div>
+                        <div id="nameField" style="display: none;">
+                            <input type="text" name="channelName" placeholder="Enter your channel name" class="text-input">
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Monetization -->
+                    <div class="form-step" data-step="5">
+                        <h2>💰 Monetization Strategy</h2>
+                        <p>How do you plan to monetize your channel? (Select multiple)</p>
+                        <div class="checkbox-grid">
+                            <!-- 7 monetization options -->
+                            <label class="option-card">
+                                <input type="checkbox" name="monetization" value="affiliate">
+                                <div class="card-content">
+                                    <h3>Affiliate Marketing</h3>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="checkbox" name="monetization" value="sponsorships">
+                                <div class="card-content">
+                                    <h3>Brand Sponsorships</h3>
+                                </div>
+                            </label>
+                            <!-- Add all options -->
+                        </div>
+                    </div>
+
+                    <!-- Step 6: Upload Frequency -->
+                    <div class="form-step" data-step="6">
+                        <h2>📅 Upload Schedule</h2>
+                        <p>How often do you plan to upload videos?</p>
+                        <div class="options-grid">
+                            <!-- 5 frequency options -->
+                            <label class="option-card">
+                                <input type="radio" name="frequency" value="weekly-1-2">
+                                <div class="card-content">
+                                    <h3>1-2 times per week</h3>
+                                    <p>Consistent growth pace</p>
+                                </div>
+                            </label>
+                            <!-- Add all options -->
+                        </div>
+                    </div>
+
+                    <!-- Step 7: Channel Focus -->
+                    <div class="form-step" data-step="7">
+                        <h2>🎥 Channel Focus</h2>
+                        <p>Select your primary content focus (Select up to 3)</p>
+                        <div class="checkbox-grid">
+                            <!-- 10 focus options -->
+                            <label class="option-card">
+                                <input type="checkbox" name="focus" value="analysis" data-max="3">
+                                <div class="card-content">
+                                    <h3>Analysis</h3>
+                                    <p>Deep data-driven content</p>
+                                </div>
+                            </label>
+                            <!-- Add all options -->
+                        </div>
+                    </div>
+
+                    <!-- Step341: Video Style -->
+                    <div class="form-step" data-step="8">
+                        <h2>🎬 Video Style</h2>
+                        <p>Choose your tone and format</p>
+                        <div class="options-grid">
+                            <!-- 8 style options -->
+                            <label class="option-card">
+                                <input type="radio" name="style" value="data-analysis">
+                                <div class="card-content">
+                                    <h3>Data & Analysis</h3>
+                                    <p>Research-driven, deep dives</p>
+                                </div>
+                            </label>
+                            <!-- Add all options -->
+                        </div>
+                    </div>
+
+                    <!-- Step 9: Video Length -->
+                    <div class="form-step" data-step="9">
+                        <h2>⏱️ Video Duration</h2>
+                        <p>How long do you want your videos to be on average?</p>
+                        <div class="options-grid">
+                            <!-- 6 length options -->
+                            <label class="option-card">
+                                <input type="radio" name="length" value="3-5">
+                                <div class="card-content">
+                                    <h3>3-5 minutes</h3>
+                                    <p>Short and punchy</p>
+                                </div>
+                            </label>
+                            <!-- Add all options -->
+                        </div>
+                    </div>
+
+                    <div class="form-navigation">
+                        <button type="button" class="btn-secondary" id="prevBtn" onclick="prevStep()">Previous</button>
+                        <button type="button" class="btn-primary" id="nextBtn" onclick="nextStep()">Next</button>
+                        <button type="button" class="btn-generate" id="generateBtn" style="display: none;" onclick="generateBlueprint()">Generate Blueprint</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <h2>🎯 Your Faceless YouTube Blueprint</h2>
+                
+                <div class="instructions">
+                    <h3>Instructions:</h3>
+                    <ol>
+                        <li>Click "Copy Full Prompt"</li>
+                        <li>Open a new 'Notebook' in NotebookLM</li>
+                        <li>Paste the generated prompt into the source box</li>
+                        <li>The AI will generate your YouTube channel blueprint</li>
+                    </ol>
+                    <button class="btn-copy" onclick="copyPrompt()">📋 Copy Full Prompt</button>
+                </div>
+
+                <div class="blueprint-preview" id="blueprintOutput">
+                    <!-- Generated blueprint will appear here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 9;
+        
+        // Form data storage
+        const formData = {
+            experience: '',
+            niche: '',
+            channelIdea: '',
+            contentType: '',
+            hasName: '',
+            channelName: '',
+            monetization: [],
+            frequency: '',
+            focus: [],
+            style: '',
+            length: ''
+        };
+
+        function nextStep() {
+            if (validateStep(currentStep)) {
+                saveStepData(currentStep);
+                document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
+                currentStep++;
+                
+                if (currentStep > totalSteps) {
+                    currentStep = totalSteps;
+                }
+                
+                document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
+                updateProgress();
+                updateButtons();
+            }
+        }
+
+        function prevStep() {
+            document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
+            currentStep--;
+            document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
+            updateProgress();
+            updateButtons();
+        }
+
+        function validateStep(step) {
+            // Validation logic for each step
+            return true;
+        }
+
+        function saveStepData(step) {
+            // Save data from each step to formData
+        }
+
+        function updateProgress() {
+            const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+            document.getElementById('progress').style.width = `${progress}%`;
+        }
+
+        function updateButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const generateBtn = document.getElementById('generateBtn');
+            
+            prevBtn.style.display = currentStep > 1 ? 'block' : 'none';
+            
+            if (currentStep === totalSteps) {
+                nextBtn.style.display = 'none';
+                generateBtn.style.display = 'block';
+            } else {
+                nextBtn.style.display = 'block';
+                generateBtn.style.display = 'none';
+            }
+        }
+
+        function toggleNameField() {
+            const hasName = document.querySelector('input[name="hasName"]:checked').value;
+            const nameField = document.getElementById('nameField');
+            nameField.style.display = hasName === 'yes' ? 'block' : 'none';
+        }
+
+        function generateBlueprint() {
+            // Collect all form data
+            collectFormData();
+            
+            // Generate the blueprint
+            const blueprint = `
+Faceless YouTube Channel Strategy and Launch Blueprint
+
+CHANNEL PROFILE:
+- Experience Level: ${formData.experience}
+- Primary Niche: ${formData.niche}
+- Channel Concept: ${formData.channelIdea}
+- Content Type: ${formData.contentType}
+- Channel Name: ${formData.channelName || 'AI-generated suggestions'}
+- Upload Frequency: ${formData.frequency}
+- Average Video Length: ${formData.length}
+
+CONTENT STRATEGY:
+- Channel Focus: ${formData.focus.join(', ')}
+- Video Style: ${formData.style}
+- Target Audience: ${generateTargetAudience()}
+- Content Pillars: ${generateContentPillars()}
+
+MONETIZATION PLAN:
+${generateMonetizationPlan()}
+
+TECHNICAL BLUEPRINT:
+1. Equipment Setup: ${getEquipmentByExperience(formData.experience)}
+2. Software Stack: ${getSoftwareStack()}
+3. Production Workflow: ${getWorkflow()}
+
+CONTENT CALENDAR:
+${generateContentCalendar()}
+
+FIRST VIDEO SCRIPT TEMPLATE:
+${generateScriptTemplate()}
+
+LAUNCH ROADMAP:
+Week 1-2: ${getLaunchTasks(1)}
+Week 3-4: ${getLaunchTasks(2)}
+Month 2-3: ${getLaunchTasks(3)}
+
+GROWTH METRICS:
+- Month 1 Goal: ${getGrowthGoals(1)}
+- Month, lets skip for now...`;
+            
+            // Display blueprint
+            document.getElementById('blueprintOutput').innerHTML = 
+                `<pre>${blueprint}</pre>`;
+            
+            // Show results section
+            document.getElementById('resultsSection').style.display = 'block';
+            document.querySelector('.form-section').style.display = 'none';
+        }
+
+        function copyPrompt() {
+            const blueprintText = document.getElementById('blueprintOutput').innerText;
+            navigator.clipboard.writeText(blueprintText).then(() => {
+                alert('Prompt copied to clipboard! Now paste it into NotebookLM.');
+            });
+        }
+
+        function collectFormData() {
+            // Implementation to collect all form data
+        }
+
+        function generateTargetAudience() {
+            // Generate target audience based on niche and style
+            return "Age 18-35, tech-savvy, interested in learning";
+        }
+
+        function generateContentPillars() {
+            // Generate 3-5 content pillars
+            return "1. Beginner Tutorials\n2. Advanced Techniques\n3. Industry News\n4. Tool Reviews";
+        }
+
+        function generateMonetizationPlan() {
+            // Generate detailed monetization strategy
+            return "- Month 1-3: Focus on AdSense\n- Month 4-6: Add affiliate marketing\n- Month 7+: Pursue sponsorships";
+        }
+
+        function getEquipmentByExperience(exp) {
+            const equipment = {
+                beginner: "Smartphone, basic microphone, free editing software",
+                intermediate: "DSLR camera, quality microphone, paid editing software",
+                advanced: "Professional camera setup, studio microphone, premium software suite"
+            };
+            return equipment[exp] || equipment.beginner;
+        }
+
+        // Initialize
+        updateProgress();
+        updateButtons();
+    </script>
+</body>
+</html>
+```
+
+This app provides:
+
+## **Core Features:**
+1. **Multi-step Form** - Guides users through 9 comprehensive steps
+2. **Progress Tracking** - Visual progress bar
+3. **Smart Validation** - Ensures complete data collection
+4. **Blueprint Generation** - Creates detailed strategy document
+
+## **Blueprint Includes:**
+- **Channel Profile** - All user inputs organized
+- **Content Strategy** - Target audience, content pillars, style guidelines
+- **Monetization Plan** - Timeline-based revenue strategies
+- **Technical Setup** - Equipment recommendations by experience level
+- **Production Workflow** - Step-by-step video creation process
+- **Content Calendar** - Upload schedule with topic ideas
+- **First Video Script** - Template for immediate start
+- **Launch Roadmap** - 3-month timeline with specific tasks
+- **Growth Metrics** - Monthly goals and KPIs
+
+## **User Experience:**
+- **Responsive Design** - Works on mobile and desktop
+- **Card-based Selection** - Visual option cards
+- **Conditional Logic** - Shows/hides fields based on selections
+- **Copy Function** - One-click prompt copying for NotebookLM
+- **Preview Mode** - See blueprint before copying
+
+## **Next Steps to Complete:**
+1. Add all 15 niche options with icons
+2. Implement complete validation for each step
+3. Add detailed generation functions for each blueprint section
+4. Include AI-generated name suggestions when requested
+5. Add export options (PDF, text file)
+6. Implement saving/loading of blueprints
+7. Add examples and tooltips for each section
+
+This provides a professional, user-friendly interface that collects all necessary data and generates a comprehensive, actionable blueprint for launching a successful faceless YouTube channel.
+
+### MiniMax M2.7
+```tsx
+import { useState } from "react";
+
+type ExperienceLevel = "beginner" | "intermediate" | "advanced";
+type Niche = 
+  | "autos"
+  | "comedy"
+  | "education"
+  | "entertainment"
+  | "film"
+  | "gaming"
+  | "howto"
+  | "music"
+  | "news"
+  | "nonprofits"
+  | "people"
+  | "pets"
+  | "science"
+  | "sports"
+  | "travel";
+
+type ContentIdea = 
+  | "activity"
+  | "concept"
+  | "howto"
+  | "lecture"
+  | "problem"
+  | "reallife"
+  | "science"
+  | "tips"
+  | "other"
+  | "unsure";
+
+type VideoLength = 1 | 2 | 3 | 4 | 5 | 6;
+type VideoStyle = "data" | "documentary" | "educational" | "entertaining" | "motivational" | "news" | "quicktips" | "reviews";
+type UploadFrequency = "1-2" | "3-5" | "biweekly" | "daily" | "monthly";
+type Monetization = "affiliate" | "sponsorships" | "memberships" | "merchandise" | "courses" | "digital" | "adsense";
+
+interface ChannelBlueprint {
+  experience: ExperienceLevel | null;
+  niche: Niche | null;
+  contentIdea: ContentIdea | null;
+  hasChannelName: boolean;
+  channelName: string;
+  monetization: Monetization[];
+  uploadFrequency: UploadFrequency | null;
+  videoLength: VideoLength | null;
+  videoStyle: VideoStyle[];
+  channelFocus: string[];
+}
+
+const nicheLabels: Record<Niche, string> = {
+  autos: "Autos & Vehicles",
+  comedy: "Comedy",
+  education: "Education",
+  entertainment: "Entertainment",
+  film: "Film & Animation",
+  gaming: "Gaming",
+  howto: "How-to & Style",
+  music: "Music",
+  news: "News & Politics",
+  nonprofits: "Nonprofits & Activism",
+  people: "People & Blogs",
+  pets: "Pets & Animals",
+  science: "Science & Technology",
+  sports: "Sports",
+  travel: "Travel & Events",
+};
+
+const contentIdeaLabels: Record<ContentIdea, string> = {
+  activity: "Activity",
+  concept: "Concept overview",
+  howto: "How-to",
+  lecture: "Lecture",
+  problem: "Problem walkthrough",
+  reallife: "Real life application",
+  science: "Science experiment",
+  tips: "Tips",
+  other: "Other",
+  unsure: "Not sure (let the AI decide)",
+};
+
+const monetizationLabels: Record<Monetization, string> = {
+  affiliate: "Affiliate Marketing",
+  sponsorships: "Brand Sponsorships",
+  memberships: "Channel Memberships",
+  merchandise: "Merchandise",
+  courses: "Online Courses",
+  digital: "Selling Digital Products",
+  adsense: "YouTube AdSense",
+};
+
+const videoLengthLabels: Record<VideoLength, string> = {
+  1: "3-5 minutes (short and punchy)",
+  2: "5-10 minutes (sweet spot for most niches)",
+  3: "10-15 minutes (in-depth but digestible)",
+  4: "15-20 minutes (deep dives and tutorials)",
+  5: "20+ minutes (long-form documentary or masterclass style)",
+  6: "Under 3 minutes (YouTube Shorts/Ultra-short)",
+};
+
+const videoStyleLabels: Record<VideoStyle, string> = {
+  data: "Data & Analysis: Research-driven, deep dives, comparisons",
+  documentary: "Documentary Style: Long-form, narrative-driven, investigative",
+  educational: "Educational: Teaching, explaining, how-to-guides",
+  entertaining: "Entertaining: Fun, engaging, storytelling",
+  motivational: "Motivational: Inspiring mindset, success stories",
+  news: "News & Commentary: Reacting to trends, breaking down current events",
+  quicktips: "Quick-Tips & Hacks: Short, punchy, actionable advice",
+  reviews: "Reviews & Recommendations: Product reviews, tool breakdowns, top 10 lists",
+};
+
+const channelFocusOptions = [
+  "Analysis",
+  "Beginner-Friendly",
+  "Deep Dives",
+  "Psychology and Sentiments",
+  "Recap & Quick Briefs",
+  "Report Summaries",
+  "Sector/Industry Updates",
+  "Spotlights",
+  "Strategies",
+  "Trends",
+];
+
+export default function FacelessYouTubeBlueprintApp() {
+  const [currentStep, setCurrentStep] = useState(1);
+  const [blueprint, setBlueprint] = useState<ChannelBlueprint>({
+    experience: null,
+    niche: null,
+    contentIdea: null,
+    hasChannelName: false,
+    channelName: "",
+    monetization: [],
+    uploadFrequency: null,
+    videoLength: null,
+    videoStyle: [],
+    channelFocus: [],
+  });
+  const [generatedBlueprint, setGeneratedBlueprint] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
+
+  const totalSteps = 7;
+
+  const handleExperienceSelect = (exp: ExperienceLevel) => {
+    setBlueprint({ ...blueprint, experience: exp });
+  };
+
+  const handleNicheSelect = (niche: Niche) => {
+    setBlueprint({ ...blueprint, niche });
+  };
+
+  const handleContentIdeaSelect = (idea: ContentIdea) => {
+    setBlueprint({ ...blueprint, contentIdea: idea });
+  };
+
+  const handleHasChannelName = (has: boolean) => {
+    setBlueprint({ ...blueprint, hasChannelName: has });
+  };
+
+  const handleChannelNameChange = (name: string) => {
+    setBlueprint({ ...blueprint, channelName: name });
+  };
+
+  const handleMonetizationToggle = (mon: Monetization) => {
+    const newMonetization = blueprint.monetization.includes(mon)
+      ? blueprint.monetization.filter((m) => m !== mon)
+      : [...blueprint.monetization, mon];
+    setBlueprint({ ...blueprint, monetization: newMonetization });
+  };
+
+  const handleUploadFrequencySelect = (freq: UploadFrequency) => {
+    setBlueprint({ ...blueprint, uploadFrequency: freq });
+  };
+
+  const handleVideoLengthSelect = (len: VideoLength) => {
+    setBlueprint({ ...blueprint, videoLength: len });
+  };
+
+  const handleVideoStyleToggle = (style: VideoStyle) => {
+    const newStyles = blueprint.videoStyle.includes(style)
+      ? blueprint.videoStyle.filter((s) => s !== style)
+      : [...blueprint.videoStyle, style];
+    setBlueprint({ ...blueprint, videoStyle: newStyles });
+  };
+
+  const handleChannelFocusToggle = (focus: string) => {
+    const newFocus = blueprint.channelFocus.includes(focus)
+      ? blueprint.channelFocus.filter((f) => f !== focus)
+      : [...blueprint.channelFocus, focus];
+    setBlueprint({ ...blueprint, channelFocus: newFocus });
+  };
+
+  const generateBlueprint = () => {
+    const prompt = `FACLESS YOUTUBE CHANNEL BLUEPRINT GENERATOR
+
+USER PROFILE:
+- Experience Level: ${blueprint.experience?.toUpperCase()}
+- Primary Niche: ${blueprint.niche ? nicheLabels[blueprint.niche] : "TBD"}
+- Content Format: ${blueprint.contentIdea ? contentIdeaLabels[blueprint.contentIdea] : "TBD"}
+- Channel Name: ${blueprint.hasChannelName ? blueprint.channelName : "Needs suggestion"}
+- Monetization Strategies: ${blueprint.monetization.map((m) => monetizationLabels[m]).join(", ")}
+- Upload Frequency: ${blueprint.uploadFrequency} times per week
+- Average Video Length: ${blueprint.videoLength ? videoLengthLabels[blueprint.videoLength] : "TBD"}
+- Video Styles: ${blueprint.videoStyle.map((s) => videoStyleLabels[s]).join("; ")}
+- Channel Focus Areas: ${blueprint.channelFocus.join(", ")}
+
+Generate a comprehensive faceless YouTube channel blueprint including:
+
+1. CHANNEL BRANDING STRATEGY
+   - Brand name suggestions (if needed)
+   - Logo and visual identity guidelines
+   - Channel trailer concept
+   - Color palette recommendations
+   - Typography for thumbnails
+
+2. NICHE & CONTENT STRATEGY
+   - Detailed content pillars
+   - Sub-niche opportunities
+   - Target audience persona
+   - Content calendar framework
+   - Video topic ideas (10 initial concepts)
+
+3. VIDEO PRODUCTION BLUEPRINT
+   - Recommended faceless video formats
+   - Voiceover setup and tools
+   - Scriptwriting framework
+   - Video editing software recommendations
+   - Thumbnail design strategy
+   - Background music and SFX suggestions
+
+4. SEO & DISCOVERY STRATEGY
+   - Keyword research methodology
+   - Title optimization formulas
+   - Description templates
+   - Tag strategy
+   - Hashtag recommendations
+
+5. MONETIZATION ROADMAP
+   - Phase 1 (0-10K subscribers): Early monetization tactics
+   - Phase 2 (10K-100K subscribers): Scaling revenue
+   - Phase 3 (100K+ subscribers): Advanced strategies
+   - Revenue projection estimates
+   - Alternative income streams
+
+6. GROWTH STRATEGY
+   - Community building approach
+   - Cross-platform promotion
+   - Collaboration strategy
+   - Analytics tracking and optimization
+   - Algorithm understanding
+
+7. TECHNICAL SETUP GUIDE
+   - Equipment recommendations
+   - Recording workspace setup
+   - Software stack
+   - Backup and organization system
+
+8. LAUNCH CHECKLIST
+   - Pre-launch tasks (Week -4 to -1)
+   - Launch week tasks
+   - Post-launch optimization (Week 1-4)
+
+Format this as an actionable, detailed roadmap with specific recommendations based on the user's experience level and chosen parameters.`;
+
+    setGeneratedBlueprint(prompt);
+    setCurrentStep(8);
+  };
+
+  const copyToClipboard = () => {
+    if (generatedBlueprint) {
+      navigator.clipboard.writeText(generatedBlueprint);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+
+  const renderProgressBar = () => (
+    <div className="w-full mb-8">
+      <div className="flex justify-between mb-2">
+        {[...Array(totalSteps)].map((_, i) => (
+          <div
+            key={i}
+            className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold ${
+              i + 1 <= currentStep
+                ? "bg-blue-600 text-white"
+                : "bg-gray-200 text-gray-500"
+            }`}
+          >
+            {i + 1}
+          </div>
+        ))}
+      </div>
+      <div className="w-full bg-gray-200 rounded-full h-2">
+        <div
+          className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+          style={{ width: `${(currentStep / totalSteps) * 100}%` }}
+        />
+      </div>
+    </div>
+  );
+
+  const renderStep1 = () => (
+    <div className="space-y-4">
+      <h2 className="text-2xl font-bold text-gray-800 mb-2">
+        What's your current experience with starting a faceless YouTube channel?
+      </h2>
+      <p className="text-gray-600 mb-6">Select the option that best describes your level</p>
+      <div className="space-y-3">
+        {(["beginner", "intermediate", "advanced"] as ExperienceLevel[]).map((exp) => (
+          <button
+            key={exp}
+            onClick={() => handleExperienceSelect(exp)}
+            className={`w-full p-4 rounded-lg border-2 text-left transition-all ${
+              blueprint.experience === exp
+                ? "border-blue-600 bg-blue-50"
+                : "border-gray-200 hover:border-blue-300"
+            }`}
+          >
+            <span className="font-semibold capitalize">{exp}</span>
+            <p className="text-sm text-gray-500 mt-1">
+              {exp === "beginner" && "New to YouTube and faceless content creation"}
+              {exp === "intermediate" && "Some experience with content creation"}
+              {exp === "advanced" && "Experienced creator looking to optimize"}
+            </p>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+
+  const renderStep2 = () => (
+    <div className="space-y-4">
+      <h2 className="text-2xl font-bold text-gray-800 mb-2">
+        What niche do you have knowledge in?
+      </h2>
+      <p className="text-gray-600 mb-6">Choose the category that best fits your expertise</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {(Object.keys(nicheLabels) as Niche[]).map((niche) => (
+          <button
+            key={niche}
+            onClick={() => handleNicheSelect(niche)}
+            className={`p-4 rounded-lg border-2 text-left transition-all ${
+              blueprint.niche === niche
+                ? "border-blue-600 bg-blue-50"
+                : "border-gray-200 hover:border-blue-300"
+            }`}
+          >
+            <span className="font-medium">{nicheLabels[niche]}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+
+  const renderStep3 = () => (
+    <div className="space-y-4">
+      <h2 className="text-2xl font-bold text-gray-800 mb-2">
+        Do you have an idea of what your channel will be about?
+      </h2>
+      <p className="text-gray-600 mb-6">Select your primary content format</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {(Object.keys(contentIdeaLabels) as ContentIdea[]).map((idea) => (
+          <button
+            key={idea}
+            onClick={() => handleContentIdeaSelect(idea)}
+            className={`p-4 rounded-lg border-2 text-left transition-all ${
+              blueprint.contentIdea === idea
+                ? "border-blue-600 bg-blue-50"
+                : "border-gray-200 hover:border-blue-300"
+            }`}
+          >
+            <span className="font-medium">{contentIdeaLabels[idea]}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+
+  const renderStep4 = () => (
+    <div className="space-y-4">
+      <h2 className="text-2xl font-bold text-gray-800 mb-2">
+        Do you already have a name for your channel?
+      </h2>
+      <p className="text-gray-600 mb-6">Let us know if you need help with naming</p>
+      <div className="space-y-4">
+        <div className="flex gap-4">
+          <button
+            onClick={() => handleHasChannelName(true)}
+            className={`flex-1 p-6 rounded-lg border-2 text-center transition-all ${
+              blueprint.hasChannelName
+                ? "border-blue-600 bg-blue-50"
+                : "border-gray-200 hover:border-blue-300"
+            }`}
+          >
+            <span className="font-semibold text-lg">Yes, I have a name</span>
+          </button>
+          <button
+            onClick={() => handleHasChannelName(false)}
+            className={`flex-1 p-6 rounded-lg border-2 text-center transition-all ${
+              !blueprint.hasChannelName
+                ? "border-blue-600 bg-blue-50"
+                : "border-gray-200 hover:border-blue-300"
+            }`}
+          >
+            <span className="font-semibold text-lg">No, I need suggestions</span>
+          </button>
+        </div>
+        {blueprint.hasChannelName && (
+          <input
+            type="text"
+            placeholder="Enter your channel name"
+            value={blueprint.channelName}
+            onChange={(e) => handleChannelNameChange(e.target.value)}
+            className="w-full p-4 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none"
+          />
+        )}
+      </div>
+    </div>
+  );
+
+  const renderStep5 = () => (
+    <div className="space-y-4">
+      <h2 className="text-2xl font-bold text-gray-800 mb-2">
+        How do you plan to monetize your channel?
+      </h2>
+      <p className="text-gray-600 mb-6">Select all that apply</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {(Object.keys(monetizationLabels) as Monetization[]).map((mon) => (
+          <button
+            key={mon}
+            onClick={() => handleMonetizationToggle(mon)}
+            className={`p-4 rounded-lg border-2 text-left transition-all ${
+              blueprint.monetization.includes(mon)
+                ? "border-blue-600 bg-blue-50"
+                : "border-gray-200 hover:border-blue-300"
+            }`}
+          >
+            <span className="font-medium">{monetizationLabels[mon]}</span>
+            {blueprint.monetization.includes(mon) && (
+              <span className="ml-2 text-blue-600">✓</span>
+            )}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+
+  const renderStep6 = () => (
+    <div className="space-y-4">
+      <h2 className="text-2xl font-bold text-gray-800 mb-2">
+        How often do you plan to upload videos?
+      </h2>
+      <p className="text-gray-600 mb-6">Choose your upload schedule</p>
+      <div className="space-y-3">
+        {([
+          { value: "daily", label: "Daily", desc: "Maximum exposure, high commitment" },
+          { value: "1-2", label: "1-2 times per week", desc: "Balanced approach, sustainable" },
+          { value: "3-5", label: "3-5 times per week", desc: "Heavy output, fast growth potential" },
+          { value: "biweekly", label: "Bi-weekly", desc: "Lower commitment, more time per video" },
+          { value: "monthly", label: "Monthly", desc: "Minimal commitment, quality focus" },
+        ] as { value: UploadFrequency; label: string; desc: string }[]).map((freq) => (
+          <button
+            key={freq.value}
+            onClick={() => handleUploadFrequencySelect(freq.value)}
+            className={`w-full p-4 rounded-lg border-2 text-left transition-all ${
+              blueprint.uploadFrequency === freq.value
+                ? "border-blue-600 bg-blue-50"
+                : "border-gray-200 hover:border-blue-300"
+            }`}
+          >
+            <span className="font-semibold">{freq.label}</span>
+            <p className="text-sm text-gray-500 mt-1">{freq.desc}</p>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+
+  const renderStep7 = () => (
+    <div className="space-y-6">
+      <h2 className="text-2xl font-bold text-gray-800 mb-2">
+        Customize Your Video Strategy
+      </h2>
+      <p className="text-gray-600 mb-6">Help us understand your content preferences</p>
+
+      <div className="space-y-6">
+        <div>
+          <h3 className="font-semibold text-lg mb-3">Video Length Preference</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {(Object.keys(videoLengthLabels) as VideoLength[]).map((len) => (
+              <button
+                key={len}
+                onClick={() => handleVideoLengthSelect(len)}
+                className={`p-3 rounded-lg border-2 text-left transition-all text-sm ${
+                  blueprint.videoLength === len
+                    ? "border-blue-600 bg-blue-50"
+                    : "border-gray-200 hover:border-blue-300"
+                }`}
+              >
+                {videoLengthLabels[len]}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h3 className="font-semibold text-lg mb-3">Video Style (select multiple)</h3>
+          <div className="grid grid-cols-1 gap-3">
+            {(Object.keys(videoStyleLabels) as VideoStyle[]).map((style) => (
+              <button
+                key={style}
+                onClick={() => handleVideoStyleToggle(style)}
+                className={`p-4 rounded-lg border-2 text-left transition-all ${
+                  blueprint.videoStyle.includes(style)
+                    ? "border-blue-600 bg-blue-50"
+                    : "border-gray-200 hover:border-blue-300"
+                }`}
+              >
+                <span className="font-medium">{videoStyleLabels[style]}</span>
+                {blueprint.videoStyle.includes(style) && (
+                  <span className="ml-2 text-blue-600">✓</span>
+                )}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h3 className="font-semibold text-lg mb-3">Channel Focus Areas (select multiple)</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {channelFocusOptions.map((focus) => (
+              <button
+                key={focus}
+                onClick={() => handleChannelFocusToggle(focus)}
+                className={`p-4 rounded-lg border-2 text-left transition-all ${
+                  blueprint.channelFocus.includes(focus)
+                    ? "border-blue-600 bg-blue-50"
+                    : "border-gray-200 hover:border-blue-300"
+                }`}
+              >
+                <span className="font-medium">{focus}</span>
+                {blueprint.channelFocus.includes(focus) && (
+                  <span className="ml-2 text-blue-600">✓</span>
+                )}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderStep8 = () => (
+    <div className="space-y-6">
+      <div className="text-center mb-6">
+        <h2 className="text-3xl font-bold text-gray-800 mb-2">Your Faceless YouTube Blueprint</h2>
+        <p className="text-gray-600">Follow the instructions below to build your faceless YouTube channel</p>
+      </div>
+
+      <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
+        <h3 className="font-bold text-blue-800 mb-3">📋 Instructions:</h3>
+        <ol className="list-decimal list-inside space-y-2 text-blue-700">
+          <li>Click "Copy Full Prompt" below</li>
+          <li>Open a new 'Notebook' in NotebookLM</li>
+          <li>Paste the generated prompt into the source box</li>
+          <li>The AI will generate your YouTube channel blueprint</li>
+        </ol>
+      </div>
+
+      <div className="bg-gray-900 rounded-lg p-6 max-h-96 overflow-y-auto">
+        <pre className="text-green-400 text-sm whitespace-pre-wrap font-mono">
+          {generatedBlueprint}
+        </pre>
+      </div>
+
+      <button
+        onClick={copyToClipboard}
+        className={`w-full py-4 rounded-lg font-semibold text-lg transition-all ${
+          copied
+            ? "bg-green-600 text-white"
+            : "bg-blue-600 text-white hover:bg-blue-700"
+        }`}
+      >
+        {copied ? "✓ Copied to Clipboard!" : "📋 Copy Full Prompt"}
+      </button>
+
+      <button
+        onClick={() => {
+          setCurrentStep(1);
+          setGeneratedBlueprint(null);
+        }}
+        className="w-full py-3 rounded-lg border-2 border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-all"
+      >
+        Start Over
+      </button>
+    </div>
+  );
+
+  const renderCurrentStep = () => {
+    switch (currentStep) {
+      case 1:
+        return renderStep1();
+      case 2:
+        return renderStep2();
+      case 3:
+        return renderStep3();
+      case 4:
+        return renderStep4();
+      case 5:
+        return renderStep5();
+      case 6:
+        return renderStep6();
+      case 7:
+        return renderStep7();
+      case 8:
+        return renderStep8();
+      default:
+        return null;
+    }
+  };
+
+  const canProceed = () => {
+    switch (currentStep) {
+      case 1:
+        return blueprint.experience !== null;
+      case 2:
+        return blueprint.niche !== null;
+      case 3:
+        return blueprint.contentIdea !== null;
+      case 4:
+        return blueprint.hasChannelName ? blueprint.channelName.length > 0 : true;
+      case 5:
+        return blueprint.monetization.length > 0;
+      case 6:
+        return blueprint.uploadFrequency !== null;
+      case 7:
+        return blueprint.videoLength !== null && blueprint.videoStyle.length > 0 && blueprint.channelFocus.length > 0;
+      default:
+        return true;
+    }
+  };
+
+  const handleNext = () => {
+    if (currentStep < totalSteps) {
+      setCurrentStep(currentStep + 1);
+    } else {
+      generateBlueprint();
+    }
+  };
+
+  const handleBack = () => {
+    if (currentStep > 1) {
+      setCurrentStep(currentStep - 1);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8 px-4">
+      <div className="max-w-3xl mx-auto">
+        <div className="bg-white rounded-2xl shadow-xl p-8">
+          <div className="text-center mb-8">
+            <h1 className="text-3xl font-bold text-gray-800 mb-2">
+              🎬 Faceless YouTube Channel Blueprint Generator
+            </h1>
+            <p className="text-gray-600">
+              Answer a few questions to get your personalized strategy
+            </p>
+          </div>
+
+          {currentStep < 8 && renderProgressBar()}
+
+          <div className="min-h-96">
+            {renderCurrentStep()}
+          </div>
+
+          {currentStep < 8 && (
+            <div className="flex gap-4 mt-8">
+              {currentStep > 1 && (
+                <button
+                  onClick={handleBack}
+                  className="flex-1 py-3 rounded-lg border-2 border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-all"
+                >
+                  Back
+                </button>
+              )}
+              <button
+                onClick={handleNext}
+                disabled={!canProceed()}
+                className={`flex-1 py-3 rounded-lg font-semibold transition-all ${
+                  canProceed()
+                    ? "bg-blue-600 text-white hover:bg-blue-700"
+                    : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                }`}
+              >
+                {currentStep === totalSteps ? "Generate Blueprint" : "Continue"}
+              </button>
+            </div>
+          )}
+        </div>
+
+        <div className="mt-6 text-center text-gray-500 text-sm">
+          <p>Built for faceless content creators worldwide 🌐</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+```json
+{
+  "commentary": "I'm creating a comprehensive faceless YouTube channel blueprint generator app. The app will have a multi-step form wizard that collects user information including their experience level, niche, content ideas, channel naming preferences, monetization strategies, upload frequency, and video preferences. After collecting all the data, it will generate a detailed prompt that users can copy and paste into NotebookLM to get their personalized blueprint. The UI will be clean, professional, and mobile-responsive with proper state management throughout the wizard flow.",
+  "title": "YouTube Blueprint Generator",
+  "description": "A multi-step form app that generates comprehensive faceless YouTube channel blueprints based on user preferences and goals.",
+  "additional_dependencies": [],
+  "has_additional_dependencies": false,
+  "install_dependencies_command": "",
+  "port": 3000,
+  "file_path": "pages/index.tsx",
+  "code": "import { useState } from \"react\";\n\ntype ExperienceLevel = \"beginner\" | \"intermediate\" | \"advanced\";\ntype Niche = \n  | \"autos\"\n  | \"comedy\"\n  | \"education\"\n  | \"entertainment\"\n  | \"film\"\n  | \"gaming\"\n  | \"howto\"\n  | \"music\"\n  | \"news\"\n  | \"nonprofits\"\n  | \"people\"\n  | \"pets\"\n  | \"science\"\n  | \"sports\"\n  | \"travel\";\n\ntype ContentIdea = \n  | \"activity\"\n  | \"concept\"\n  | \"howto\"\n  | \"lecture\"\n  | \"problem\"\n  | \"reallife\"\n  | \"science\"\n  | \"tips\"\n  | \"other\"\n  | \"unsure\";\n\ntype VideoLength = 1 | 2 | 3 | 4 | 5 | 6;\ntype VideoStyle = \"data\" | \"documentary\" | \"educational\" | \"entertaining\" | \"motivational\" | \"news\" | \"quicktips\" | \"reviews\";\ntype UploadFrequency = \"1-2\" | \"3-5\" | \"biweekly\" | \"daily\" | \"monthly\";\ntype Monetization = \"affiliate\" | \"sponsorships\" | \"memberships\" | \"merchandise\" | \"courses\" | \"digital\" | \"adsense\";\n\ninterface ChannelBlueprint {\n  experience: ExperienceLevel | null;\n  niche: Niche | null;\n  contentIdea: ContentIdea | null;\n  hasChannelName: boolean;\n  channelName: string;\n  monetization: Monetization[];\n  uploadFrequency: UploadFrequency | null;\n  videoLength: VideoLength | null;\n  videoStyle: VideoStyle[];\n  channelFocus: string[];\n}\n\nconst nicheLabels: Record<Niche, string> = {\n  autos: \"Autos & Vehicles\",\n  comedy: \"Comedy\",\n  education: \"Education\",\n  entertainment: \"Entertainment\",\n  film: \"Film & Animation\",\n  gaming: \"Gaming\",\n  howto: \"How-to & Style\",\n  music: \"Music\",\n  news: \"News & Politics\",\n  nonprofits: \"Nonprofits & Activism\",\n  people: \"People & Blogs\",\n  pets: \"Pets & Animals\",\n  science: \"Science & Technology\",\n  sports: \"Sports\",\n  travel: \"Travel & Events\",\n};\n\nconst contentIdeaLabels: Record<ContentIdea, string> = {\n  activity: \"Activity\",\n  concept: \"Concept overview\",\n  howto: \"How-to\",\n  lecture: \"Lecture\",\n  problem: \"Problem walkthrough\",\n  reallife: \"Real life application\",\n  science: \"Science experiment\",\n  tips: \"Tips\",\n  other: \"Other\",\n  unsure: \"Not sure (let the AI decide)\",\n};\n\nconst monetizationLabels: Record<Monetization, string> = {\n  affiliate: \"Affiliate Marketing\",\n  sponsorships: \"Brand Sponsorships\",\n  memberships: \"Channel Memberships\",\n  merchandise: \"Merchandise\",\n  courses: \"Online Courses\",\n  digital: \"Selling Digital Products\",\n  adsense: \"YouTube AdSense\",\n};\n\nconst videoLengthLabels: Record<VideoLength, string> = {\n  1: \"3-5 minutes (short and punchy)\",\n  2: \"5-10 minutes (sweet spot for most niches)\",\n  3: \"10-15 minutes (in-depth but digestible)\",\n  4: \"15-20 minutes (deep dives and tutorials)\",\n  5: \"20+ minutes (long-form documentary or masterclass style)\",\n  6: \"Under 3 minutes (YouTube Shorts/Ultra-short)\",\n};\n\nconst videoStyleLabels: Record<VideoStyle, string> = {\n  data: \"Data & Analysis: Research-driven, deep dives, comparisons\",\n  documentary: \"Documentary Style: Long-form, narrative-driven, investigative\",\n  educational: \"Educational: Teaching, explaining, how-to-guides\",\n  entertaining: \"Entertaining: Fun, engaging, storytelling\",\n  motivational: \"Motivational: Inspiring mindset, success stories\",\n  news: \"News & Commentary: Reacting to trends, breaking down current events\",\n  quicktips: \"Quick-Tips & Hacks: Short, punchy, actionable advice\",\n  reviews: \"Reviews & Recommendations: Product reviews, tool breakdowns, top 10 lists\",\n};\n\nconst channelFocusOptions = [\n  \"Analysis\",\n  \"Beginner-Friendly\",\n  \"Deep Dives\",\n  \"Psychology and Sentiments\",\n  \"Recap & Quick Briefs\",\n  \"Report Summaries\",\n  \"Sector/Industry Updates\",\n  \"Spotlights\",\n  \"Strategies\",\n  \"Trends\",\n];\n\nexport default function FacelessYouTubeBlueprintApp() {\n  const [currentStep, setCurrentStep] = useState(1);\n  const [blueprint, setBlueprint] = useState<ChannelBlueprint>({\n    experience: null,\n    niche: null,\n    contentIdea: null,\n    hasChannelName: false,\n    channelName: \"\",\n    monetization: [],\n    uploadFrequency: null,\n    videoLength: null,\n    videoStyle: [],\n    channelFocus: [],\n  });\n  const [generatedBlueprint, setGeneratedBlueprint] = useState<string | null>(null);\n  const [copied, setCopied] = useState(false);\n\n  const totalSteps = 7;\n\n  const handleExperienceSelect = (exp: ExperienceLevel) => {\n    setBlueprint({ ...blueprint, experience: exp });\n  };\n\n  const handleNicheSelect = (niche: Niche) => {\n    setBlueprint({ ...blueprint, niche });\n  };\n\n  const handleContentIdeaSelect = (idea: ContentIdea) => {\n    setBlueprint({ ...blueprint, contentIdea: idea });\n  };\n\n  const handleHasChannelName = (has: boolean) => {\n    setBlueprint({ ...blueprint, hasChannelName: has });\n  };\n\n  const handleChannelNameChange = (name: string) => {\n    setBlueprint({ ...blueprint, channelName: name });\n  };\n\n  const handleMonetizationToggle = (mon: Monetization) => {\n    const newMonetization = blueprint.monetization.includes(mon)\n      ? blueprint.monetization.filter((m) => m !== mon)\n      : [...blueprint.monetization, mon];\n    setBlueprint({ ...blueprint, monetization: newMonetization });\n  };\n\n  const handleUploadFrequencySelect = (freq: UploadFrequency) => {\n    setBlueprint({ ...blueprint, uploadFrequency: freq });\n  };\n\n  const handleVideoLengthSelect = (len: VideoLength) => {\n    setBlueprint({ ...blueprint, videoLength: len });\n  };\n\n  const handleVideoStyleToggle = (style: VideoStyle) => {\n    const newStyles = blueprint.videoStyle.includes(style)\n      ? blueprint.videoStyle.filter((s) => s !== style)\n      : [...blueprint.videoStyle, style];\n    setBlueprint({ ...blueprint, videoStyle: newStyles });\n  };\n\n  const handleChannelFocusToggle = (focus: string) => {\n    const newFocus = blueprint.channelFocus.includes(focus)\n      ? blueprint.channelFocus.filter((f) => f !== focus)\n      : [...blueprint.channelFocus, focus];\n    setBlueprint({ ...blueprint, channelFocus: newFocus });\n  };\n\n  const generateBlueprint = () => {\n    const prompt = `FACLESS YOUTUBE CHANNEL BLUEPRINT GENERATOR\n\nUSER PROFILE:\n- Experience Level: ${blueprint.experience?.toUpperCase()}\n- Primary Niche: ${blueprint.niche ? nicheLabels[blueprint.niche] : \"TBD\"}\n- Content Format: ${blueprint.contentIdea ? contentIdeaLabels[blueprint.contentIdea] : \"TBD\"}\n- Channel Name: ${blueprint.hasChannelName ? blueprint.channelName : \"Needs suggestion\"}\n- Monetization Strategies: ${blueprint.monetization.map((m) => monetizationLabels[m]).join(\", \")}\n- Upload Frequency: ${blueprint.uploadFrequency} times per week\n- Average Video Length: ${blueprint.videoLength ? videoLengthLabels[blueprint.videoLength] : \"TBD\"}\n- Video Styles: ${blueprint.videoStyle.map((s) => videoStyleLabels[s]).join(\"; \")}\n- Channel Focus Areas: ${blueprint.channelFocus.join(\", \")}\n\nGenerate a comprehensive faceless YouTube channel blueprint including:\n\n1. CHANNEL BRANDING STRATEGY\n   - Brand name suggestions (if needed)\n   - Logo and visual identity guidelines\n   - Channel trailer concept\n   - Color palette recommendations\n   - Typography for thumbnails\n\n2. NICHE & CONTENT STRATEGY\n   - Detailed content pillars\n   - Sub-niche opportunities\n   - Target audience persona\n   - Content calendar framework\n   - Video topic ideas (10 initial concepts)\n\n3. VIDEO PRODUCTION BLUEPRINT\n   - Recommended faceless video formats\n   - Voiceover setup and tools\n   - Scriptwriting framework\n   - Video editing software recommendations\n   - Thumbnail design strategy\n   - Background music and SFX suggestions\n\n4. SEO & DISCOVERY STRATEGY\n   - Keyword research methodology\n   - Title optimization formulas\n   - Description templates\n   - Tag strategy\n   - Hashtag recommendations\n\n5. MONETIZATION ROADMAP\n   - Phase 1 (0-10K subscribers): Early monetization tactics\n   - Phase 2 (10K-100K subscribers): Scaling revenue\n   - Phase 3 (100K+ subscribers): Advanced strategies\n   - Revenue projection estimates\n   - Alternative income streams\n\n6. GROWTH STRATEGY\n   - Community building approach\n   - Cross-platform promotion\n   - Collaboration strategy\n   - Analytics tracking and optimization\n   - Algorithm understanding\n\n7. TECHNICAL SETUP GUIDE\n   - Equipment recommendations\n   - Recording workspace setup\n   - Software stack\n   - Backup and organization system\n\n8. LAUNCH CHECKLIST\n   - Pre-launch tasks (Week -4 to -1)\n   - Launch week tasks\n   - Post-launch optimization (Week 1-4)\n\nFormat this as an actionable, detailed roadmap with specific recommendations based on the user's experience level and chosen parameters.`;\n\n    setGeneratedBlueprint(prompt);\n    setCurrentStep(8);\n  };\n\n  const copyToClipboard = () => {\n    if (generatedBlueprint) {\n      navigator.clipboard.writeText(generatedBlueprint);\n      setCopied(true);\n      setTimeout(() => setCopied(false), 2000);\n    }\n  };\n\n  const renderProgressBar = () => (\n    <div className=\"w-full mb-8\">\n      <div className=\"flex justify-between mb-2\">\n        {[...Array(totalSteps)].map((_, i) => (\n          <div\n            key={i}\n            className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold ${\n              i + 1 <= currentStep\n                ? \"bg-blue-600 text-white\"\n                : \"bg-gray-200 text-gray-500\"\n            }`}\n          >\n            {i + 1}\n          </div>\n        ))}\n      </div>\n      <div className=\"w-full bg-gray-200 rounded-full h-2\">\n        <div\n          className=\"bg-blue-600 h-2 rounded-full transition-all duration-300\"\n          style={{ width: `${(currentStep / totalSteps) * 100}%` }}\n        />\n      </div>\n    </div>\n  );\n\n  const renderStep1 = () => (\n    <div className=\"space-y-4\">\n      <h2 className=\"text-2xl font-bold text-gray-800 mb-2\">\n        What's your current experience with starting a faceless YouTube channel?\n      </h2>\n      <p className=\"text-gray-600 mb-6\">Select the option that best describes your level</p>\n      <div className=\"space-y-3\">\n        {([\"beginner\", \"intermediate\", \"advanced\"] as ExperienceLevel[]).map((exp) => (\n          <button\n            key={exp}\n            onClick={() => handleExperienceSelect(exp)}\n            className={`w-full p-4 rounded-lg border-2 text-left transition-all ${\n              blueprint.experience === exp\n                ? \"border-blue-600 bg-blue-50\"\n                : \"border-gray-200 hover:border-blue-300\"\n            }`}\n          >\n            <span className=\"font-semibold capitalize\">{exp}</span>\n            <p className=\"text-sm text-gray-500 mt-1\">\n              {exp === \"beginner\" && \"New to YouTube and faceless content creation\"}\n              {exp === \"intermediate\" && \"Some experience with content creation\"}\n              {exp === \"advanced\" && \"Experienced creator looking to optimize\"}\n            </p>\n          </button>\n        ))}\n      </div>\n    </div>\n  );\n\n  const renderStep2 = () => (\n    <div className=\"space-y-4\">\n      <h2 className=\"text-2xl font-bold text-gray-800 mb-2\">\n        What niche do you have knowledge in?\n      </h2>\n      <p className=\"text-gray-600 mb-6\">Choose the category that best fits your expertise</p>\n      <div className=\"grid grid-cols-1 md:grid-cols-2 gap-3\">\n        {(Object.keys(nicheLabels) as Niche[]).map((niche) => (\n          <button\n            key={niche}\n            onClick={() => handleNicheSelect(niche)}\n            className={`p-4 rounded-lg border-2 text-left transition-all ${\n              blueprint.niche === niche\n                ? \"border-blue-600 bg-blue-50\"\n                : \"border-gray-200 hover:border-blue-300\"\n            }`}\n          >\n            <span className=\"font-medium\">{nicheLabels[niche]}</span>\n          </button>\n        ))}\n      </div>\n    </div>\n  );\n\n  const renderStep3 = () => (\n    <div className=\"space-y-4\">\n      <h2 className=\"text-2xl font-bold text-gray-800 mb-2\">\n        Do you have an idea of what your channel will be about?\n      </h2>\n      <p className=\"text-gray-600 mb-6\">Select your primary content format</p>\n      <div className=\"grid grid-cols-1 md:grid-cols-2 gap-3\">\n        {(Object.keys(contentIdeaLabels) as ContentIdea[]).map((idea) => (\n          <button\n            key={idea}\n            onClick={() => handleContentIdeaSelect(idea)}\n            className={`p-4 rounded-lg border-2 text-left transition-all ${\n              blueprint.contentIdea === idea\n                ? \"border-blue-600 bg-blue-50\"\n                : \"border-gray-200 hover:border-blue-300\"\n            }`}\n          >\n            <span className=\"font-medium\">{contentIdeaLabels[idea]}</span>\n          </button>\n        ))}\n      </div>\n    </div>\n  );\n\n  const renderStep4 = () => (\n    <div className=\"space-y-4\">\n      <h2 className=\"text-2xl font-bold text-gray-800 mb-2\">\n        Do you already have a name for your channel?\n      </h2>\n      <p className=\"text-gray-600 mb-6\">Let us know if you need help with naming</p>\n      <div className=\"space-y-4\">\n        <div className=\"flex gap-4\">\n          <button\n            onClick={() => handleHasChannelName(true)}\n            className={`flex-1 p-6 rounded-lg border-2 text-center transition-all ${\n              blueprint.hasChannelName\n                ? \"border-blue-600 bg-blue-50\"\n                : \"border-gray-200 hover:border-blue-300\"\n            }`}\n          >\n            <span className=\"font-semibold text-lg\">Yes, I have a name</span>\n          </button>\n          <button\n            onClick={() => handleHasChannelName(false)}\n            className={`flex-1 p-6 rounded-lg border-2 text-center transition-all ${\n              !blueprint.hasChannelName\n                ? \"border-blue-600 bg-blue-50\"\n                : \"border-gray-200 hover:border-blue-300\"\n            }`}\n          >\n            <span className=\"font-semibold text-lg\">No, I need suggestions</span>\n          </button>\n        </div>\n        {blueprint.hasChannelName && (\n          <input\n            type=\"text\"\n            placeholder=\"Enter your channel name\"\n            value={blueprint.channelName}\n            onChange={(e) => handleChannelNameChange(e.target.value)}\n            className=\"w-full p-4 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none\"\n          />\n        )}\n      </div>\n    </div>\n  );\n\n  const renderStep5 = () => (\n    <div className=\"space-y-4\">\n      <h2 className=\"text-2xl font-bold text-gray-800 mb-2\">\n        How do you plan to monetize your channel?\n      </h2>\n      <p className=\"text-gray-600 mb-6\">Select all that apply</p>\n      <div className=\"grid grid-cols-1 md:grid-cols-2 gap-3\">\n        {(Object.keys(monetizationLabels) as Monetization[]).map((mon) => (\n          <button\n            key={mon}\n            onClick={() => handleMonetizationToggle(mon)}\n            className={`p-4 rounded-lg border-2 text-left transition-all ${\n              blueprint.monetization.includes(mon)\n                ? \"border-blue-600 bg-blue-50\"\n                : \"border-gray-200 hover:border-blue-300\"\n            }`}\n          >\n            <span className=\"font-medium\">{monetizationLabels[mon]}</span>\n            {blueprint.monetization.includes(mon) && (\n              <span className=\"ml-2 text-blue-600\">✓</span>\n            )}\n          </button>\n        ))}\n      </div>\n    </div>\n  );\n\n  const renderStep6 = () => (\n    <div className=\"space-y-4\">\n      <h2 className=\"text-2xl font-bold text-gray-800 mb-2\">\n        How often do you plan to upload videos?\n      </h2>\n      <p className=\"text-gray-600 mb-6\">Choose your upload schedule</p>\n      <div className=\"space-y-3\">\n        {([\n          { value: \"daily\", label: \"Daily\", desc: \"Maximum exposure, high commitment\" },\n          { value: \"1-2\", label: \"1-2 times per week\", desc: \"Balanced approach, sustainable\" },\n          { value: \"3-5\", label: \"3-5 times per week\", desc: \"Heavy output, fast growth potential\" },\n          { value: \"biweekly\", label: \"Bi-weekly\", desc: \"Lower commitment, more time per video\" },\n          { value: \"monthly\", label: \"Monthly\", desc: \"Minimal commitment, quality focus\" },\n        ] as { value: UploadFrequency; label: string; desc: string }[]).map((freq) => (\n          <button\n            key={freq.value}\n            onClick={() => handleUploadFrequencySelect(freq.value)}\n            className={`w-full p-4 rounded-lg border-2 text-left transition-all ${\n              blueprint.uploadFrequency === freq.value\n                ? \"border-blue-600 bg-blue-50\"\n                : \"border-gray-200 hover:border-blue-300\"\n            }`}\n          >\n            <span className=\"font-semibold\">{freq.label}</span>\n            <p className=\"text-sm text-gray-500 mt-1\">{freq.desc}</p>\n          </button>\n        ))}\n      </div>\n    </div>\n  );\n\n  const renderStep7 = () => (\n    <div className=\"space-y-6\">\n      <h2 className=\"text-2xl font-bold text-gray-800 mb-2\">\n        Customize Your Video Strategy\n      </h2>\n      <p className=\"text-gray-600 mb-6\">Help us understand your content preferences</p>\n\n      <div className=\"space-y-6\">\n        <div>\n          <h3 className=\"font-semibold text-lg mb-3\">Video Length Preference</h3>\n          <div className=\"grid grid-cols-1 md:grid-cols-2 gap-3\">\n            {(Object.keys(videoLengthLabels) as VideoLength[]).map((len) => (\n              <button\n                key={len}\n                onClick={() => handleVideoLengthSelect(len)}\n                className={`p-3 rounded-lg border-2 text-left transition-all text-sm ${\n                  blueprint.videoLength === len\n                    ? \"border-blue-600 bg-blue-50\"\n                    : \"border-gray-200 hover:border-blue-300\"\n                }`}\n              >\n                {videoLengthLabels[len]}\n              </button>\n            ))}\n          </div>\n        </div>\n\n        <div>\n          <h3 className=\"font-semibold text-lg mb-3\">Video Style (select multiple)</h3>\n          <div className=\"grid grid-cols-1 gap-3\">\n            {(Object.keys(videoStyleLabels) as VideoStyle[]).map((style) => (\n              <button\n                key={style}\n                onClick={() => handleVideoStyleToggle(style)}\n                className={`p-4 rounded-lg border-2 text-left transition-all ${\n                  blueprint.videoStyle.includes(style)\n                    ? \"border-blue-600 bg-blue-50\"\n                    : \"border-gray-200 hover:border-blue-300\"\n                }`}\n              >\n                <span className=\"font-medium\">{videoStyleLabels[style]}</span>\n                {blueprint.videoStyle.includes(style) && (\n                  <span className=\"ml-2 text-blue-600\">✓</span>\n                )}\n              </button>\n            ))}\n          </div>\n        </div>\n\n        <div>\n          <h3 className=\"font-semibold text-lg mb-3\">Channel Focus Areas (select multiple)</h3>\n          <div className=\"grid grid-cols-1 md:grid-cols-2 gap-3\">\n            {channelFocusOptions.map((focus) => (\n              <button\n                key={focus}\n                onClick={() => handleChannelFocusToggle(focus)}\n                className={`p-4 rounded-lg border-2 text-left transition-all ${\n                  blueprint.channelFocus.includes(focus)\n                    ? \"border-blue-600 bg-blue-50\"\n                    : \"border-gray-200 hover:border-blue-300\"\n                }`}\n              >\n                <span className=\"font-medium\">{focus}</span>\n                {blueprint.channelFocus.includes(focus) && (\n                  <span className=\"ml-2 text-blue-600\">✓</span>\n                )}\n              </button>\n            ))}\n          </div>\n        </div>\n      </div>\n    </div>\n  );\n\n  const renderStep8 = () => (\n    <div className=\"space-y-6\">\n      <div className=\"text-center mb-6\">\n        <h2 className=\"text-3xl font-bold text-gray-800 mb-2\">Your Faceless YouTube Blueprint</h2>\n        <p className=\"text-gray-600\">Follow the instructions below to build your faceless YouTube channel</p>\n      </div>\n\n      <div className=\"bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6\">\n        <h3 className=\"font-bold text-blue-800 mb-3\">📋 Instructions:</h3>\n        <ol className=\"list-decimal list-inside space-y-2 text-blue-700\">\n          <li>Click \"Copy Full Prompt\" below</li>\n          <li>Open a new 'Notebook' in NotebookLM</li>\n          <li>Paste the generated prompt into the source box</li>\n          <li>The AI will generate your YouTube channel blueprint</li>\n        </ol>\n      </div>\n\n      <div className=\"bg-gray-900 rounded-lg p-6 max-h-96 overflow-y-auto\">\n        <pre className=\"text-green-400 text-sm whitespace-pre-wrap font-mono\">\n          {generatedBlueprint}\n        </pre>\n      </div>\n\n      <button\n        onClick={copyToClipboard}\n        className={`w-full py-4 rounded-lg font-semibold text-lg transition-all ${\n          copied\n            ? \"bg-green-600 text-white\"\n            : \"bg-blue-600 text-white hover:bg-blue-700\"\n        }`}\n      >\n        {copied ? \"✓ Copied to Clipboard!\" : \"📋 Copy Full Prompt\"}\n      </button>\n\n      <button\n        onClick={() => {\n          setCurrentStep(1);\n          setGeneratedBlueprint(null);\n        }}\n        className=\"w-full py-3 rounded-lg border-2 border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-all\"\n      >\n        Start Over\n      </button>\n    </div>\n  );\n\n  const renderCurrentStep = () => {\n    switch (currentStep) {\n      case 1:\n        return renderStep1();\n      case 2:\n        return renderStep2();\n      case 3:\n        return renderStep3();\n      case 4:\n        return renderStep4();\n      case 5:\n        return renderStep5();\n      case 6:\n        return renderStep6();\n      case 7:\n        return renderStep7();\n      case 8:\n        return renderStep8();\n      default:\n        return null;\n    }\n  };\n\n  const canProceed = () => {\n    switch (currentStep) {\n      case 1:\n        return blueprint.experience !== null;\n      case 2:\n        return blueprint.niche !== null;\n      case 3:\n        return blueprint.contentIdea !== null;\n      case 4:\n        return blueprint.hasChannelName ? blueprint.channelName.length > 0 : true;\n      case 5:\n        return blueprint.monetization.length > 0;\n      case 6:\n        return blueprint.uploadFrequency !== null;\n      case 7:\n        return blueprint.videoLength !== null && blueprint.videoStyle.length > 0 && blueprint.channelFocus.length > 0;\n      default:\n        return true;\n    }\n  };\n\n  const handleNext = () => {\n    if (currentStep < totalSteps) {\n      setCurrentStep(currentStep + 1);\n    } else {\n      generateBlueprint();\n    }\n  };\n\n  const handleBack = () => {\n    if (currentStep > 1) {\n      setCurrentStep(currentStep - 1);\n    }\n  };\n\n  return (\n    <div className=\"min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8 px-4\">\n      <div className=\"max-w-3xl mx-auto\">\n        <div className=\"bg-white rounded-2xl shadow-xl p-8\">\n          <div className=\"text-center mb-8\">\n            <h1 className=\"text-3xl font-bold text-gray-800 mb-2\">\n              🎬 Faceless YouTube Channel Blueprint Generator\n            </h1>\n            <p className=\"text-gray-600\">\n              Answer a few questions to get your personalized strategy\n            </p>\n          </div>\n\n          {currentStep < 8 && renderProgressBar()}\n\n          <div className=\"min-h-96\">\n            {renderCurrentStep()}\n          </div>\n\n          {currentStep < 8 && (\n            <div className=\"flex gap-4 mt-8\">\n              {currentStep > 1 && (\n                <button\n                  onClick={handleBack}\n                  className=\"flex-1 py-3 rounded-lg border-2 border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-all\"\n                >\n                  Back\n                </button>\n              )}\n              <button\n                onClick={handleNext}\n                disabled={!canProceed()}\n                className={`flex-1 py-3 rounded-lg font-semibold transition-all ${\n                  canProceed()\n                    ? \"bg-blue-600 text-white hover:bg-blue-700\"\n                    : \"bg-gray-300 text-gray-500 cursor-not-allowed\"\n                }`}\n              >\n                {currentStep === totalSteps ? \"Generate Blueprint\" : \"Continue\"}\n              </button>\n            </div>\n          )}\n        </div>\n\n        <div className=\"mt-6 text-center text-gray-500 text-sm\">\n          <p>Built for faceless content creators worldwide 🌐</p>\n        </div>\n      </div>\n    </div>\n  );\n}"
+}
+```"}
+      ]
+    })
+  });
