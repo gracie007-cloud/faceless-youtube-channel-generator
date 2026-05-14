@@ -1,594 +1,150 @@
-# Complete Faceless YouTube Blueprint Generator App
-
-Below is a production-ready, single-file web application that implements your exact specifications while incorporating enterprise-grade UX, accessibility, state persistence, and an optimized prompt-generation engine tailored for modern AI workflows.
-
-## 📦 Complete Source Code
-Save the following as `index.html` and open it in any browser. No build step, dependencies, or server is required.
-
-```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faceless YouTube Blueprint Generator</title>
-    <style>
-        :root {
-            --bg: #0f172a;
-            --surface: #1e293b;
-            --surface-hover: #334155;
-            --border: #475569;
-            --primary: #3b82f6;
-            --primary-hover: #2563eb;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --radius: 12px;
-            --shadow: 0 4px 24px rgba(0,0,0,0.35);
-            --focus-ring: 0 0 0 3px rgba(59,130,246,0.4);
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text-main); line-height: 1.6; min-height: 100vh; display: flex; justify-content: center; padding: 2rem 1rem; }
-        .app { max-width: 800px; width: 100%; }
-        header { text-align: center; margin-bottom: 2.5rem; }
-        h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; background: linear-gradient(90deg, #fff, #94a3b8); -webkit-background-clip: text; color: transparent; }
-        .subtitle { color: var(--text-muted); font-size: 1rem; }
-
-        /* Progress Bar */
-        .progress-container { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; position: relative; }
-        .progress-track { flex: 1; height: 4px; background: var(--surface); border-radius: 2px; overflow: hidden; }
-        .progress-fill { height: 100%; background: var(--primary); transition: width 0.4s ease; width: 11%; }
-        .step-badge { background: var(--surface); border: 1px solid var(--border); padding: 0.5rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; color: var(--text-muted); white-space: nowrap; }
-        .step-badge.active { background: var(--primary); color: white; border-color: var(--primary); }
-
-        /* Cards & Steps */
-        .step-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow); display: none; }
-        .step-card.active { display: block; animation: fadeIn 0.3s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-        .step-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .step-desc { color: var(--text-muted); margin-bottom: 1.5rem; }
-        
-        /* Options Grid */
-        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-        @media (max-width: 600px) { .options { grid-template-columns: 1fr; } }
-        .option { background: var(--bg); border: 2px solid var(--border); padding: 1rem; border-radius: var(--radius); cursor: pointer; transition: all 0.15s; position: relative; }
-        .option:hover { border-color: var(--primary-hover); }
-        .option[data-selected="true"] { background: rgba(59,130,246,0.1); border-color: var(--primary); box-shadow: var(--focus-ring); }
-        .option input { position: absolute; opacity: 0; }
-        .opt-label { font-weight: 500; display: block; }
-        .opt-sub { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem; }
-        .check { position: absolute; top: 1rem; right: 1rem; width: 20px; height: 20px; border: 2px solid var(--border); border-radius: 50%; display: grid; place-items: center; }
-        .option[data-selected="true"] .check { background: var(--primary); border-color: var(--primary); }
-        .option[data-selected="true"] .check::after { content: '✓'; color: white; font-size: 0.7rem; font-weight: bold; }
-
-        /* Inputs */
-        .input-group { margin-top: 1rem; }
-        input[type="text"] { width: 100%; padding: 0.875rem; background: var(--bg); border: 2px solid var(--border); border-radius: var(--radius); color: white; font-size: 1rem; transition: border 0.2s; }
-        input[type="text"]:focus { outline: none; border-color: var(--primary); box-shadow: var(--focus-ring); }
-        .cond-hide { display: none; }
-        .cond-show { display: block; animation: fadeIn 0.2s ease; }
-
-        /* Navigation */
-        .nav { display: flex; gap: 1rem; margin-top: 2rem; justify-content: flex-end; }
-        .btn { padding: 0.875rem 1.5rem; border-radius: var(--radius); font-weight: 600; cursor: pointer; border: none; transition: all 0.15s; font-size: 0.95rem; }
-        .btn[disabled] { opacity: 0.5; cursor: not-allowed; }
-        .btn-primary { background: var(--primary); color: white; }
-        .btn-primary:hover:not([disabled]) { background: var(--primary-hover); transform: translateY(-1px); }
-        .btn-secondary { background: var(--surface); color: var(--text-main); border: 1px solid var(--border); }
-        .btn-secondary:hover { background: var(--surface-hover); }
-
-        /* Output Section */
-        #output-section { text-align: center; }
-        .prompt-box { background: #020617; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; margin: 1.5rem 0; text-align: left; max-height: 400px; overflow-y: auto; font-family: monospace; font-size: 0.9rem; line-height: 1.5; color: #a5b4fc; white-space: pre-wrap; }
-        .instruction-box { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1.5rem; text-align: left; }
-        .instruction-box ol { padding-left: 1.5rem; color: var(--text-main); }
-        .instruction-box li { margin-bottom: 0.5rem; }
-        .instant-rec { background: var(--surface); border: 1px dashed var(--primary); padding: 1rem; border-radius: var(--radius); margin-bottom: 1.5rem; animation: fadeIn 0.3s; }
-        .instant-rec h4 { color: var(--primary); margin-bottom: 0.5rem; }
-        .instant-rec ul { padding-left: 1.2rem; color: var(--text-muted); }
-
-        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Plan faceless YouTube videos with AI-assisted creative direction, production guidance, and a ready-to-use generation prompt.">
+  <title>Faceless YouTube Video Generator</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="app" id="app">
-        <header>
-            <h1>🎭 Faceless YouTube Blueprint Generator</h1>
-            <p class="subtitle">Generate a complete, AI-optimized launch roadmap in under 2 minutes.</p>
-        </header>
+  <main class="app-shell">
+    <header class="masthead">
+      <div class="brand-lockup">
+        <div class="brand-mark" aria-hidden="true">FY</div>
+        <div>
+          <p class="eyebrow">AI-assisted creator studio</p>
+          <h1>Faceless YouTube Video Generator</h1>
+          <p class="lead">Shape a channel idea into production-ready video direction, hooks, visuals, voice, captions, and a complete AI prompt.</p>
+        </div>
+      </div>
+      <div class="status-stack" aria-label="App status">
+        <div class="status-pill"><span class="status-dot"></span><span id="assistStatus">AI Assist ready</span></div>
+        <div class="status-pill muted">Cloud Run static build</div>
+      </div>
+    </header>
 
-        <div class="progress-container" role="progressbar" aria-valuenow="11" aria-valuemin="0" aria-valuemax="100">
-            <span class="step-badge active" id="step-badge">Step 1/9</span>
-            <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+    <div class="workspace">
+      <aside class="director-panel" aria-labelledby="directorTitle">
+        <div class="director-head">
+          <div>
+            <p class="eyebrow">AI direction</p>
+            <h2 id="directorTitle">Director Assist</h2>
+          </div>
+          <div class="score-ring" id="scoreRing" aria-label="Readiness score">
+            <span id="scoreValue">0%</span>
+          </div>
         </div>
 
-        <!-- STEP 1 -->
-        <div class="step-card active" data-step="1" id="step-1">
-            <h2 class="step-title">Experience Level</h2>
-            <p class="step-desc">What is your current experience with starting a faceless YouTube channel?</p>
-            <div class="options multi-choice single-select">
-                <div class="option" data-value="Beginner"><span class="opt-label">Beginner</span><span class="opt-sub">Just getting started</span><div class="check"></div></div>
-                <div class="option" data-value="Intermediate"><span class="opt-label">Intermediate</span><span class="opt-sub">Some channel experience</span><div class="check"></div></div>
-                <div class="option" data-value="Advanced"><span class="opt-label">Advanced</span><span class="opt-sub">Scaling or optimizing</span><div class="check"></div></div>
-            </div>
-        </div>
+        <section class="assist-band current-step">
+          <span class="band-label">Current focus</span>
+          <strong id="directorStep">Choose a starting point</strong>
+          <p id="directorStepHint">Your direction will sharpen as you answer each step.</p>
+        </section>
 
-        <!-- STEP 2 -->
-        <div class="step-card" data-step="2" id="step-2">
-            <h2 class="step-title">Select Your Niche</h2>
-            <p class="step-desc">What niche do you have knowledge in?</p>
-            <div class="options multi-choice single-select">
-                <div class="option" data-value="Autos & Vehicles"><span class="opt-label">Autos & Vehicles</span><div class="check"></div></div>
-                <div class="option" data-value="Comedy"><span class="opt-label">Comedy</span><div class="check"></div></div>
-                <div class="option" data-value="Education"><span class="opt-label">Education</span><div class="check"></div></div>
-                <div class="option" data-value="Entertainment"><span class="opt-label">Entertainment</span><div class="check"></div></div>
-                <div class="option" data-value="Film & Animation"><span class="opt-label">Film & Animation</span><div class="check"></div></div>
-                <div class="option" data-value="Gaming"><span class="opt-label">Gaming</span><div class="check"></div></div>
-                <div class="option" data-value="How-to & Style"><span class="opt-label">How-to & Style</span><div class="check"></div></div>
-                <div class="option" data-value="Music"><span class="opt-label">Music</span><div class="check"></div></div>
-                <div class="option" data-value="News & Politics"><span class="opt-label">News & Politics</span><div class="check"></div></div>
-                <div class="option" data-value="Nonprofits & Activism"><span class="opt-label">Nonprofits & Activism</span><div class="check"></div></div>
-                <div class="option" data-value="People & Blogs"><span class="opt-label">People & Blogs</span><div class="check"></div></div>
-                <div class="option" data-value="Pets & Animals"><span class="opt-label">Pets & Animals</span><div class="check"></div></div>
-                <div class="option" data-value="Science & Technology"><span class="opt-label">Science & Technology</span><div class="check"></div></div>
-                <div class="option" data-value="Sports"><span class="opt-label">Sports</span><div class="check"></div></div>
-                <div class="option" data-value="Travel & Events"><span class="opt-label">Travel & Events</span><div class="check"></div></div>
-            </div>
-        </div>
+        <section class="assist-band">
+          <span class="band-label">Next best move</span>
+          <p id="assistNext">Pick the outcome you want this video system to create first.</p>
+        </section>
 
-        <!-- STEP 3 -->
-        <div class="step-card" data-step="3" id="step-3">
-            <h2 class="step-title">Channel Concept</h2>
-            <p class="step-desc">Do you have an idea of what your channel will be about? (e.g., Explaining complex AI tools in simple terms...)</p>
-            <div class="options multi-choice single-select">
-                <div class="option" data-value="Activity"><span class="opt-label">Activity</span><div class="check"></div></div>
-                <div class="option" data-value="Concept overview"><span class="opt-label">Concept overview</span><div class="check"></div></div>
-                <div class="option" data-value="How-to"><span class="opt-label">How-to</span><div class="check"></div></div>
-                <div class="option" data-value="Lecture"><span class="opt-label">Lecture</span><div class="check"></div></div>
-                <div class="option" data-value="Problem walkthrough"><span class="opt-label">Problem walkthrough</span><div class="check"></div></div>
-                <div class="option" data-value="Real life application"><span class="opt-label">Real life application</span><div class="check"></div></div>
-                <div class="option" data-value="Science experiment"><span class="opt-label">Science experiment</span><div class="check"></div></div>
-                <div class="option" data-value="Tips"><span class="opt-label">Tips</span><div class="check"></div></div>
-                <div class="option" data-value="Other"><span class="opt-label">Other</span><div class="check"></div></div>
-                <div class="option" data-value="Not sure (let the AI decide)"><span class="opt-label">Not sure (AI decides)</span><div class="check"></div></div>
-            </div>
-            <div class="instant-rec cond-hide" id="instant-rec">
-                <h4>💡 Instant Sub-Niche Suggestions</h4>
-                <ul id="instant-list"></ul>
-                <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.5rem;">(Selected "Not sure". Pick one now or proceed to AI generation.)</p>
-            </div>
-        </div>
+        <section class="assist-band">
+          <span class="band-label">Creative direction</span>
+          <ul class="direction-list" id="directionList"></ul>
+        </section>
 
-        <!-- STEP 4 -->
-        <div class="step-card" data-step="4" id="step-4">
-            <h2 class="step-title">Channel Name</h2>
-            <p class="step-desc">Do you already have a name for your channel?</p>
-            <div class="options multi-choice single-select" id="name-options">
-                <div class="option" data-value="Yes, I already have a name"><span class="opt-label">Yes, I already have a name</span><div class="check"></div></div>
-                <div class="option" data-value="No, I need name suggestions"><span class="opt-label">No, I need name suggestions</span><div class="check"></div></div>
-            </div>
-            <div class="input-group cond-hide" id="name-input-wrap">
-                <label for="custom-name" class="sr-only">Enter Channel Name</label>
-                <input type="text" id="custom-name" placeholder="e.g., SilentTech Labs" aria-required="true">
-            </div>
-        </div>
+        <section class="assist-band">
+          <span class="band-label">Readiness</span>
+          <div class="readiness-list" id="readinessList"></div>
+        </section>
 
-        <!-- STEP 5 -->
-        <div class="step-card" data-step="5" id="step-5">
-            <h2 class="step-title">Monetization Strategy</h2>
-            <p class="step-desc">How do you plan to monetize your channel? (Select all that apply)</p>
-            <div class="options multi-choice multi-select">
-                <div class="option" data-value="Affiliate Marketing"><span class="opt-label">Affiliate Marketing</span><div class="check"></div></div>
-                <div class="option" data-value="Brand Sponsorships"><span class="opt-label">Brand Sponsorships</span><div class="check"></div></div>
-                <div class="option" data-value="Channel Memberships"><span class="opt-label">Channel Memberships</span><div class="check"></div></div>
-                <div class="option" data-value="Merchandise"><span class="opt-label">Merchandise</span><div class="check"></div></div>
-                <div class="option" data-value="Online Courses"><span class="opt-label">Online Courses</span><div class="check"></div></div>
-                <div class="option" data-value="Selling Digital Products"><span class="opt-label">Selling Digital Products</span><div class="check"></div></div>
-                <div class="option" data-value="YouTube AdSense"><span class="opt-label">YouTube AdSense</span><div class="check"></div></div>
+        <div class="director-actions">
+          <button class="button ghost" id="suggestButton" type="button"><span aria-hidden="true">AI</span>Suggest path</button>
+          <button class="button ghost" id="sampleButton" type="button"><span aria-hidden="true">EX</span>Use sample</button>
+        </div>
+      </aside>
+
+      <section class="generator-panel" aria-live="polite">
+        <div id="wizardView">
+          <div class="panel-top">
+            <nav class="steps" id="stepList" aria-label="Generator steps"></nav>
+            <div class="progress" role="progressbar" aria-valuemin="1" aria-valuemax="10" aria-valuenow="1" id="progress">
+              <div class="progress-row">
+                <span id="stepCount">Step 1 of 10</span>
+                <span id="completionText">10% complete</span>
+              </div>
+              <div class="track"><div class="fill" id="progressFill"></div></div>
             </div>
-        </div>
+          </div>
 
-        <!-- STEP 6 -->
-        <div class="step-card" data-step="6" id="step-6">
-            <h2 class="step-title">Upload Cadence</h2>
-            <p class="step-desc">How often do you plan to upload videos?</p>
-            <div class="options multi-choice single-select">
-                <div class="option" data-value="1-2 times per week"><span class="opt-label">1-2 times per week</span><div class="check"></div></div>
-                <div class="option" data-value="3-5 times per week"><span class="opt-label">3-5 times per week</span><div class="check"></div></div>
-                <div class="option" data-value="Bi-weekly"><span class="opt-label">Bi-weekly</span><div class="check"></div></div>
-                <div class="option" data-value="Daily"><span class="opt-label">Daily</span><div class="check"></div></div>
-                <div class="option" data-value="Monthly"><span class="opt-label">Monthly</span><div class="check"></div></div>
-            </div>
-        </div>
-
-        <!-- STEP 7 -->
-        <div class="step-card" data-step="7" id="step-7">
-            <h2 class="step-title">Channel Focus</h2>
-            <p class="step-desc">YouTube Channel Focus: (Select multiple)</p>
-            <div class="options multi-choice multi-select">
-                <div class="option" data-value="Analysis"><span class="opt-label">Analysis</span><div class="check"></div></div>
-                <div class="option" data-value="Beginner-Friendly"><span class="opt-label">Beginner-Friendly</span><div class="check"></div></div>
-                <div class="option" data-value="Deep Dives"><span class="opt-label">Deep Dives</span><div class="check"></div></div>
-                <div class="option" data-value="Psychology and Sentiments"><span class="opt-label">Psychology & Sentiments</span><div class="check"></div></div>
-                <div class="option" data-value="Recap & Quick Briefs"><span class="opt-label">Recap & Quick Briefs</span><div class="check"></div></div>
-                <div class="option" data-value="Report Summaries"><span class="opt-label">Report Summaries</span><div class="check"></div></div>
-                <div class="option" data-value="Sector/Industry Updates"><span class="opt-label">Sector/Industry Updates</span><div class="check"></div></div>
-                <div class="option" data-value="Spotlights"><span class="opt-label">Spotlights</span><div class="check"></div></div>
-                <div class="option" data-value="Strategies"><span class="opt-label">Strategies</span><div class="check"></div></div>
-                <div class="option" data-value="Trends"><span class="opt-label">Trends</span><div class="check"></div></div>
-            </div>
-        </div>
-
-        <!-- STEP 8 -->
-        <div class="step-card" data-step="8" id="step-8">
-            <h2 class="step-title">Video Style</h2>
-            <p class="step-desc">Video Style (tone and format content) (Select multiple)</p>
-            <div class="options multi-choice multi-select">
-                <div class="option" data-value="Data & Analysis"><span class="opt-label">Data & Analysis</span><span class="opt-sub">Research-driven, deep dives</span><div class="check"></div></div>
-                <div class="option" data-value="Documentary Style"><span class="opt-label">Documentary Style</span><span class="opt-sub">Long-form, narrative-driven</span><div class="check"></div></div>
-                <div class="option" data-value="Educational"><span class="opt-label">Educational</span><span class="opt-sub">Teaching, explaining, how-to</span><div class="check"></div></div>
-                <div class="option" data-value="Entertaining"><span class="opt-label">Entertaining</span><span class="opt-sub">Fun, engaging, storytelling</span><div class="check"></div></div>
-                <div class="option" data-value="Motivational"><span class="opt-label">Motivational</span><span class="opt-sub">Inspiring mindset, success</span><div class="check"></div></div>
-                <div class="option" data-value="News & Commentary"><span class="opt-label">News & Commentary</span><span class="opt-sub">Reacting to trends, events</span><div class="check"></div></div>
-                <div class="option" data-value="Quick-Tips & Hacks"><span class="opt-label">Quick-Tips & Hacks</span><span class="opt-sub">Short, punchy, actionable</span><div class="check"></div></div>
-                <div class="option" data-value="Reviews & Recommendations"><span class="opt-label">Reviews & Recommendations</span><span class="opt-sub">Product reviews, top 10</span><div class="check"></div></div>
-            </div>
-        </div>
-
-        <!-- STEP 9 -->
-        <div class="step-card" data-step="9" id="step-9">
-            <h2 class="step-title">Video Duration</h2>
-            <p class="step-desc">How long do you want your videos to be on average? (This will help plan scripts and structure)</p>
-            <div class="options multi-choice single-select">
-                <div class="option" data-value="3-5 minutes (short and punchy)"><span class="opt-label">3-5 minutes</span><span class="opt-sub">Short and punchy</span><div class="check"></div></div>
-                <div class="option" data-value="5-10 minutes (sweet spot for most niches)"><span class="opt-label">5-10 minutes</span><span class="opt-sub">Sweet spot for most niches</span><div class="check"></div></div>
-                <div class="option" data-value="10-15 minutes (in-depth but digestible)"><span class="opt-label">10-15 minutes</span><span class="opt-sub">In-depth but digestible</span><div class="check"></div></div>
-                <div class="option" data-value="15-20 minutes (deep dives and tutorials)"><span class="opt-label">15-20 minutes</span><span class="opt-sub">Deep dives and tutorials</span><div class="check"></div></div>
-                <div class="option" data-value="20+ minutes (long-form documentary or masterclass style)"><span class="opt-label">20+ minutes</span><span class="opt-sub">Long-form documentary</span><div class="check"></div></div>
-                <div class="option" data-value="Under 3 minutes (YouTube Shorts/Ultra-short)"><span class="opt-label">Under 3 minutes</span><span class="opt-sub">YouTube Shorts / Ultra-short</span><div class="check"></div></div>
-            </div>
-        </div>
-
-        <div class="nav" id="nav-controls">
-            <button class="btn btn-secondary" id="btn-prev" disabled aria-label="Go to previous step">Back</button>
-            <button class="btn btn-primary" id="btn-next" disabled aria-label="Go to next step">Continue</button>
-        </div>
-
-        <!-- OUTPUT -->
-        <div class="step-card" id="output-section" style="display:none;">
-            <h2 class="step-title" style="text-align:center;">📐 Your Blueprint is Ready</h2>
-            <p class="step-desc" style="text-align:center;">Follow these steps to generate your full strategy in NotebookLM.</p>
-            
-            <div class="instruction-box">
-                <strong>Instructions:</strong>
-                <ol>
-                    <li>Click <strong>"Copy Full Prompt"</strong></li>
-                    <li>Open <a href="https://notebooklm.google.com" target="_blank" rel="noopener noreferrer">NotebookLM</a> and create a new Notebook</li>
-                    <li><em>Optimal Workflow:</em> Paste the copied prompt directly into the NotebookLM <strong>Chat Query box</strong> (not the sources box). Leave sources empty unless you want the AI to reference uploaded research docs.</li>
-                    <li>Hit Enter. NotebookLM will output your complete launch blueprint.</li>
-                </ol>
+          <section class="question">
+            <div class="question-copy">
+              <p class="eyebrow" id="questionEyebrow">Direction setup</p>
+              <h2 id="questionTitle"></h2>
+              <p class="prompt" id="questionPrompt"></p>
             </div>
 
-            <div class="prompt-box" id="generated-prompt" aria-live="polite"></div>
-            <button class="btn btn-primary" id="btn-copy" style="width:100%;">📋 Copy Full Prompt</button>
-            <button class="btn btn-secondary" id="btn-reset" style="width:100%; margin-top:0.75rem;">🔄 Start New Project</button>
+            <div class="options" id="optionGrid"></div>
+
+            <div class="field hidden" id="nameField">
+              <label for="channelName">Channel or series name</label>
+              <input id="channelName" type="text" autocomplete="organization" maxlength="80" placeholder="Example: Signal Studio">
+            </div>
+
+            <div class="field hidden" id="contextField">
+              <label for="sourceContext">Source notes or topic seed</label>
+              <textarea id="sourceContext" rows="6" placeholder="Paste a URL summary, raw idea, competitor angle, transcript notes, or product/topic details."></textarea>
+            </div>
+
+            <div class="assist-panel-inline hidden" id="assistBox">
+              <div>
+                <span class="band-label">AI starters</span>
+                <strong>Use one of these if you are not sure yet</strong>
+              </div>
+              <ul id="assistList"></ul>
+            </div>
+
+            <div class="summary hidden" id="summaryGrid"></div>
+          </section>
         </div>
+
+        <section class="result" id="resultView" aria-labelledby="resultTitle">
+          <div class="result-head">
+            <div>
+              <p class="eyebrow">Ready for your AI workspace</p>
+              <h2 id="resultTitle">Generation Prompt Ready</h2>
+              <p class="prompt">This includes video strategy, hook direction, faceless visuals, voiceover notes, captions, editing beats, and launch actions.</p>
+            </div>
+            <div class="mini-metric">
+              <span>Readiness</span>
+              <strong id="resultScore">100%</strong>
+            </div>
+          </div>
+
+          <div class="result-grid">
+            <div class="prompt-output">
+              <label for="generatedPrompt">Generated prompt</label>
+              <textarea id="generatedPrompt" readonly></textarea>
+              <div class="toast" id="copyStatus" aria-live="polite"></div>
+            </div>
+            <aside class="brief-panel">
+              <h3>Director Brief</h3>
+              <div id="directorBrief"></div>
+            </aside>
+          </div>
+        </section>
+
+        <footer class="actions">
+          <button class="button secondary" id="backButton" type="button"><span aria-hidden="true">BK</span>Back</button>
+          <div class="action-group">
+            <button class="button secondary" id="resetButton" type="button"><span aria-hidden="true">RS</span>Reset</button>
+            <button class="button primary" id="nextButton" type="button"><span aria-hidden="true">NX</span>Continue</button>
+            <button class="button primary hidden" id="copyButton" type="button"><span aria-hidden="true">CP</span>Copy prompt</button>
+          </div>
+        </footer>
+      </section>
     </div>
+  </main>
 
-    <script>
-        // State & Persistence
-        const state = JSON.parse(localStorage.getItem('fyBlueprintState') || '{}') || {
-            experience: '', niche: '', concept: '', nameStatus: '', customName: '', monetization: [], frequency: '', focus: [], style: [], length: '', step: 1
-        };
-
-        // Data Dictionaries (Pre-computed metrics for prompt enrichment)
-        const metrics = {
-            cpm: { 'Science & Technology': '$8-18', 'News & Politics': '$6-14', 'Finance/Invest': '$15-25', 'Education': '$5-12', 'default': '$3-7' },
-            words: { 'Under 3 minutes (YouTube Shorts/Ultra-short)': '350-450', '3-5 minutes (short and punchy)': '500-700', '5-10 minutes (sweet spot for most niches)': '900-1400', '10-15 minutes (in-depth but digestible)': '1500-2100', '15-20 minutes (deep dives and tutorials)': '2200-2800', '20+ minutes (long-form documentary or masterclass style)': '3500+' },
-            retention: { 'Under 3 minutes (YouTube Shorts/Ultra-short)': '85%+ AVD', '3-5 minutes (short and punchy)': '70-80%', '5-10 minutes (sweet spot for most niches)': '55-65%', '10-15 minutes (in-depth but digestible)': '45-55%', '15-20 minutes (deep dives and tutorials)': '40-50%', '20+ minutes (long-form documentary or masterclass style)': '35-45%' }
-        };
-
-        const subSuggestions = {
-            'Science & Technology': ['AI Tool Tutorials', 'Tech History Breakdowns', 'Gadget Reverse Engineering'],
-            'Education': ['Speed Learning Frameworks', 'Academic Paper Simplified', 'Skill Acquisition Journeys'],
-            'Entertainment': ['Pop Culture Archeology', 'Viral Video Origins', 'Internet Subcultures'],
-            'Gaming': ['Lore Deep Dives', 'Speedrun Strategy', 'Indie Game Spotlights'],
-            'default': ['Top 10 Industry Breakdowns', 'Beginner Mistakes Explained', 'Case Study Analysis']
-        };
-
-        // DOM Elements
-        const steps = document.querySelectorAll('.step-card');
-        const opts = document.querySelectorAll('.option');
-        const nameInput = document.getElementById('custom-name');
-        const instantRec = document.getElementById('instant-rec');
-        const instantList = document.getElementById('instant-list');
-        const promptBox = document.getElementById('generated-prompt');
-        const progressFill = document.getElementById('progress-fill');
-        const stepBadge = document.getElementById('step-badge');
-
-        // Init
-        function init() {
-            state.step = Number(state.step) || 1;
-            goToStep(state.step, false);
-            // Restore UI state
-            Object.keys(state).forEach(key => {
-                if (key === 'monetization' || key === 'focus' || key === 'style') {
-                    if(state[key]?.length) toggleMulti(key, state[key]);
-                }
-            });
-            if (state.experience) toggleSingle('experience', state.experience);
-            if (state.niche) toggleSingle('niche', state.niche);
-            if (state.concept) {
-                toggleSingle('concept', state.concept);
-                if(state.concept.includes('Not sure')) showInstantRec();
-            }
-            if (state.nameStatus) {
-                toggleSingle('nameStatus', state.nameStatus);
-                if(state.nameStatus.includes('Yes') && state.customName) {
-                    document.getElementById('name-input-wrap').classList.replace('cond-hide', 'cond-show');
-                    nameInput.value = state.customName;
-                }
-            }
-            if (state.frequency) toggleSingle('frequency', state.frequency);
-            if (state.length) toggleSingle('length', state.length);
-            updateNav();
-            bindEvents();
-        }
-
-        function saveState() { localStorage.setItem('fyBlueprintState', JSON.stringify(state)); }
-
-        function toggleSingle(group, value) {
-            state[group] = value; saveState();
-            const parent = document.querySelector(`[data-step="${getStepIndex(group)}"] .single-select`);
-            if(!parent) return;
-            parent.querySelectorAll('.option').forEach(o => {
-                const isSelected = o.dataset.value === value;
-                o.dataset.selected = isSelected;
-            });
-        }
-
-        function toggleMulti(group, valuesArr) {
-            const vals = Array.isArray(valuesArr) ? valuesArr : [valuesArr];
-            vals.forEach(v => state[group].includes(v) || state[group].push(v));
-            // Clean duplicates
-            state[group] = [...new Set(state[group])];
-            saveState();
-            const parent = document.querySelector(`[data-step="${getStepIndex(group)}"] .multi-select`);
-            if(!parent) return;
-            parent.querySelectorAll('.option').forEach(o => {
-                o.dataset.selected = vals.includes(o.dataset.value);
-            });
-        }
-
-        function getStepIndex(group) {
-            const map = { experience:1, niche:2, concept:3, nameStatus:4, monetization:5, frequency:6, focus:7, style:8, length:9 };
-            return map[group];
-        }
-
-        function goToStep(step, animate=true) {
-            state.step = step; saveState();
-            steps.forEach(s => {
-                const isTarget = Number(s.dataset.step) === step;
-                if(isTarget) s.style.display = 'block';
-                else s.style.display = 'none';
-            });
-            progressFill.style.width = `${(step/9)*100}%`;
-            stepBadge.textContent = `Step ${step}/9`;
-            updateNav();
-        }
-
-        function updateNav() {
-            const prev = document.getElementById('btn-prev');
-            const next = document.getElementById('btn-next');
-            prev.disabled = state.step === 1;
-            const currentCard = document.querySelector(`.step-card[data-step="${state.step}"]`);
-            const isValid = validateStep(state.step);
-            next.disabled = !isValid;
-            if(state.step === 9) next.textContent = 'Generate Blueprint';
-            else next.textContent = 'Continue';
-        }
-
-        function validateStep(step) {
-            const s = state;
-            switch(Number(step)) {
-                case 1: return !!s.experience;
-                case 2: return !!s.niche;
-                case 3: return !!s.concept;
-                case 4: return !!s.nameStatus;
-                case 5: return s.monetization.length > 0;
-                case 6: return !!s.frequency;
-                case 7: return s.focus.length > 0;
-                case 8: return s.style.length > 0;
-                case 9: return !!s.length;
-                default: return false;
-            }
-        }
-
-        function showInstantRec() {
-            const suggestions = subSuggestions[state.niche] || subSuggestions['default'];
-            instantList.innerHTML = suggestions.map(s => `<li>${s}</li>`).join('');
-            instantRec.classList.replace('cond-hide', 'cond-show');
-        }
-
-        function generatePrompt() {
-            const cpm = metrics.cpm[state.niche] || metrics.cpm.default;
-            const words = metrics.words[state.length] || metrics.words['5-10 minutes (sweet spot for most niches)'];
-            const ret = metrics.retention[state.length] || metrics.retention['5-10 minutes (sweet spot for most niches)'];
-
-            state.customName = nameInput.value.trim() || '';
-            if(state.nameStatus.includes('Yes') && state.customName) {
-                state.customName = state.customName;
-            }
-
-            const prompt = `FACLESS YOUTUBE CHANNEL BLUEPRINT GENERATOR
-USER PROFILE:
-- Experience Level: ${state.experience}
-- Primary Niche: ${state.niche}
-- Concept Type: ${state.concept}
-- Channel Name: ${state.nameStatus.includes('No') ? 'Needs Suggestions' : state.customName || 'TBD'}
-- Monetization: ${state.monetization.join(', ')}
-- Upload Cadence: ${state.frequency}
-- Video Duration: ${state.length}
-- Channel Focus: ${state.focus.join(', ')}
-- Video Styles: ${state.style.join(', ')}
-
-PERFORMANCE CONTEXT (PRE-COMPUTED METRICS):
-- Target Words per Script: ~${words}
-- Target Audience Retention Goal: ${ret}
-- Estimated Niche CPM: ${cpm}
-- Suggested Sub-Niches (if unsure): ${subSuggestions[state.niche]?.join(' | ') || subSuggestions.default.join(' | ')}
-
-SECTION 1: INSTRUCTIONAL FRAMEWORK
-Here's an outline of a comprehensive instructional framework for an interactive AI coach designed to help users launch a faceless YouTube channel. The guide focuses on providing a step-by-step strategy session that covers everything from branding and niche selection to visual identity and content length. It includes detailed monetization strategies and a technical walkthrough for producing videos using third-party and audio tools. Users are guided through the creation of their first video script and thumbnail generation, ensuring they have a complete blueprint for their digital project. The material ultimately serves as a step-by-step roadmap for transforming a channel concept into a fully operational and profitable online presence.
-
-SECTION 2: BLUEPRINT REQUIREMENTS
-Plan the video and channel based on the following:
-- Niche & Sub-niche: ${state.niche} + ${state.concept.includes('Not sure') ? 'AI Recommended Sub-Niche' : state.concept}
-- Target Audience: Define demographics, psychographics, pain points, and content consumption habits based on ${state.niche} and ${state.focus.join(' & '+ ')}
-- Video-Style: ${state.style.join(' + ')} tailored to ${state.length} average runtime.
-
-SECTION 3: OUTPUT STRUCTURE
-Output the full blueprint in these exact numbered sections with actionable bullet points:
-1. Executive Summary (Tailored to ${state.experience} experience level: beginners get jargon-free explanations, advanced users get scaling/outsourcing tactics)
-2. Niche & Sub-Niche Validation (Audience profile, competition gap analysis, 3 validated sub-niche options if "Not sure" was selected)
-3. Channel Branding & Naming (If name needed: 10 unique, brandable names with availability tips. If name exists: SEO & brand audit)
-4. Content Strategy (30-day calendar matching ${state.frequency} upload cadence. 12 video concepts mapped to ${state.focus.join(', ')}. Include script pacing guidelines for ${state.length})
-5. Faceless Production Technical Walkthrough (Exact tool stack for scripting, AI voiceover, B-roll sourcing, editing, thumbnail generation. Zero on-camera required)
-6. Monetization Roadmap (Phased timeline for ${state.monetization.join(', ')}. Niche-specific affiliate programs, AdSense strategy, early-revenue tactics)
-7. First Video Blueprint (Hook-to-CTA script outline, SEO title/description/tags, thumbnail psychology, upload checklist)
-8. Growth & Optimization (Algorithm triggers, CTR/retention optimization tailored to ${state.length} and ${state.style.join(' + ')})
-9. 90-Day Launch Roadmap (Week-by-week action items from channel setup to publishing first 10 videos)
-
-FINAL INSTRUCTION
-Do not include extra commentary outside the blueprint structure. Output the full blueprint now.`;
-
-            promptBox.textContent = prompt;
-            navigator.clipboard.writeText(prompt).then(() => {
-                document.getElementById('btn-copy').textContent = '✓ Copied!';
-                setTimeout(() => document.getElementById('btn-copy').textContent = '📋 Copy Full Prompt', 2000);
-            });
-            
-            steps.forEach(s => s.style.display = 'none');
-            document.getElementById('nav-controls').style.display = 'none';
-            document.querySelector('.progress-container').style.display = 'none';
-            document.getElementById('output-section').style.display = 'block';
-            saveState();
-        }
-
-        function bindEvents() {
-            // Option clicks
-            document.querySelectorAll('.multi-choice').forEach(container => {
-                container.addEventListener('click', e => {
-                    const opt = e.target.closest('.option');
-                    if (!opt) return;
-                    const val = opt.dataset.value;
-                    const group = container.closest('.step-card').dataset.step;
-                    
-                    if (container.classList.contains('single-select')) {
-                        toggleSingle(['experience','niche','concept','nameStatus','frequency','length'][group-1], val);
-                        container.querySelectorAll('.option').forEach(o => o.dataset.selected = false);
-                        opt.dataset.selected = true;
-                    } else {
-                        const gKey = ['monetization','focus','style'][group-5];
-                        state[gKey] = state[gKey].filter(v => v !== val);
-                        if(!opt.dataset.selected || opt.dataset.selected === 'false') {
-                            state[gKey].push(val);
-                            opt.dataset.selected = true;
-                        } else {
-                            opt.dataset.selected = false;
-                        }
-                        saveState();
-                    }
-                    updateNav();
-                    
-                    // Special triggers
-                    if(group === '3' && val.includes('Not sure')) showInstantRec();
-                    if(group === '3') instantRec.classList.add('cond-hide');
-                    if(group === '4') {
-                        const wrap = document.getElementById('name-input-wrap');
-                        if(val.includes('Yes')) wrap.classList.replace('cond-hide', 'cond-show');
-                        else wrap.classList.replace('cond-show', 'cond-hide');
-                    }
-                });
-            });
-
-            // Keyboard accessibility
-            document.querySelectorAll('.option').forEach(opt => {
-                opt.setAttribute('tabindex', '0');
-                opt.setAttribute('aria-pressed', opt.dataset.selected === 'true' ? 'true' : 'false');
-                opt.addEventListener('keydown', e => {
-                    if(e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        opt.dispatchEvent(new MouseEvent('click'));
-                    }
-                });
-                opt.addEventListener('focus', () => opt.style.boxShadow = 'var(--focus-ring)');
-                opt.addEventListener('blur', () => opt.style.boxShadow = 'none');
-            });
-
-            nameInput.addEventListener('input', e => { state.customName = e.target.value; saveState(); updateNav(); });
-
-            document.getElementById('btn-prev').addEventListener('click', () => goToStep(state.step - 1));
-            document.getElementById('btn-next').addEventListener('click', () => {
-                if(state.step === 9) generatePrompt();
-                else goToStep(state.step + 1);
-            });
-            document.getElementById('btn-reset').addEventListener('click', () => {
-                localStorage.removeItem('fyBlueprintState');
-                location.reload();
-            });
-            document.getElementById('btn-copy').addEventListener('click', () => {
-                navigator.clipboard.writeText(promptBox.textContent);
-                document.getElementById('btn-copy').textContent = '✓ Copied!';
-                setTimeout(() => document.getElementById('btn-copy').textContent = '📋 Copy Full Prompt', 2000);
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', init);
-    </script>
+  <script src="app.js" defer></script>
 </body>
 </html>
-```
-
-## 🛠 Key Architectural Decisions & Enhancements
-
-### 1. Framework Choice: Vanilla HTML/CSS/JS
-While React/Tailwind offers modern state management, a dependency-free single-file architecture was chosen for maximum portability. This app runs instantly on local browsers, GitHub Pages, Netlify, or Vercel without build pipelines, ensuring zero maintenance overhead and immediate deployment.
-
-### 2. NotebookLM Workflow Correction
-A critical blind spot in AI prompt routing is misunderstanding how NotebookLM operates. NotebookLM is optimized for **document querying via its chat interface**, not for executing system prompts pasted into the "sources" box. The app now outputs a structured system prompt optimized for the **chat query field**, with clear instructions to leave sources empty (or upload niche research). This prevents instruction leakage and ensures the AI treats the prompt as a directive rather than reference material.
-
-### 3. Session Persistence & State Recovery
-To prevent user frustration from accidental tab closures or refreshes, all form state is synchronized to `localStorage` in real-time. Reloading the browser automatically restores the exact step, selections, and conditional fields (like the custom name input or "Not sure" recommendations).
-
-### 4. Instant Client-Side Fallback for "Not Sure"
-Rather than deferring sub-niche suggestions entirely to the external AI, the app includes an embedded data dictionary (`subSuggestions`). When a user selects *Not sure (let the AI decide)*, three highly validated sub-niche options instantly appear based on their selected primary niche. This provides immediate value and improves the downstream AI context window accuracy.
-
-### 5. Pre-Computed YouTube Metrics
-The prompt engine dynamically injects pre-calculated performance benchmarks into the generated blueprint request:
-- **Target Words per Script:** Mapped to selected runtime lengths
-- **Retention Goals:** Average Viewer Duration (AVD) targets per duration tier
-- **Estimated CPM Ranges:** Industry-standard ad revenue brackets per niche
-These metrics constrain the AI's output, forcing it to generate realistic, production-ready scripts and monetization timelines instead of generic advice.
-
-### 6. Accessibility & Navigation Standards
-- **ARIA Compliance:** All interactive elements use `aria-pressed`, `aria-label`, and semantic roles. Screen readers accurately announce current progress and selection states.
-- **Keyboard Navigation:** Full `Tab`/`Enter`/`Space` support for custom radio/checkbox cards. Focus rings are explicitly styled for high contrast.
-- **Validation Gating:** The "Continue" button remains disabled until required fields are populated, replacing disruptive browser alerts with native UI state management.
-- **Section Delimiters:** The generated prompt uses explicit `SECTION 1-3` headers. This structural parsing optimization prevents context window bleeding and forces strict adherence to the requested output format.
-
-## 🚀 Deployment Instructions
-1. **Local Testing:** Save the code as `index.html` and double-click to open.
-2. **Free Hosting:** 
-   - Create a GitHub repository named `faceless-youtube-blueprint`
-   - Add `index.html` to the root
-   - Enable GitHub Pages in repository settings
-   - App will be live at `https://<your-username>.github.io/faceless-youtube-blueprint/`
-3. **Custom Domain:** Point DNS to Netlify/Vercel via drag-and-drop deployment.
-
-## 📋 Sample End-to-End Workflow
-1. User selects: `Intermediate`, `Science & Technology`, `How-to`, `No suggestions needed`, enters `ByteShift Labs`, selects `Affiliate Marketing + YouTube AdSense`, `1-2 times per week`, `Beginner-Friendly`, `Educational`, `5-10 minutes`.
-2. App auto-calculates: `~900-1400 words`, `55-65% AVD target`, `~$12 CPM bracket`.
-3. User clicks "Generate Blueprint" → Prompt is copied to clipboard instantly.
-4. User opens NotebookLM, pastes into the chat box, and receives a complete 30-day content calendar, voiceover tool recommendations, SEO tagging formulas, and a 90-day monetization phase map tailored exactly to their inputs.
